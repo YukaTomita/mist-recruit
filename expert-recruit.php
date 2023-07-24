@@ -97,9 +97,9 @@ $conn = null;
     <!-- 各々変更 -->
     <title>ベテラン向け</title>
     <!-- css,js -->
-    <link rel="stylesheet" href="css/reset.css" type="text/css">
-    <link rel="stylesheet" href="css/common.css" type="text/css">
-    <link rel="stylesheet" href="css/expert.css" type="text/css">
+    <link rel="stylesheet" href="CSS/reset.css" type="text/css">
+    <link rel="stylesheet" href="CSS/common.css" type="text/css">
+    <link rel="stylesheet" href="CSS/expert.css" type="text/css">
     <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
