@@ -134,9 +134,9 @@ $conn = null;
     <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
     <title>新人の声</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/newcomer.css">
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/common.css">
+    <link rel="stylesheet" href="CSS/newcomer.css">
 </head>
 
 <body>
