@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <meta name="description" content="株式会社MIST solution - トップページ 株式会社ミストソリューションは、異なった業界との接点を持つことで化学反応を起こし、
+    幅広いニーズにより的確にお応えできる、常に進化しているIT企業です。">
+    <meta name="keywords" content="株式会社ミストソリューション,ミストソリューション,MISTsolution,ミスト" />
+    <meta name="copyright" content="© 1997, 2023 mistsolution. All Rights Reserved.">
+    <meta name="format-detection" content="telephone=no">
+    <!-- OGP -->
+    <meta property="og:url" content="https://www.mistnet.co.jp">
+    <meta property="og:title" content="株式会社MIST solution | WEBサイト"/>
+    <meta property="og:site_name" content="株式会社MIST solution | WEBサイト">
+    <meta name="og:description" content="株式会社MIST solution - トップページ 株式会社ミストソリューションは、異なった業界との接点を持つことで化学反応を起こし、
+    幅広いニーズにより的確にお応えできる、常に進化しているIT企業です。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja-JP">
+    <meta property="og:image" content="assets/img/mist-ogp.jpg">
+    <meta name="twitter:card" content="summary"/>
+    <!-- favicon -->
+    <link rel="icon" href="img/favicon.ico">    
+    <title>トップページ</title>
+    <!--css-->
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/top.css" type="text/css">
+</head>
+<body>
+
+ <!-- header -->
+ <header class="header flex-box">
+    <h1 class="site-title">
+        <a href="#!">
+            <img src="img/グループ 1315.png" alt="ロゴ">
+        </a>
+    </h1>
+    <a href="#!"><img class="header-twitter" src="img/white background.png" alt="Twitter"></a>
+    <a href="#!" class="header-entry">エントリー</a>
+    <nav class="header-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#!">Service</a></li>
+            <li class="nav-item"><a href="#!">About</a></li>
+            <li class="nav-item"><a href="#!">News</a></li>
+            <li class="nav-item"><a href="#!">Conetact</a></li>
+            <li class="nav-item"><a href="#!">Recruit</a></li>
+        </ul>
+    </nav>
+    <button class="burger-btn">
+        <span class="bars">
+            <span class="bar bar_top"></span>
+            <span class="bar bar_mid"></span>
+            <span class="bar bar_bottom"></span>
+        </span>
+    </button>
+    <span class="burger-musk"></span>
+</header>
+
+<!-- トップスライド画像 -->
+<div class="slideshow">
+    <div class="slide">
+      <img src="img/top-slide1.png" alt="Image 1">
+      <div class="caption1">経験値の高い<br>エンジニアも</div>
+      <a href="!#" class="button"><p>積極的に面談中、エントリーはこちら　＞</p></a>
+    </div>
+    <div class="slide">
+      <img src="img/top-slide2.png" alt="Image 2">
+      <div class="caption2">志は皆同じ<br>だから頑張れる</div>
+      <a href="!#" class="button"><p>積極的に面談中、エントリーはこちら　＞</p></a>
+    </div>
+    <div class="slide">
+      <img src="img/top-slide3.png" alt="Image 3">
+      <div class="caption3">始めたばかりで<br>日々奮闘している<br>エンジニアも</div>
+      <a href="!#" class="button"><p>積極的に面談中、エントリーはこちら　＞</p></a>
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+  </div>
+  <script>
+    var slides = document.getElementsByClassName("slide");
+    var currentSlide = 0;
+
+    function showSlide(n) {
+    slides[currentSlide].style.opacity = 0;
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].style.opacity = 1;
+    }
+
+    function changeSlide(n) {
+    showSlide(currentSlide + n);
+    }
+
+    // 10秒ごとにスライドを切り替える
+    setInterval(function() {
+    changeSlide(1);
+    }, 10000);
+  </script>
+    
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+ <!-- コメント -->
+<div>
+    <p class="font-style-title text-center">私たちについて</p>
+    <hr class="border-line">
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="font-style-words text-center">「企業に、社会に、そして世の中に、<br>
+                必要とされている技術を仕事にしていく」</p>
+        </div>
+    </div>
+</div>
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<div>
+    <p class="font-style-title text-center">同じ志のエンジニアたちへ</p>
+</div>
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="wrapper">
+            <p class="font-style-comments2">当社の特徴は、大きな2本柱となる<br>
+                受託開発とSES(システム・エンジニアリング・サービス)<br>
+                のエンジニア部隊でもって社会に貢献し続け<br>
+                ２６年目を迎える「信用と安心」も兼ね備えた会社です。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- 選ばれる理由 -->
+
+<p class="font-style-choose">私たちが<span class="font-wide">選</span>ばれる<span class="font-wide">５</span>つの理由</p>
+<hr class="border-line-long">
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<div class="triangle"></div>
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<div class="choose-content">
+    <div class="choose-inner">
+        <div>
+            <div class="choose">理由<span class="font-num">1</span></div>
+            <div class="choose-img"><img src="img/cercle.png"></div>
+            <div class="choose-txt">求める環境と<br>求められる人材<br>全てがある</div>
+        </div>
+        <div>
+            <div class="choose">理由<span class="font-num">2</span></div>
+            <div class="choose-img"><img src="img/cercle.png"></div>
+            <div class="choose-txt">現場で使える<br>本当の技術が<br>身に付く</div>
+        </div>
+        <div>
+            <div class="choose">理由<span class="font-num">3</span></div>
+            <div class="choose-img"><img src="img/cercle.png"></div>
+            <div class="choose-txt">続けていける<br>理想的なサイクル<br>同志達がいる</div>
+        </div>
+        <div>
+            <div class="choose">理由<span class="font-num">4</span></div>
+            <div class="choose-img"><img src="img/cercle.png"></div>
+            <div class="choose-txt">営業・人事・上司<br>全てが連携する<br>サポート体制</div>
+        </div>
+        <div>
+            <div class="choose">理由<span class="font-num">5</span></div>
+            <div class="choose-img"><img src="img/cercle.png"></div>
+            <div class="choose-txt">創業26年の<br>信頼と安心<br>充実した福利厚生</div>
+        </div>
+    </div>
+  </div>
+
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+
+<!----------------------------------
+            理由1～5
+------------------------------------>
+<!-- 理由１ -->
+<div class="reason-img">
+    <img src="img/TOP1.png" class="wrap-img">
+    <div class="reason-txt">
+        <p class="reason-p">こんな悩みをお持ちではありませんか？</p>
+        <ul class="reson-ul">
+            <li class="reason-li">これまで培ったスキルを新たな環境で試したい。</li>
+            <li class="reason-li">次なるチャンスを掴みたい。</li>
+            <li class="reason-li">収入をUPさせたい。</li>
+        </ul>
+    </div>
+</div>
+<div class="top-wrap">
+    <div class="box2">
+        <div class="txt2">スペシャリスト</div>
+    </div>
+    <div class="box3">
+        <div class="txt1">求められている人材と技術…</div>
+    </div>
+    <div class="box4">
+        <div class="balloon1-parant">
+        <a href="#!" class="balloon1-top">
+            <p>もっと見る ＞</p>
+        </a>
+        </div>
+    </div>
+</div>
+
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- 理由２ -->
+<div class="reason-img">
+    <img src="img/TOP2.png" class="wrap-img">
+    <div class="reason-txt2">
+        高い授業料金を支払ってプログラミング用語を学ぶ時代から、対価を得ながら現場で使える最新の技術を学んでいく時代へと
+        移行している背景には、変化が大きい現代のIT社会に対応できる、若い技術者のスピード感を求めてきています。
+        そんな時代にSES（システム・エンジニアリング・サービス）が更に必要とされています。
+    </div>
+</div>
+<div class="top-wrap">
+    <div class="box2">
+        <div class="txt2">ルーキー</div>
+    </div>
+    <div class="box3">
+        <div class="txt1">対価を得ながら、現場で使える技術が身につく</div>
+    </div>
+    <div class="box4">
+        <div class="balloon1-parant">
+        <a href="#!" class="balloon1-top">
+            <p>もっと見る ＞</p>
+        </a>
+        </div>
+    </div>
+</div>
+
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- 理由３ -->
+<div class="reason-img">
+    <img src="img/TOP3.png" class="wrap-img">
+    <div class="reason-txt">
+        <ul class="reson-ul">
+            <li class="reason-li">社会に必要とされる。</li>
+            <li class="reason-li">日々技術が身につく。</li>
+            <li class="reason-li">続ければ続けるほどスキルが上がる。</li>
+            <li class="reason-li">今まで以上に社会から必要とされる。</li>
+            <li class="reason-li">給与も上がる。</li>
+        </ul>
+        <p class="reason-p">これ、正しいサイクルだと思います。</p>
+    </div>
+</div>
+<div class="top-wrap">
+    <div class="box2">
+        <div class="txt2">社員の声</div>
+    </div>
+    <div class="box3">
+        <div class="txt1">続ければ続けるほど、技術が身につく…</div>
+    </div>
+    <div class="box4">
+        <div class="balloon1-parant">
+        <a href="#!" class="balloon1-top">
+            <p>もっと見る ＞</p>
+        </a>
+        </div>
+    </div>
+</div>
+
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- 理由４ -->
+<div class="reason-img">
+    <img src="img/TOP4.png" class="wrap-img">
+    <div class="reason-txt">
+        <p class="reason-p">予測困難な社会情勢に私たちも変化を求められてきています。
+            人事・営業・直属の上司とフェーズに合わせた部署との連携を取りながら柔軟な対応を行っています。
+            テクノロジーと人間力！の融合性が当社のサポート体制の強みです。リモート業務が増える中で
+            サポート体制は必然であり企業に所属する意義が強まります。
+            また、同じ志をもった仲間も集い日々の活力にも繋がります。
+        </p>
+    </div>
+</div>
+<div class="top-wrap">
+    <div class="box2">
+        <div class="txt2">サポート体制</div>
+    </div>
+    <div class="box3">
+        <div class="txt1">企業に所属する必要性…</div>
+    </div>
+    <div class="box4">
+        <div class="balloon1-parant">
+        <a href="#!" class="balloon1-top">
+            <p>もっと見る ＞</p>
+        </a>
+        </div>
+    </div>
+</div>
+
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- 理由５ -->
+<div class="reason-img">
+    <img src="img/TOP5.png" class="wrap-img">
+    <div class="reason-txt2">
+        見込み残業が応募要項に多く見られるようになり慢性化していませんか？
+        当社では、一人一人の対価に対し正当な評価に繋がるよ努めています。
+        だから、社員の個性が輝き最終的には会社への貢献へと繋がり双方にとって高みを目指せる環境になっています。
+    </div>
+</div>
+<div class="top-wrap">
+    <div class="box2">
+        <div class="txt2">応募要項</div>
+    </div>
+    <div class="box3">
+        <div class="txt1">技術に対し１分単位で残業代を付ける…</div>
+    </div>
+    <div class="box4">
+        <div class="balloon1-parant">
+        <a href="#!" class="balloon1-top">
+            <p>もっと見る ＞</p>
+        </a>
+        </div>
+    </div>
+</div>
+</div>
+<!-- エントリー1 -->
+<div class="img-center">
+<div class="entry">
+    <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
+    <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
+    <p class="entry-red">入社からプロジェクト着任までのフローが知りたい方はこちら ></p>
+</div>
+</div>
+<!-- もっと知りたい方へ -->
+<div class="img-center">
+<div class="more txt2">
+    <p>私たちのコトがもっと知りたい方へ</p>
+</div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="triangle"></div>
+</div>
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+
+<!-- 公認クラブ -->
+<div class="img-center">
+<div class="wrap-gray">
+    <div class="club-box1">
+        <p class="font-style-title text-center">公認クラブ</p>
+        <hr class="border-gray">
+    </div>
+    <div class="club-box2">
+        <p class="font-style-words text-center">「個性的な５つの公認クラブがあります！」</p>
+    </div>
+    <div class="club-box3">
+        <div class="pic_frame">
+            <img src="img/ガチサル.png">
+            <p class="c-title">「ガチサル」</p>
+            <p class="c-name">フットサル部</p> 
+          </div>
+          <div class="pic_frame">
+            <img src="img/安西.png">
+            <p class="c-title">「安西」</p>
+            <p class="c-name">バスケ部</p>
+          </div>
+          <div class="pic_frame">
+            <img src="img/超人部.png">
+            <p class="c-title">「超人部」</p>
+            <p class="c-name">100kg超え</p>
+          </div>
+          <div class="pic_frame">
+            <img src="img/アナログ.png">
+            <p class="c-title">「アナログ」</p>
+            <p class="c-name">ゲーム部</p>
+          </div>
+          <div class="pic_frame">
+            <img src="img/カポエラ.png">
+            <p class="c-title">「カポエラ」</p>
+            <p class="c-name">スポーツ観戦部</p>
+        </div>
+    </div>
+    <div class="club-box4">
+        <p>５つの会社公認クラブ、その他にも公式ではありませんがメンバーを募っているクラブもあります。<br>
+            各クラブそれぞれ個性的で魅力溢れる社員が活動しています。社長はフットサル部に所属し社員と一緒に汗を流しています。</p>
+    </div>
+</div>
+</div>
+<!-- その他事業 -->
+<div class="img-center">
+<div class="wrap-white">
+    <div class="club-box1">
+        <p class="font-style-title text-center">その他、新事業に向けて</p>
+        <hr class="border-gray">
+    </div>
+    <div class="club-box2">
+        <p class="font-style-words">「楽しい！面白い！！を続けていたら…<br>ラジオ、農業までも手掛けていました！」</p>
+    </div>
+    <div class="club-box5">
+        <div class="new-bs-flex">
+            <figure class="new-bs-img"><img src="img/ラジナリ.png" alt=""></figure>
+            <div class="new-bs-right">
+              <p class="new-bs-title">メディア事業</p>
+              <p class="new-bs-text">ラジオ成田<br>（国際ラジオ放送株式会社）<br>2019年4月に当社による運営<br>を開始</p>
+            </div>
+          </div>
+    </div>
+    <div class="club-box6">
+        <div class="new-bs-flex">
+            <figure class="new-bs-img"><img src="img/アグリ.png" alt=""></figure>
+            <div class="new-bs-right">
+              <p class="new-bs-title">アグリ事業</p>
+              <p class="new-bs-text">2019年8月青森県八戸市南郷で農業を開始</p>
+            </div>
+          </div>
+    </div>
+    <div class="club-box4">
+        <p>SESや受託開発などの基盤事業以外に、メディア事業としてラジオ局の運営、アグリ事業として
+            にんにくの生産、販売と今後の展開が楽しみな事業を手掛けております。地域に密着し
+            サステナブルな社会形成に貢献することを目指し我々は取り組んでおります。
+        </p>
+    </div> 
+</div>
+</div>
+<!-- TDM推進プロジェクト -->
+<div class="takeaction-flex">
+    <figure><img class="takeaction-img" src="img/takeaction.png" alt=""></figure>
+    <div class="takeaction-right">
+        <p class="takeaction-title">プロジェクト参加</p>
+    </div>
+</div>
+<div>    
+    <p class="takeaction-title">新しい事業への情熱が止まらない！</p>
+</div>
+</div>
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- SNS -->
+<div>
+    <p class="font-style-title text-center">SNS</p>
+    <hr class="border-line">
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="font-style-words text-center">「私たちの日々の出来事」</p>
+        </div>
+    </div>
+</div>
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="sns-flex">
+    <div>
+      <img src="img/SNS1.png">
+    </div>
+    <p>当社の公認クラブの一つ「ラスベガス」ゲーム部のコレクションです。ボードゲームがメインとなるこのクラブのボードゲームが日々増えています。</p>
+</div>
+<div class="gap-control-probram"></div>
+<div class="sns-flex">
+    <div>
+      <img src="img/SNS2.png">
+    </div>
+    <p>ラジオ成田は、成田と隣接する富里市と「災害時における放送に関する協定」の締結を行いました。これを機に、富里市へ放送拠点を設置し富里市民の方々とも密着した取り組みを行って行きます。</p>
+</div>
+<div class="gap-control-probram"></div>
+<div class="sns-flex">
+    <div>
+      <img src="img/SNS3.png">
+    </div>
+    <p>青森県八戸市南郷地区にあるニンニク畑です。スポンサードしているサッカーチーム「ヴァンラーレ八戸」や地元農家の方々にご協力いただき、収穫、販売を行っております。</p>
+</div>
+
+
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<div class="previous">
+    <a href="#!">過去一覧を見る</a>
+</div>
+
+<!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!--------------------------------
+        お知らせ ※要変更(php)
+--------------------------------->
+<div>
+    <p class="font-style-title text-center">お知らせ</p>
+    <hr class="border-line">
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="font-style-words text-center">What's New</p>
+        </div>
+    </div>
+</div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="news-banner">
+    <div class="news-circle"></div>
+    <span class="news-date">2023/07/05</span>
+    <p class="news-text">テキストの例</p>
+</div>
+<div class="news-banner">
+    <div class="news-circle"></div>
+    <span class="news-date">2023/07/05</span>
+    <p class="news-text">テキストの例</p>
+</div>
+<div class="news-banner">
+    <div class="news-circle"></div>
+    <span class="news-date">2023/07/05</span>
+    <p class="news-text">テキストの例</p>
+</div>
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- YouTube -->
+<div>
+    <p class="font-style-title text-center">動画配信</p>
+    <hr class="border-line">
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="font-style-words text-center">YouTube</p>
+        </div>
+    </div>
+</div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<div class="youtube-container">
+	<div class="child">
+        <iframe src="https://www.youtube.com/embed/?list=UUQfpU3SXPks2dzJVW6fFsLw"></iframe>
+	</div>
+	<div class="child">
+        <iframe src="https://www.youtube.com/embed/?list=UUQfpU3SXPks2dzJVW6fFsLw"></iframe>
+	</div>
+    <div class="child">
+        <iframe src="https://www.youtube.com/embed/?list=UUQfpU3SXPks2dzJVW6fFsLw"></iframe>
+	</div>
+	<div class="child">
+        <iframe src="https://www.youtube.com/embed/?list=UUQfpU3SXPks2dzJVW6fFsLw"></iframe>
+	</div>
+</div>
+
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+
+<!--エントリー-->
+<div class="wrapper">
+    <div class="entry">
+        <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
+        <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
+        <p class="entry-red">入社からプロジェクト着任までのフローが知りたい方はこちら ></p>
+    </div>
+    <div class="flex-link">
+        <img class="link-img" src="img/グループ 1824.png">
+        <img class="link-img" src="img/グループ 1826.png">
+    </div>
+    <div class="flex-link">
+        <img class="link-img" src="img/グループ 1827.png">
+        <img class="link-img" src="img/グループ 1828.png">
+    </div>
+</div>
+
+    <!-- 隙間 -->
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+
+<!-- footer -->
+<footer class="footer">
+<small>&copy; 1997,2023 mistsolution.All Rights Reserved.</small>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="js\header.js"></script>
+<script src="js/upperclassman.js"></script>
+
+</body>

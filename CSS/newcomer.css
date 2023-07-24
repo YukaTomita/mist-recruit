@@ -1,0 +1,231 @@
+/* --------------------- 
+ スポーツランキング
+ --------------------- */
+.ranking {
+    margin: 60px 10px;
+}
+.vote{
+    margin: 60px 10px; 
+}
+.bar-graph {
+    height: 20px;
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sport-button {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sport-button:hover {
+    background-color: #e0e0e0;
+}
+.sportName {
+    border: 3px solid #f00;
+    width: 400px;
+    height: 25px;
+    border-radius: 100vh;
+    padding-top: 10px;
+}
+.rank {
+    width: 50px;
+    font-size: 2rem;
+}
+.rank span {
+    font-size: 3rem;
+    line-height: 1;
+}
+.title-ranking {
+    font-size: 1.7rem;
+    line-height: 140%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.asterisk {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #8B2022;
+}
+/*------------------
+ 事業切り替えボタン 
+ ------------------*/
+.contents__change-button {
+    display: flex;
+    z-index: 1;
+    position: relative;
+    line-height: 2;
+}
+.contents__change-button span {
+    font-size: 4rem;
+    line-height: 1;
+}
+
+.contents__change-button h2 {
+    font-weight: 300;
+}
+
+.change-button__ict,
+.change-button__lbd {
+    width: 50%;
+    height: 5rem;
+    opacity: 1;
+    text-align: center;
+    padding: 2.4rem 0;
+}
+.change-button__ict img,
+.change-button__lbd img {
+    max-width: 150px;
+}
+.change-button__lbd {
+    opacity: 0.3;
+    background-color: #F6F6F5;
+}
+
+.change-button__ict.lbd-show {
+    opacity: 0.3;
+    background-color: #F6F6F5;
+}
+
+.change-button__lbd.lbd-show {
+    opacity: 1;
+    background-color: #ffffff;
+}
+.tab__title {
+    font-size: 2.5rem;
+}
+.triangle:before {
+    content: "\025bd";
+}
+  /*-------------------------
+   業内容表示時
+  -------------------------*/
+.contents__ict,
+.contents__lbd {
+    height: 50rem;
+}
+.contents__ict {
+    background-position: center 0;
+    position: relative;
+}
+.contents__ict.lbd-show {
+    display: none;
+}
+.contents__lbd {
+    display: none;
+    color: black;
+}
+.contents__lbd image {
+    background-size: cover;
+    background-position: center 0;
+    position: relative;
+}
+.contents__lbd.lbd-show {
+    display: block;
+}
+
+
+.container{
+    max-width:800px;
+    height: 1000px;
+    position: relative;
+    margin: 60px 10px;
+    z-index: 0;
+}
+.first-img{
+    width:100%;  
+    margin: 0 10px;
+}
+.open-img{
+    position: relative;
+    right: 90px;
+    bottom: 270px;
+    width: 60%;
+    z-index: 3;
+    display: block;
+    padding:0;
+    margin-bottom: -250px;
+}
+.container button{
+    max-width:800px;
+    position: relative;
+    right: -250px;
+    bottom:225px;
+    color: white;
+    padding:0;
+    margin: 0;
+    border-bottom:solid 1px white;
+}
+.container button:before {
+    content: "\025b6";
+  }
+.container p{
+    max-width: 200px;
+    text-align: left;
+    position: relative;
+    right: -550px;
+    bottom:230px;
+    color: black;
+    padding:10px 0;
+    margin: 0;
+    font-weight: 500;
+    overflow-x: hidden;
+}
+.detail1,
+.detail2,
+.detail3 {
+    opacity: 0;
+}
+
+.detail1.open,
+.detail2.open,
+.detail3.open {
+    opacity: 1; 
+    transition: opacity 0.5s ease;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 10px 40px 10px;
+}
+/* ---------------------------
+フレックス群 
+----------------------------- */
+.flex-ul {
+    display: flex;
+    margin-bottom: 100px;
+    font-size: 1.4rem;
+}
+.flex-img li {
+    position: relative; /* 親要素に対してposition: relative;を指定 */
+}
+
+.flex-img p {
+    position: absolute; /* pタグにposition: absolute;を指定 */
+    bottom: -10px; /* 下端に配置 */
+    left: 10px; /* 左端に配置 */
+    margin: 0;
+}
+.size-img {
+    max-width: 110px;
+    margin: 10px 10px;
+}
+.size-text {
+    width: 100px;
+    margin: 0;
+}
+/* 画像100% */
+img {
+    width:100%;
+}
