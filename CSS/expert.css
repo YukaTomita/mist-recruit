@@ -22,6 +22,16 @@
     margin: auto 3rem;
   }
 
+/*く矢印*/
+.Arrow-Bottom {
+  border-bottom: solid 2px #8B2022;
+  border-right: solid 2px #8B2022;
+  width: 24px;
+  height: 24px;
+  transform: rotate(45deg);
+  text-align: center;
+}
+
  
 /* cercle */
 .cercle{

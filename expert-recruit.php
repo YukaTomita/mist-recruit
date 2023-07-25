@@ -158,12 +158,21 @@ $conn = null;
             <div class="col-12">
                 <p class="font-style-words2 text-center">「キャリアアップで選ぶポイントは何ですか？」</p>
                 <p id="loadingText">エンジニアが選ぶ企業のポイントを更新中<span id="dots"></span></p>
+
+                <div class="gap-control-probram"></div>
+                <div class="gap-control-probram"></div>
+
+                <p id="currentDate"></p>
+
+                <div class="gap-control-probram"></div>
+                <div class="gap-control-probram"></div>
+
+                <p class="font-style-words text-center">現在のランキング</p>
             </div>
         </div>
     </div>
     <!-- エンジニアが選ぶ企業のポイント　ランキング -->
     <div class="wrapper">
-    <p class="title-ranking">エンジニアが選ぶ企業のポイント</p>
         <canvas id="barChart"></canvas>
 
         <script>
@@ -209,6 +218,10 @@ $conn = null;
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
+
+        <div class="cercle">ランキングに参加する</div>
+        <div class="Arrow-Bottom"></div>
+        <div class="Arrow-Bottom"></div>
 
         <p class="font-style-comments2 txt line-height">キャリアアップで転職される際に、重要視されるポイントを下記よりお選びください。<br>※複数選択可能</p>
         <?php if (!$voteHistory) : ?>
