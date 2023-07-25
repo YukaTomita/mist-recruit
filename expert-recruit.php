@@ -302,23 +302,23 @@ $conn = null;
     <div class="wrapper">
         <section class="case">
             <article class="case__list">
-              <div class="case__item">
-                <p class="case__item__text">私たちは、技術者派遣に受託及びチーム派遣も含め、<br>企業の社員負担の大幅削減させ、
-                一丸となってソフト<br>ウェア開発業務に専念できるような環境をつくり社会<br>に貢献し続けることを志し、
-                その同志と共に歩んできま<br>した。</p>
-                <img class="case__item__img" src="img/blank.png" alt="画像1">
-              </div>
-              <div class="case__item">
-                <p class="case__item__text">労働力人口の減少の中で技術者不足は市場全体の課題<br>です。エンジニアが働き続けられる環境の現実を
-                重要<br>ミッションの一つと捉えています。熟練を求められる<br>技術職種において、20年以上の経験を有するエンジニ<br>アの最重要課題。
-                特にハードウェア分野における豊富<br>な経験を持つエンジニアの活用度が高く、時には技術<br>伝承における重要な役割を担っています。<br><br>
-                ライフイベントを機に職を離れざるを得なかったエン<br>ジニアの、ブランクからの復帰や
-                時短勤務のニーズに<br>応えることで、貴重なスキルを活かしながら生産性高<br>く活躍されています。</p>
-                <img class="case__item__img" src="img/sample1.png" alt="画像2">
-              </div>
+                <div class="case__item">
+                    <p class="case__item__text">私たちは、技術者派遣に受託及びチーム派遣も含め、<br>企業の社員負担の大幅削減させ、
+                    一丸となってソフト<br>ウェア開発業務に専念できるような環境をつくり社会<br>に貢献し続けることを志し、
+                    その同志と共に歩んできま<br>した。</p>
+                    <img class="case__item__img" src="img/sample1.png" alt="画像1">
+                </div>
+                <div class="case__item">
+                    <p class="case__item__text">労働力人口の減少の中で技術者不足は市場全体の課題<br>です。エンジニアが働き続けられる環境の現実を
+                    重要<br>ミッションの一つと捉えています。熟練を求められる<br>技術職種において、20年以上の経験を有するエンジニ<br>アの最重要課題。
+                    特にハードウェア分野における豊富<br>な経験を持つエンジニアの活用度が高く、時には技術<br>伝承における重要な役割を担っています。<br><br>
+                    ライフイベントを機に職を離れざるを得なかったエン<br>ジニアの、ブランクからの復帰や
+                    時短勤務のニーズに<br>応えることで、貴重なスキルを活かしながら生産性高<br>く活躍されています。</p>
+                    <img class="case__item__img" src="img/sample2.png" alt="画像2">
+                </div>
             </article>
-          </section>
-        </div>
+        </section>
+    </div>
 
 
     <!-- 隙間 -->
@@ -400,18 +400,18 @@ $conn = null;
     </div>
 
     <div class="flex">
-        <div>リスク管理システムパッケージ新規開発</div>
-        <div>Java<br>GWT<br>Hibernate<br>Jasper Studio<br>JP1<br>SQL Server<br><br></div>
+        <div class="flex-txt">リスク管理システムパッケージ新規開発</div>
+        <div class="flex-txt">Java<br>GWT<br>Hibernate<br>Jasper Studio<br>JP1<br>SQL Server<br><br></div>
     </div>
 
     <div class="flex">
-        <div>与信管理システム保守開発（クレジット会社向け）</div>
-        <div>Java<br>SQL<br>JP1<br>Oracle<br><br></div>
+        <div class="flex-txt">与信管理システム保守開発（クレジット会社向け）</div>
+        <div class="flex-txt">Java<br>SQL<br>JP1<br>Oracle<br><br></div>
     </div>
 
     <div class="flex">
-        <div>給与計算システム（メーカー向け）</div>
-        <div>C<br>SHELL<br>PL<br>SQL<br>Oracle<br><br></div>
+        <div class="flex-txt">給与計算システム（メーカー向け）</div>
+        <div class="flex-txt">C<br>SHELL<br>PL<br>SQL<br>Oracle<br><br></div>
     </div>
 
 
@@ -435,18 +435,18 @@ $conn = null;
     </div>
 
     <div class="flex">
-        <div>オンプレLinuxサーバ（RHEL）からクラウド移行に伴う基盤移行<br>及びOS、ミドルウェアバージョンアップ</div>
-        <div>IBM MQ<br>IBM Tivoli Monitoring<br>Netbackup<br>NetWorker<br>VMware vSphere<br><br></div>
+        <div class="flex-txt">オンプレLinuxサーバ（RHEL）からクラウド移行に伴う基盤移行<br>及びOS、ミドルウェアバージョンアップ</div>
+        <div class="flex-txt">IBM MQ<br>IBM Tivoli Monitoring<br>Netbackup<br>NetWorker<br>VMware vSphere<br><br></div>
     </div>
 
     <div class="flex">
-        <div>物理SolarisサーバからLinuxサーバ（RHEL）への移行<br>及びミドルウェアバージョンアップ</div>
-        <div>NetWorker<br>IBM MQ<br>IBM Tivoli Monitoring<br>Oracle<br>Systemwalker<br>Storabe Cruiser<br>ServerView<br><br></div>
+        <div class="flex-txt">物理SolarisサーバからLinuxサーバ（RHEL）への移行<br>及びミドルウェアバージョンアップ</div>
+        <div class="flex-txt">NetWorker<br>IBM MQ<br>IBM Tivoli Monitoring<br>Oracle<br>Systemwalker<br>Storabe Cruiser<br>ServerView<br><br></div>
     </div>
 
     <div class="flex">
-        <div>保険システムにおける基盤構築支援</div>
-        <div>Lotus Notes<br>TeraTerm<br>Db2V10.1<br>WebSphereApplicationServerV8.5<br>SVF for PD<br><br></div>
+        <div class="flex-txt">保険システムにおける基盤構築支援</div>
+        <div class="flex-txt">Lotus Notes<br>TeraTerm<br>Db2V10.1<br>WebSphereApplicationServerV8.5<br>SVF for PD<br><br></div>
     </div>
 
     <!-- 隙間 -->
