@@ -157,6 +157,7 @@ $conn = null;
         <div class="row">
             <div class="col-12">
                 <p class="font-style-words2 text-center">「キャリアアップで選ぶポイントは何ですか？」</p>
+                <p id="loadingText">エンジニアが選ぶ企業のポイントを更新中<span id="dots"></span></p>
             </div>
         </div>
     </div>
@@ -440,6 +441,8 @@ $conn = null;
     <div class="gap-control-probram"></div>
     <div class="gap-control-probram"></div>
 
+<!--エントリー-->
+<div class="wrapper">
     <div class="entry">
         <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
         <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
@@ -453,19 +456,22 @@ $conn = null;
         <img class="link-img" src="img/グループ 1827.png">
         <img class="link-img" src="img/グループ 1828.png">
     </div>
-    
+</div>
+
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 
-    <!-- footer -->
-    <footer class="footer">
-        <small>&copy; 1997,2023 mistsolution.All Rights Reserved.</small>
-    </footer>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="js/header.js"></script>
+<!-- footer -->
+<footer class="footer">
+<small>&copy; 1997,2023 mistsolution.All Rights Reserved.</small>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="js\header.js"></script>
+<script src="js/upperclassman.js"></script>
+
 </body>
 </html>

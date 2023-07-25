@@ -316,6 +316,8 @@
   font-size: 2rem;
   font-weight: bolder;
   text-align: left;
+  line-height: 3rem;
+  letter-spacing: 1rem;
 }
 
 /* コメント */
@@ -326,7 +328,7 @@
   text-align: left;
   color: #000;
   font-size: 1.5rem;  
-  line-height: 2.5rem; 
+  line-height: 3rem; 
 }
 
 /* CP-greeting */
