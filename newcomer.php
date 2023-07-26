@@ -326,37 +326,37 @@ $conn = null;
             </ul>
         </div>
 
-        <!-- エントリー -->
-        <div class="entry">
-            <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
-            <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
-            <p class="entry-red">入社からプロジェクト着任までのフローが知りたい方はこちら ></p>
-        </div>
+<!--エントリー-->
+<div class="wrapper">
+    <div class="entry">
+        <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
+        <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
+        <p class="entry-red">入社からプロジェクト着任までのフローが知りたい方はこちら ></p>
+    </div>
+    <div class="flex-link">
+        <img class="link-img" src="img/グループ 1824.png">
+        <img class="link-img" src="img/グループ 1826.png">
+    </div>
+    <div class="flex-link">
+        <img class="link-img" src="img/グループ 1827.png">
+        <img class="link-img" src="img/グループ 1828.png">
+    </div>
+</div>
 
-        <!-- リンク群 -->
-        <div class="flex-link">
-            <img class="link-img" src="img/グループ 1824.png">
-            <img class="link-img" src="img/グループ 1826.png">
-        </div>
-        <div class="flex-link">
-            <img class="link-img" src="img/グループ 1827.png">
-            <img class="link-img" src="img/グループ 1828.png">
-        </div>
-
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 
-    <!-- footer -->
-    <footer class="footer">
-        <small>&copy; 1997,2023 mistsolution.All Rights Reserved.</small>
-    </footer>
+<!-- footer -->
+<footer class="footer">
+<small>&copy; 1997,2023 mistsolution.All Rights Reserved.</small>
+</footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="js\header.js"></script>
-    <script src="js/newcomer.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="js\header.js"></script>
+<script src="js/upperclassman.js"></script>
+
 </body>
-
 </html>
