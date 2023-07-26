@@ -409,18 +409,18 @@ $conn = null;
     </div>
 
     <div class="flex">
-        <div class="flex-txt">リスク管理システムパッケージ新規開発</div>
-        <div class="flex-txt">Java<br>GWT<br>Hibernate<br>Jasper Studio<br>JP1<br>SQL Server<br><br></div>
+        <div style="justify-content: center;">リスク管理システムパッケージ新規開発</div>
+        <div style="justify-content: center;">Java<br>GWT<br>Hibernate<br>Jasper Studio<br>JP1<br>SQL Server<br><br></div>
     </div>
 
     <div class="flex">
-        <div class="flex-txt">与信管理システム保守開発（クレジット会社向け）</div>
-        <div class="flex-txt">Java<br>SQL<br>JP1<br>Oracle<br><br></div>
+        <div style="justify-content: center;">与信管理システム保守開発（クレジット会社向け）</div>
+        <div style="justify-content: center;">Java<br>SQL<br>JP1<br>Oracle<br><br></div>
     </div>
 
     <div class="flex">
-        <div class="flex-txt">給与計算システム（メーカー向け）</div>
-        <div class="flex-txt">C<br>SHELL<br>PL<br>SQL<br>Oracle<br><br></div>
+        <div style="justify-content: center;">給与計算システム（メーカー向け）</div>
+        <div style="justify-content: center;">C<br>SHELL<br>PL<br>SQL<br>Oracle<br><br></div>
     </div>
 
 
@@ -444,18 +444,18 @@ $conn = null;
     </div>
 
     <div class="flex">
-        <div class="flex-txt">オンプレLinuxサーバ（RHEL）からクラウド移行に伴う基盤移行<br>及びOS、ミドルウェアバージョンアップ</div>
-        <div class="flex-txt">IBM MQ<br>IBM Tivoli Monitoring<br>Netbackup<br>NetWorker<br>VMware vSphere<br><br></div>
+        <div style="justify-content: center;">オンプレLinuxサーバ（RHEL）からクラウド移行に伴う基盤移行<br>及びOS、ミドルウェアバージョンアップ</div>
+        <div style="justify-content: center;">IBM MQ<br>IBM Tivoli Monitoring<br>Netbackup<br>NetWorker<br>VMware vSphere<br><br></div>
     </div>
 
     <div class="flex">
-        <div class="flex-txt">物理SolarisサーバからLinuxサーバ（RHEL）への移行<br>及びミドルウェアバージョンアップ</div>
-        <div class="flex-txt">NetWorker<br>IBM MQ<br>IBM Tivoli Monitoring<br>Oracle<br>Systemwalker<br>Storabe Cruiser<br>ServerView<br><br></div>
+        <div style="justify-content: center;">物理SolarisサーバからLinuxサーバ（RHEL）への移行<br>及びミドルウェアバージョンアップ</div>
+        <div style="justify-content: center;">NetWorker<br>IBM MQ<br>IBM Tivoli Monitoring<br>Oracle<br>Systemwalker<br>Storabe Cruiser<br>ServerView<br><br></div>
     </div>
 
     <div class="flex">
-        <div class="flex-txt">保険システムにおける基盤構築支援</div>
-        <div class="flex-txt">Lotus Notes<br>TeraTerm<br>Db2V10.1<br>WebSphereApplicationServerV8.5<br>SVF for PD<br><br></div>
+        <div style="justify-content: center;">保険システムにおける基盤構築支援</div>
+        <div style="justify-content: center;">Lotus Notes<br>TeraTerm<br>Db2V10.1<br>WebSphereApplicationServerV8.5<br>SVF for PD<br><br></div>
     </div>
 
     <!-- 隙間 -->

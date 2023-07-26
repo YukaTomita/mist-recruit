@@ -20,6 +20,7 @@
   .case__item__text {
     font-size: 1.6rem;
     margin: 15px 3rem;
+    width: 150px;
   }
 
   /*更新中・・・*/
@@ -76,10 +77,6 @@
     display: flex;
     justify-content: center;
     border-bottom: 1px solid #000;
-}
-
-.flex-txt{
-  justify-content: center;
 }
 
 /* 案件・技術title */
