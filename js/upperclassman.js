@@ -61,10 +61,13 @@ function startBlinking() {
 // ページが読み込まれた時に点滅を開始
 window.onload = startBlinking;
 
+//
 const dotsElement = document.getElementById('dots');
+let isVisible = true;
 
 function animateDots() {
-dotsElement.style.visibility = (dotsElement.style.visibility === 'hidden') ? 'visible' : 'hidden';
+dotsElement.style.visibility = isVisible ? 'hidden' : 'visible';
+isVisible = !isVisible;
 }
 
 function startAnimation() {
