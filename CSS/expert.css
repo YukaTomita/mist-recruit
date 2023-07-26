@@ -20,7 +20,7 @@
   .case__item__text {
     font-size: 1.6rem;
     margin: 15px 3rem;
-    width: 150px;
+    width: 350px;
   }
 
   /*更新中・・・*/
@@ -36,12 +36,19 @@
 
 /*く矢印*/
 .Arrow-Bottom {
+  position: relative;
   border-bottom: solid 2px #8B2022;
   border-right: solid 2px #8B2022;
   width: 24px;
   height: 24px;
   transform: rotate(45deg);
   margin: auto;
+}
+.Arrow-Bottom:first-child {
+  right: 5px;
+}
+.Arrow-Bottom:last-child {
+  left: 5px;
 }
 
  
@@ -75,7 +82,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     display: flex;
-    justify-content: center;
+    align-items: center;
     border-bottom: 1px solid #000;
 }
 
