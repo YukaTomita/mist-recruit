@@ -187,7 +187,7 @@ $conn = null;
         <hr class="border-line">
         <p class="font-style-words2">「あなたの好きなスポーツは何ですか？」</p>
             <div class="load">
-                <span id="loadingText">上位5つを更新中<span class="dots">...</span></span>
+                <div id="loadingText">上位5つを更新中<span class="dots">...</span></div>
             </div>
 
             <div class="gap-control-probram"></div>

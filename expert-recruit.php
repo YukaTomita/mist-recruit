@@ -158,7 +158,7 @@ $conn = null;
             <div class="col-12">
                 <p class="font-style-words2 text-center">「キャリアアップで選ぶポイントは何ですか？」</p>
                 <div class="load">
-                    <span id="loadingText">エンジニアが選ぶ企業のポイントを更新中<span class="dots">...</span></span>
+                    <div id="loadingText">エンジニアが選ぶ企業のポイントを更新中<span class="dots">...</span></div>
                 </div>
 
                 <div class="gap-control-probram"></div>
