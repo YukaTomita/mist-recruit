@@ -307,23 +307,23 @@ $conn = null;
     <div class="gap-control-probram"></div>
 
     <!-- 写真・コメント -->
-    <div class="role-container">
-    <div class="role-item">
-      <img class="case__item__img" src="img/sample1.png" alt="Image 1">
-      <p class="case__item__text">私たちは、技術者派遣に受託及びチーム派遣も含め、企業の社員負担の大幅削減させ、
+    <div class="img-left">
+        <img src="img/sample1.png">
+        <p class="vs-txt">私たちは、技術者派遣に受託及びチーム派遣も含め、企業の社員負担の大幅削減させ、
                 一丸となってソフトウェア開発業務に専念できるような環境をつくり社会に貢献し続けることを志し、
-                その同志と共に歩んできました。</p>
+                その同志と共に歩んできました。
+        </p>
     </div>
-    <div class="item">
-      <img class="case__item__img" src="img/sample2.png" alt="Image 2">
-      <p class="case__item__text">労働力人口の減少の中で技術者不足は市場全体の課題です。エンジニアが働き続けられる環境の現実を
+    <div class="img-right">
+        <p class="vs-txt">労働力人口の減少の中で技術者不足は市場全体の課題です。エンジニアが働き続けられる環境の現実を
                 重要ミッションの一つと捉えています。熟練を求められる技術職種において、20年以上の経験を有するエンジニアの最重要課題。
                 特にハードウェア分野における豊富な経験を持つエンジニアの活用度が高く、時には技術伝承における重要な役割を担っています。<br>
                 ライフイベントを機に職を離れざるを得なかったエンジニアの、ブランクからの復帰や
-                時短勤務のニーズに応えることで、貴重なスキルを活かしながら生産性高く活躍されています。</p>
+                時短勤務のニーズに応えることで、貴重なスキルを活かしながら生産性高く活躍されています。
+        </p>
+        <img src="img/sample2.png">
     </div>
 
-</div>
     <section class="case">
         <article class="case__list">
             <div class="case__item">

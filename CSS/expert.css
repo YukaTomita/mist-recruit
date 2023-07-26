@@ -1,24 +1,4 @@
 /* 写真と文字を交互に */
-.role-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.role-item {
-  flex-basis: 50%;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-.role-item img {
-  max-width: 50%;
-  height: auto;
-}
-
-.role-item p {
-  margin: 10px 0;
-}
-
 .case__list {
     margin: 2rem;
   }
