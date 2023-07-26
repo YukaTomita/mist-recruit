@@ -63,11 +63,12 @@ window.onload = startBlinking;
 
 //
 const dotsElement = document.getElementById('dots');
-let isVisible = true;
+const dots = ['.', '..', '...']; // 「...」の各要素を配列として定義
+let currentIndex = 0;
 
 function animateDots() {
-dotsElement.style.visibility = isVisible ? 'hidden' : 'visible';
-isVisible = !isVisible;
+dotsElement.textContent = dots[currentIndex];
+currentIndex = (currentIndex + 1) % dots.length;
 }
 
 function startAnimation() {
