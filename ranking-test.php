@@ -31,7 +31,7 @@
     }
 
     // 項目のリストと順位情報を取得
-    $sql = "SELECT id, name, FIND_IN_SET( votes, ( SELECT GROUP_CONCAT( votes ORDER BY votes DESC ) FROM items ) ) as rank FROM items ORDER BY votes DESC";
+    $sql = "SELECT id, name, FIND_IN_SET( votes, ( SELECT GROUP_CONCAT( votes ORDER BY votes DESC ) FROM items ) ) as 'rank' FROM items ORDER BY votes DESC";
     $result = $conn->query($sql);
 
     $items = array();
