@@ -294,12 +294,10 @@ $conn = null;
                     <a id="ict" class="change-button__ict" href="#">
                         <p class="tab__title"><span>東京</span>所属<br>(神田本社)</p>
                         <p class="tab__subtitle">着任：関東エリア</p>
-                        <P class="triangle"></P>
                     </a>
                     <a id="lbd" class="change-button__lbd" href="#">
                         <p class="tab__title"><span>高知</span>所属<br>(高松支店)</p>
                         <p class="tab__subtitle">着任：四国エリア</p>
-                        <P class="triangle"></P>
                     </a>
                 </div>
                 <div class="contents__ict container" id="target2">
