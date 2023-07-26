@@ -304,26 +304,24 @@ $conn = null;
     <div class="gap-control-probram"></div>
 
     <!-- 写真・コメント -->
-    <div class="wrapper">
-        <section class="case">
-            <article class="case__list">
-                <div class="case__item">
-                    <p class="case__item__text">私たちは、技術者派遣に受託及びチーム派遣も含め、<br>企業の社員負担の大幅削減させ、
-                    一丸となってソフト<br>ウェア開発業務に専念できるような環境をつくり社会<br>に貢献し続けることを志し、
-                    その同志と共に歩んできま<br>した。</p>
-                    <img class="case__item__img" src="img/sample1.png" alt="画像1">
-                </div>
-                <div class="case__item">
-                    <p class="case__item__text">労働力人口の減少の中で技術者不足は市場全体の課題<br>です。エンジニアが働き続けられる環境の現実を
-                    重要<br>ミッションの一つと捉えています。熟練を求められる<br>技術職種において、20年以上の経験を有するエンジニ<br>アの最重要課題。
-                    特にハードウェア分野における豊富<br>な経験を持つエンジニアの活用度が高く、時には技術<br>伝承における重要な役割を担っています。<br><br>
-                    ライフイベントを機に職を離れざるを得なかったエン<br>ジニアの、ブランクからの復帰や
-                    時短勤務のニーズに<br>応えることで、貴重なスキルを活かしながら生産性高<br>く活躍されています。</p>
-                    <img class="case__item__img" src="img/sample2.png" alt="画像2">
-                </div>
-            </article>
-        </section>
-    </div>
+    <section class="case">
+        <article class="case__list">
+            <div class="case__item">
+                <p class="case__item__text">私たちは、技術者派遣に受託及びチーム派遣も含め、<br>企業の社員負担の大幅削減させ、
+                一丸となってソフト<br>ウェア開発業務に専念できるような環境をつくり社会<br>に貢献し続けることを志し、
+                その同志と共に歩んできま<br>した。</p>
+                <img class="case__item__img" src="img/sample1.png" alt="画像1">
+            </div>
+            <div class="case__item">
+                <p class="case__item__text">労働力人口の減少の中で技術者不足は市場全体の課題<br>です。エンジニアが働き続けられる環境の現実を
+                重要<br>ミッションの一つと捉えています。熟練を求められる<br>技術職種において、20年以上の経験を有するエンジニ<br>アの最重要課題。
+                特にハードウェア分野における豊富<br>な経験を持つエンジニアの活用度が高く、時には技術<br>伝承における重要な役割を担っています。<br><br>
+                ライフイベントを機に職を離れざるを得なかったエン<br>ジニアの、ブランクからの復帰や
+                時短勤務のニーズに<br>応えることで、貴重なスキルを活かしながら生産性高<br>く活躍されています。</p>
+                <img class="case__item__img" src="img/sample2.png" alt="画像2">
+            </div>
+        </article>
+    </section>
 
 
     <!-- 隙間 -->
@@ -364,6 +362,7 @@ $conn = null;
             </div>
         </div>
     </div>
+
 
     <!-- 隙間 -->
     <div class="gap-control-probram"></div>
