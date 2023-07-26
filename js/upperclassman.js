@@ -60,3 +60,15 @@ function startBlinking() {
 
 // ページが読み込まれた時に点滅を開始
 window.onload = startBlinking;
+
+const dotsElement = document.getElementById('dots');
+
+function animateDots() {
+dotsElement.style.visibility = (dotsElement.style.visibility === 'hidden') ? 'visible' : 'hidden';
+}
+
+function startAnimation() {
+setInterval(animateDots, 700); // 0.7秒間隔でアニメーションを実行
+}
+
+startAnimation();
