@@ -222,6 +222,17 @@ $conn = null;
             <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
         <?php endif; ?>
 
+        <!-- 隙間 -->
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+
+        <div class="cercle">ランキングに参加する</div>
+        <div class="Arrow-Bottom"></div>
+        <div class="Arrow-Bottom"></div>
+
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+
         <!-- 投票欄 -->
         <div class="font-style-comments2 line-height">
             <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
@@ -254,7 +265,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <div class="newcomer__title">
-            <p class="font-style-title">ses</P>
+            <p class="font-style-title">SES</P>
             <hr class="border-line">
             <h2 class="font-style-words">
                 「世の中に求められている技術！<br>
@@ -373,6 +384,7 @@ $conn = null;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="js\header.js"></script>
 <script src="js/upperclassman.js"></script>
+<script src="js/newcomer.js"></script>
 
 </body>
 </html>
