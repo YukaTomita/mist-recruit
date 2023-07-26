@@ -63,16 +63,24 @@ window.onload = startBlinking;
 
 //
 const dotsElement = document.getElementById('dots');
-const dots = ['.', '..', '...']; // 「...」の各要素を配列として定義
+const dots = ['.', '..', '...'];
 let currentIndex = 0;
+let intervalId = null;
 
 function animateDots() {
-dotsElement.textContent = dots[currentIndex];
-currentIndex = (currentIndex + 1) % dots.length;
+  dotsElement.textContent = dots[currentIndex];
+  currentIndex = (currentIndex + 1) % dots.length;
 }
 
 function startAnimation() {
-setInterval(animateDots, 700); // 0.7秒間隔でアニメーションを実行
+  if (!intervalId) {
+    intervalId = setInterval(animateDots, 700);
+  }
+}
+
+function stopAnimation() {
+  clearInterval(intervalId);
+  intervalId = null;
 }
 
 startAnimation();
