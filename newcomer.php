@@ -186,23 +186,21 @@ $conn = null;
         <p class="font-style-title">質　問</p>
         <hr class="border-line">
         <p class="font-style-words2">「あなたの好きなスポーツは何ですか？」</p>
-        <div class="load">
-                    <span id="blinking-text">上位5つを更新中<span class="blink">...</span></span>
-                </div>
-
-                <div class="gap-control-probram"></div>
-                <div class="gap-control-probram"></div>
-
-                <div class="load">
-                    <p id="currentDate"></p>
-                </div>
-
-                <div class="gap-control-probram"></div>
-                <div class="gap-control-probram"></div>
-
-                <p class="font-style-words text-center">現在のランキング</p>
+            <div class="load">
+                <span id="blinking-text">上位5つを更新中<span class="blink">...</span></span>
             </div>
-        </div>
+
+            <div class="gap-control-probram"></div>
+            <div class="gap-control-probram"></div>
+
+            <div class="load">
+                <p id="currentDate"></p>
+            </div>
+
+            <div class="gap-control-probram"></div>
+            <div class="gap-control-probram"></div>
+
+            <p class="font-style-words text-center">現在のランキング</p>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
