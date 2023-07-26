@@ -9,7 +9,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "root";
-    $dbname = "voting_db";
+    $dbname = "selection";
 
     // データベースへの接続
     $conn = new mysqli($servername, $username, $password, $dbname);
