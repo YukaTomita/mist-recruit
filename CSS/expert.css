@@ -13,13 +13,13 @@
   }
   
   .case__item__img {
-    width: 60%;
+    width: 50%;
     height: auto;
   }
   
   .case__item__text {
     font-size: 1.6rem;
-    margin: 0 3rem;
+    margin: 15px 3rem;
   }
 
   /*更新中・・・*/

@@ -53,10 +53,10 @@ const blinkInterval = 500; // 0.5秒
 
 // 点滅を開始する関数
 function startBlinking() {
-  setInterval(() => {
-    blinkingText.classList.toggle('blink');
-  }, blinkInterval);
-}
+    setInterval(() => {
+      blinkingText.querySelector('.blink').classList.toggle('hidden');
+    }, blinkInterval);
+  }
 
 // ページが読み込まれた時に点滅を開始
 window.onload = startBlinking;
