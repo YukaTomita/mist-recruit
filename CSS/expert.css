@@ -45,10 +45,10 @@
   margin: auto;
 }
 .Arrow-Bottom:first-child {
-  right: 1px;
+  right: 15px;
 }
 .Arrow-Bottom:last-child {
-  left: 1px;
+  left: 15px;
 }
 
  
@@ -83,7 +83,7 @@
     font-weight: bold;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     border-bottom: 1px solid #000;
 }
 
@@ -104,6 +104,7 @@
     font-weight: bold;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
     border-bottom: 1px solid #000;
     line-height: 3rem;
 }
