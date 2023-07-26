@@ -7,7 +7,7 @@
   margin-left: 30px;
 }
  .role-img-left img{
-    width: 50%;
+    width: 60%;
     height: auto;
  }
 
@@ -20,7 +20,7 @@
   margin-right: 30px;
 }
  .role-img-right img{
-  width: 50%;
+  width: 40%;
   height: auto;
  }
 
@@ -28,33 +28,9 @@
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
-  width: 300px;
+  width: 400px;
 }
 
-
-.case__list {
-    margin: 2rem;
-  }
-  
-  .case__item {
-    display: flex;
-    margin: 4rem auto;
-  }
-  
-  .case__item:nth-child(odd) {
-    flex-direction: row-reverse;
-  }
-  
-  .case__item__img {
-    width: 50%;
-    height: auto;
-  }
-  
-  .case__item__text {
-    font-size: 1.6rem;
-    margin: 15px 3rem;
-    width: 350px;
-  }
 
   /*更新中・・・*/
   .blink {
