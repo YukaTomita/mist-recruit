@@ -44,3 +44,19 @@ document.addEventListener("DOMContentLoaded", function() {
     updateDate();
     setInterval(updateDate, 1000); // 1秒ごとに日付を更新
 });
+
+// 点滅設定
+const blinkingText = document.getElementById('blinking-text');
+
+// 点滅の間隔（ミリ秒）を設定
+const blinkInterval = 500; // 0.5秒
+
+// 点滅を開始する関数
+function startBlinking() {
+  setInterval(() => {
+    blinkingText.classList.toggle('blink');
+  }, blinkInterval);
+}
+
+// ページが読み込まれた時に点滅を開始
+window.onload = startBlinking;

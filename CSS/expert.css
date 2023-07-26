@@ -13,20 +13,17 @@
   }
   
   .case__item__img {
-    width: 80%;
+    width: 60%;
     height: auto;
   }
   
   .case__item__text {
     font-size: 1.6rem;
-    margin: auto 3rem;
+    margin: 0 3rem;
   }
 
   /*更新中・・・*/
-  .loadingText{
-    margin: auto;
-  }
-  .currentDate{
+  .load{
     margin: auto;
   }
 
