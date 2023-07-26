@@ -137,7 +137,7 @@ $conn = null;
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/common.css">
     <link rel="stylesheet" href="CSS/newcomer.css">
-    <link rel="stylesheet" href="CSS/upperclassman.css">
+    <link rel="stylesheet" href="CSS/expert.css">
 </head>
 
 <body>
