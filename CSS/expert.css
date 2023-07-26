@@ -23,6 +23,13 @@
     width: 350px;
   }
 
+  .case__item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+  .case__item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
   /*更新中・・・*/
   .blink {
     animation: blink-animation 1s infinite;
@@ -44,12 +51,6 @@
   transform: rotate(45deg);
   margin: auto;
 }
-.Arrow-Bottom:first-child {
-  right: 30px;
-}
-.Arrow-Bottom:last-child {
-  left: 30px;
-}
 
  
 /* cercle */
@@ -69,7 +70,7 @@
 /* 案件・技術 */
 .flex{
     display: flex;
-    margin: 10px 0;
+    margin-top: 0;
     justify-content: center;
     text-align: center;
 }

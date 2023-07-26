@@ -230,8 +230,6 @@ $conn = null;
 
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
 
         <p class="font-style-comments2 txt line-height">キャリアアップで転職される際に、重要視されるポイントを下記よりお選びください。<br>※複数選択可能</p>
         <?php if (!$voteHistory) : ?>
