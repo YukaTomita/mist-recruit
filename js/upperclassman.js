@@ -15,23 +15,19 @@ function hidePopup(popupId) {
 
 
 /*更新中・・・*/
-const dotsElement = document.getElementById('dots');
-const dots = ['.', '..', '...'];
-
-function animateDots() {
-  let i = 0;
-
-  function showDot() {
-    dotsElement.textContent = dots[i];
-    i = (i + 1) % dots.length;
-    setTimeout(showDot, 700);
-  }
-
-  showDot();
+function toggleDots() {
+    const dotsElement = document.getElementById("dots");
+    dotsElement.style.visibility = dotsElement.style.visibility === "hidden" ? "visible" : "hidden";
 }
 
-animateDots();
+function startBlinking() {
+    const intervalId = setInterval(toggleDots, 700); // 点滅間隔（ミリ秒）
+    setTimeout(() => clearInterval(intervalId), 10000); // 5秒後に点滅停止
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+    startBlinking();
+});
 
 /*日付*/
 function updateDate() {
@@ -48,3 +44,5 @@ document.addEventListener("DOMContentLoaded", function() {
     updateDate();
     setInterval(updateDate, 1000); // 1秒ごとに日付を更新
 });
+
+//
