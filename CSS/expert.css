@@ -24,11 +24,12 @@
   }
 
   .case__item:nth-child(odd) {
+    flex-direction: row;
+}
+.case__item:nth-child(even) {
     flex-direction: row-reverse;
 }
-  .case__item:nth-child(even) {
-    flex-direction: row-reverse;
-}
+
 
   /*更新中・・・*/
   .blink {
