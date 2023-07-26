@@ -137,6 +137,7 @@ $conn = null;
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/common.css">
     <link rel="stylesheet" href="CSS/newcomer.css">
+    <link rel="stylesheet" href="CSS/upperclassman.css">
 </head>
 
 <body>
@@ -185,7 +186,23 @@ $conn = null;
         <p class="font-style-title">質　問</p>
         <hr class="border-line">
         <p class="font-style-words2">「あなたの好きなスポーツは何ですか？」</p>
-        <p class="title-ranking">今日の人気スボーツランキング<br>上位5つ</p>
+        <div class="load">
+                    <span id="blinking-text">上位5つを更新中<span class="blink">...</span></span>
+                </div>
+
+                <div class="gap-control-probram"></div>
+                <div class="gap-control-probram"></div>
+
+                <div class="load">
+                    <p id="currentDate"></p>
+                </div>
+
+                <div class="gap-control-probram"></div>
+                <div class="gap-control-probram"></div>
+
+                <p class="font-style-words text-center">現在のランキング</p>
+            </div>
+        </div>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
@@ -325,6 +342,7 @@ $conn = null;
                 </li>
             </ul>
         </div>
+    </div>
 
 <!--エントリー-->
 <div class="wrapper">
