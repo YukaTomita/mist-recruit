@@ -23,8 +23,11 @@
   }
 
   /*更新中・・・*/
+  .blink {
+    animation: blink-animation 1s infinite;
+  }
   .load{
-    margin: auto;
+    text-align: center;
   }
 
 /*く矢印*/

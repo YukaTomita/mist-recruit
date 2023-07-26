@@ -102,6 +102,7 @@ $conn = null;
     <link rel="stylesheet" href="CSS/expert.css" type="text/css">
     <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/upperclassman.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
