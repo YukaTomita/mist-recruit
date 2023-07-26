@@ -48,23 +48,17 @@ document.addEventListener("DOMContentLoaded", function() {
 //
 const dotsElement = document.getElementById('dots');
 const dots = ['.', '..', '...'];
-let currentIndex = 0;
-let intervalId = null;
 
 function animateDots() {
-  dotsElement.textContent = dots[currentIndex];
-  currentIndex = (currentIndex + 1) % dots.length;
-}
+  let i = 0;
 
-function startAnimation() {
-  if (!intervalId) {
-    intervalId = setInterval(animateDots, 700);
+  function showDot() {
+    dotsElement.textContent = dots[i];
+    i = (i + 1) % dots.length;
+    setTimeout(showDot, 700);
   }
+
+  showDot();
 }
 
-function stopAnimation() {
-  clearInterval(intervalId);
-  intervalId = null;
-}
-
-startAnimation();
+animateDots();
