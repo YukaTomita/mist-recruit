@@ -26,6 +26,9 @@
   .blink {
     animation: blink-animation 1s infinite;
   }
+  .hidden {
+    display: none;
+  }
   .load{
     text-align: center;
   }
