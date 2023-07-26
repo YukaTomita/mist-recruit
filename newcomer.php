@@ -322,7 +322,6 @@ $conn = null;
                 </div>
                 <div class="contents__lbd" id="target">
                     <div class="contents">
-                        <h3 class="contents__title">高松支店</h3>
                     </div>
                 </div>
             </div>
