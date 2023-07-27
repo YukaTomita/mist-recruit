@@ -6,13 +6,16 @@
         .container {
             display: flex;
             flex-wrap: wrap;
-            writing-mode: vertical-rl;
+            justify-content: space-around;
         }
         .item {
             flex: 0 0 10%;
             margin: 5px;
             padding: 10px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .bar-container {
             display: flex;
