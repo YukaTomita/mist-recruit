@@ -5,7 +5,7 @@
     <style>
         .container {
             display: flex;
-            writing-mode: vertical-rl; /* 縦書きにする */
+            flex-direction: row;
         }
         .item {
             flex: 1;
@@ -15,14 +15,15 @@
         }
         .bar-container {
             display: flex;
-            flex-direction: column-reverse; /* 棒グラフを上から下に表示 */
-            height: 200px; /* 棒グラフの高さを固定 */
-            width: 20px; /* 棒グラフの幅 */
+            flex-direction: column-reverse;
+            height: 200px;
+            width: 20px;
             background-color: #ccc;
         }
         .bar {
             background-color: lightblue;
-            height: <?php echo max(array_column($items, 'votes')) * 2; ?>px; /* 投票数に応じて高さを設定 */
+            height: 0;
+            transition: height 0.3s ease; /* アニメーションを追加 */
         }
         .img-container {
             display: flex;
@@ -36,7 +37,8 @@
     </style>
 </head>
 <body>
-<?php
+    <?php
+    // データベースへの接続情報
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -108,7 +110,7 @@
                     <?php endif; ?>
                 </div>
                 <div class="bar-container">
-                    <div class="bar" style="height: <?php echo $item['votes'] * 2; ?>px;"></div>
+                    <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
                 </div>
                 <?php echo $item['name']; ?>
             </div>
