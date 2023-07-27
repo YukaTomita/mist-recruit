@@ -12,13 +12,17 @@
             margin: 5px;
             padding: 10px;
             text-align: center;
-            border: none; /* 枠を消す */
+        }
+        .bar-container {
+            display: flex;
+            flex-direction: column-reverse; /* 棒グラフを上から下に表示 */
+            height: 200px; /* 棒グラフの高さを固定 */
+            width: 20px; /* 棒グラフの幅 */
+            background-color: #ccc;
         }
         .bar {
             background-color: lightblue;
-            width: 20px; /* 棒グラフの幅 */
-            height: <?php echo max(array_column($items, 'votes')) * 10; ?>px; /* 最大値に合わせて高さを設定 */
-            margin: 5px auto; /* 上下に余白を追加 */
+            height: <?php echo max(array_column($items, 'votes')) * 2; ?>px; /* 投票数に応じて高さを設定 */
         }
         .img-container {
             display: flex;
@@ -32,8 +36,7 @@
     </style>
 </head>
 <body>
-    <?php
-    // データベースへの接続情報
+<?php
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -57,7 +60,6 @@
             $conn->query($sql);
         }
     }
-
     // 項目のリストと順位情報を取得
     $sql = "SELECT id, name, votes FROM items ORDER BY votes DESC";
     $result = $conn->query($sql);
@@ -100,21 +102,17 @@
     <div class="container">
         <?php foreach ($items as $item): ?>
             <div class="item">
-                <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
                 <div class="img-container">
                     <?php if ($item['votes'] > 0 && $item['votes'] <= 3): ?>
                         <img src="rank_<?php echo $item['votes']; ?>.png" alt="Rank <?php echo $item['votes']; ?>">
                     <?php endif; ?>
                 </div>
+                <div class="bar-container">
+                    <div class="bar" style="height: <?php echo $item['votes'] * 2; ?>px;"></div>
+                </div>
                 <?php echo $item['name']; ?>
             </div>
         <?php endforeach; ?>
-    </div>
-
-    <div class="img-container">
-        <?php for ($i = 1; $i <= 3; $i++): ?>
-            <img src="rank_<?php echo $i; ?>.png" alt="Rank <?php echo $i; ?>">
-        <?php endfor; ?>
     </div>
 
     <h2>最新の投票日：<?php echo $voteDate; ?></h2>
