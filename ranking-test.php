@@ -130,13 +130,13 @@
         foreach ($items as $item): ?>
             <?php if ($item['votes'] > 0): ?>
                 <div class="item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
+                    </div>
                     <div class="img-container">
                         <?php if ($rank <= 3): ?>
                             <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
                         <?php endif; ?>
-                    </div>
-                    <div class="bar-container">
-                        <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
                     </div>
                     <div class="item-name"><?php echo $item['name']; ?></div>
                 </div>
