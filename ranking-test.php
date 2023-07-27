@@ -30,7 +30,6 @@
 </head>
 <body>
     <?php
-    // データベースへの接続情報
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -41,9 +40,9 @@
 
     // 接続エラーの確認
     if ($conn->connect_error) {
+       
         die("接続エラー: " . $conn->connect_error);
     }
-
     // 投票フォームが送信された場合
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["items"])) {
         $selectedItems = $_POST["items"];
@@ -68,6 +67,29 @@
 
     // データベース接続を閉じる
     $conn->close();
+
+    // ランキングの投票が押された最新の日付を取得
+    $voteDate = ""; // デフォルトは空文字列
+
+    // データベースへの接続
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // 接続エラーの確認
+    if ($conn->connect_error) {
+        die("接続エラー: " . $conn->connect_error);
+    }
+
+    // ランキングの投票の最新日を取得するクエリ
+    $sql = "SELECT MAX(vote_date) AS latest_date FROM votes";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $voteDate = $row["latest_date"];
+    }
+
+    // データベース接続を閉じる
+    $conn->close();
     ?>
 
     <h1>項目ランキング</h1>
@@ -84,6 +106,8 @@
             </div>
         <?php endforeach; ?>
     </div>
+
+    <h2>最新の投票日：<?php echo $voteDate; ?></h2>
 
     <h2>投票する項目</h2>
     <form method="post" action="">
