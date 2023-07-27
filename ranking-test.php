@@ -39,10 +39,9 @@
         .voting-buttons {
             display: flex;
             flex-wrap: wrap;
-            writing-mode: horizontal-tb; /* 横書きにする */
         }
         .voting-button {
-            flex: 0 0 50%; /* 2列にするためのスタイル */
+            flex: 0 0 50%;
             margin: 5px;
             padding: 10px;
             background-color: #f0f0f0;
@@ -84,8 +83,8 @@
             $conn->query($sql);
         }
     }
-    // 項目のリストと順位情報を取得
-    $sql = "SELECT id, name, votes FROM items ORDER BY votes DESC";
+    // 項目のリストを取得
+    $sql = "SELECT id, name FROM items";
     $result = $conn->query($sql);
 
     $items = array();
@@ -128,21 +127,34 @@
         <?php
         $rank = 1;
         foreach ($items as $item): ?>
-            <?php if ($item['votes'] > 0): ?>
-                <div class="item">
-                    <div class="bar-container">
-                        <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
-                    </div>
-                    <div class="img-container">
-                        <?php if ($rank <= 3): ?>
-                            <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
-                        <?php endif; ?>
-                    </div>
-                    <div class="item-name"><?php echo $item['name']; ?></div>
+            <div class="item">
+                <div class="bar-container">
+                    <?php
+                    // 投票数を取得
+                    $votes = 0;
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                        die("接続エラー: " . $conn->connect_error);
+                    }
+                    $sql = "SELECT SUM(vote_count) AS total_votes FROM votes WHERE item_id = {$item['id']}";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $votes = $row["total_votes"];
+                    }
+                    $conn->close();
+                    ?>
+                    <div class="bar" style="height: <?php echo $votes * 10; ?>px;"></div>
                 </div>
-                <?php
-                $rank++;
-            endif;
+                <div class="img-container">
+                    <?php if ($rank <= 3): ?>
+                        <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
+                    <?php endif; ?>
+                </div>
+                <div class="item-name"><?php echo $item['name']; ?></div>
+            </div>
+            <?php
+            $rank++;
         endforeach;
         ?>
     </div>
@@ -155,10 +167,4 @@
                     <input type="checkbox" name="items[]" value="<?php echo $item['id']; ?>">
                     <?php echo $item['name']; ?>
                 </label>
-            <?php endforeach; ?>
-        </div>
-        <br>
-        <input type="submit" value="投票" class="vote-submit">
-    </form>
-</body>
-</html>
+            <?php endforeach;
