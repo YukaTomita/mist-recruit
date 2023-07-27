@@ -58,6 +58,9 @@
             color: white;
             cursor: pointer;
         }
+        .ranking-title {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -125,7 +128,7 @@
     ?>
 
     <h1>項目ランキング</h1>
-    <h2>最新の投票日：<?php echo $voteDate; ?></h2>
+    <h2 class="ranking-title">最新の投票日：<?php echo $voteDate; ?></h2>
     <div class="container">
         <?php
         // 投票数を取得して順位付け
@@ -143,28 +146,25 @@
                 $votes = $row["total_votes"];
             }
             $conn->close();
-
-            if ($votes > 0) :
         ?>
-                <div class="item">
-                    <div class="bar-container">
-                        <div class="bar" style="height: <?php echo $votes * 10; ?>px;"></div>
-                    </div>
-                    <div class="img-container">
-                        <?php if ($rank <= 3): ?>
-                            <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
-                        <?php endif; ?>
-                    </div>
-                    <div class="item-name"><?php echo $item['name']; ?></div>
+            <div class="item">
+                <div class="bar-container">
+                    <div class="bar" style="height: <?php echo $votes * 10; ?>px;"></div>
                 </div>
+                <div class="img-container">
+                    <?php if ($rank <= 3): ?>
+                        <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
+                    <?php endif; ?>
+                </div>
+                <div class="item-name"><?php echo $item['name']; ?></div>
+            </div>
         <?php
-                $rank++;
-            endif;
+            $rank++;
         }
         ?>
     </div>
 
-    <h2>投票する項目</h2>
+    <h2 class="ranking-title">投票する項目</h2>
     <form method="post" action="">
         <div class="voting-buttons">
             <?php foreach ($items as $item): ?>
