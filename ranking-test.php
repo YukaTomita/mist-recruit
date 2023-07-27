@@ -2,180 +2,137 @@
 <html>
 <head>
     <title>投票ページ</title>
-    <style>
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .item {
-            flex: 0 0 10%;
-            margin: 5px;
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .bar-container {
-            display: flex;
-            flex-direction: column-reverse;
-            height: 200px;
-            width: 20px;
-            background-color: transparent;
-            border: 1px solid #ccc;
-        }
-        .bar {
-            background-color: lightblue;
-            height: 0;
-            transition: height 0.3s ease;
-        }
-        .img-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5px;
-        }
-        .img-container img {
-            max-width: 50px;
-        }
-        .voting-buttons {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .voting-button {
-            flex: 0 0 50%;
-            margin: 5px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            cursor: pointer;
-        }
-        .vote-submit {
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        .ranking-title {
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-    <?php
-    // データベースへの接続情報
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "voting_db";
+<?php
+// データベース接続情報
+$host = 'localhost';
+$db = 'enterprise';
+$user = 'root';
+$password = 'root';
 
-    // データベースへの接続
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// データベースに接続
+$conn = new PDO("mysql:host=$host;dbname=$db", $user, $password);
 
-    // 接続エラーの確認
-    if ($conn->connect_error) {
-        die("接続エラー: " . $conn->connect_error);
-    }
+// オプションの一覧を取得
+$query = "SELECT * FROM options";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$options = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // 投票フォームが送信された場合
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["items"])) {
-        $selectedItems = $_POST["items"];
+// フォームが送信された場合の処理
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $selectedOptions = isset($_POST['vote']) ? $_POST['vote'] : [];
 
-        foreach ($selectedItems as $itemId) {
-            // 選択された項目の投票数を1つ増やす
-            $sql = "UPDATE items SET votes = votes + 1 WHERE id = " . (int)$itemId;
-            $conn->query($sql);
+    // 投票履歴をチェック
+    $userIp = $_SERVER['REMOTE_ADDR'];
+    $query = "SELECT * FROM votes_history WHERE user_ip = :user_ip";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':user_ip', $userIp);
+    $stmt->execute();
+    $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$voteHistory && count($selectedOptions) > 0) {
+        // 投票結果をデータベースに保存
+        $query = "INSERT INTO votes (option_id) VALUES (:option_id)";
+        $stmt = $conn->prepare($query);
+
+        foreach ($selectedOptions as $option) {
+            $stmt->bindParam(':option_id', $option);
+            $stmt->execute();
         }
-    }
-    // 項目のリストを取得
-    $sql = "SELECT id, name FROM items";
-    $result = $conn->query($sql);
 
-    $items = array();
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $items[] = $row;
-        }
+        // 投票履歴を保存
+        $query = "INSERT INTO votes_history (user_ip, option_id) VALUES (:user_ip, :option_id)";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':user_ip', $userIp);
+        $stmt->bindParam(':option_id', $option);
+        $stmt->execute();
     }
 
-    // データベース接続を閉じる
-    $conn->close();
+    // ページをリロードして再投稿を防止するためのリダイレクト
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
 
-    // ランキングの投票が押された最新の日付を取得
-    $voteDate = ""; // デフォルトは空文字列
+// 集計クエリ実行
+$query = "SELECT o.name, COUNT(*) AS count
+FROM options o
+JOIN votes v ON o.id = v.option_id
+GROUP BY o.name
+ORDER BY count DESC;
+";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // データベースへの接続
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// 投票済みかどうかをチェック
+$userIp = $_SERVER['REMOTE_ADDR'];
+$query = "SELECT * FROM votes_history WHERE user_ip = :user_ip";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':user_ip', $userIp);
+$stmt->execute();
+$voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // 接続エラーの確認
-    if ($conn->connect_error) {
-        die("接続エラー: " . $conn->connect_error);
-    }
+// データベース接続のクローズ
+$conn = null;
+?>
 
-    // ランキングの投票の最新日を取得するクエリ
-    $sql = "SELECT MAX(vote_date) AS latest_date FROM votes";
-    $result = $conn->query($sql);
+<canvas id="barChart"></canvas>
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $voteDate = $row["latest_date"];
-    }
+<script>
+    // データの準備
+    const labels = [];
+    const data = [];
 
-    // データベース接続を閉じる
-    $conn->close();
-    ?>
+    <?php foreach ($results as $result) : ?>
+        labels.push('<?php echo $result['name']; ?>');
+        data.push(<?php echo $result['count']; ?>);
+    <?php endforeach; ?>
 
-    <h1>項目ランキング</h1>
-    <h2 class="ranking-title">最新の投票日：<?php echo $voteDate; ?></h2>
-    <div class="container">
-        <?php
-        // 投票数を取得して順位付け
-        $rank = 1;
-        foreach ($items as $item) {
-            $votes = 0;
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            if ($conn->connect_error) {
-                die("接続エラー: " . $conn->connect_error);
+    // チャートの描画
+    const ctx = document.getElementById('barChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '投票数',
+                data: data,
+                backgroundColor: 'transparent', // 棒グラフの背景色
+                borderColor: '#FF2D2D', // 棒グラフの枠線の色
+                borderWidth: 2 // 棒グラフの枠線の太さ
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: Math.max(...data) + 2, // 最大値 + 2 を設定
+                    title: {
+                        display: false,
+                        text: '投票数'
+                    }
+                }
             }
-            $sql = "SELECT SUM(votes) AS total_votes FROM votes WHERE item_id = {$item['id']}";
-            $result = $conn->query($sql);
-            if ($result) {
-                $row = $result->fetch_assoc();
-                $votes = $row["total_votes"];
-            }
-            $conn->close();
-        ?>
-            <div class="item">
-                <div class="bar-container">
-                    <div class="bar" style="height: <?php echo $votes * 10; ?>px;"></div>
-                </div>
-                <div class="img-container">
-                    <?php if ($rank <= 3): ?>
-                        <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
-                    <?php endif; ?>
-                </div>
-                <div class="item-name"><?php echo $item['name']; ?></div>
-            </div>
-        <?php
-            $rank++;
         }
-        ?>
-    </div>
+    });
+</script>
 
-    <h2 class="ranking-title">投票する項目</h2>
-    <form method="post" action="">
-        <div class="voting-buttons">
-            <?php foreach ($items as $item): ?>
-                <label class="voting-button">
-                    <input type="checkbox" name="items[]" value="<?php echo $item['id']; ?>">
-                    <?php echo $item['name']; ?>
-                </label>
-            <?php endforeach; ?>
-        </div>
-        <br>
-        <input type="submit" value="投票" class="vote-submit">
-    </form>
+        <?php if (!$voteHistory) : ?>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <?php foreach ($options as $option) : ?>
+                    <div class="option">
+                        <input type="checkbox" id="option<?php echo $option['id']; ?>" name="vote[]" value="<?php echo $option['id']; ?>">
+                        <label for="option<?php echo $option['id']; ?>"><?php echo $option['name']; ?></label>
+                    </div>
+                <?php endforeach; ?>
+                <button class="post-btn" type="submit">投票する</button>
+            </form>
+        <?php else : ?>
+            <p class="vote-message asterisk">※すでに投票済みです。</p>
+        <?php endif; ?>
+
 </body>
 </html>
