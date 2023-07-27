@@ -136,7 +136,7 @@
             if ($conn->connect_error) {
                 die("接続エラー: " . $conn->connect_error);
             }
-            $sql = "SELECT SUM(vote_count) AS total_votes FROM votes WHERE item_id = {$item['id']}";
+            $sql = "SELECT SUM(votes) AS total_votes FROM votes WHERE item_id = {$item['id']}";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
