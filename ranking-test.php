@@ -5,13 +5,13 @@
     <style>
         .container {
             display: flex;
-            flex-wrap: wrap;
         }
         .item {
-            width: 45%;
+            flex: 1;
             margin: 5px;
             padding: 10px;
             border: 1px solid #ccc;
+            text-align: center;
         }
         .bar {
             background-color: lightblue;
@@ -21,10 +21,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 5px;
         }
         .img-container img {
             max-width: 100px;
-            margin-top: 5px;
         }
     </style>
 </head>
@@ -40,9 +40,9 @@
 
     // 接続エラーの確認
     if ($conn->connect_error) {
-       
         die("接続エラー: " . $conn->connect_error);
     }
+
     // 投票フォームが送信された場合
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["items"])) {
         $selectedItems = $_POST["items"];
@@ -107,6 +107,12 @@
         <?php endforeach; ?>
     </div>
 
+    <div class="img-container">
+        <?php for ($i = 1; $i <= 3; $i++): ?>
+            <img src="rank_<?php echo $i; ?>.png" alt="Rank <?php echo $i; ?>">
+        <?php endfor; ?>
+    </div>
+
     <h2>最新の投票日：<?php echo $voteDate; ?></h2>
 
     <h2>投票する項目</h2>
@@ -124,7 +130,6 @@
     </form>
 </body>
 </html>
-
 
 <!DOCTYPE html>
 <html>
