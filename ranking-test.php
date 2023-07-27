@@ -125,37 +125,39 @@
     <h2>最新の投票日：<?php echo $voteDate; ?></h2>
     <div class="container">
         <?php
+        // 投票数を取得して順位付け
         $rank = 1;
-        foreach ($items as $item): ?>
-            <div class="item">
-                <div class="bar-container">
-                    <?php
-                    // 投票数を取得
-                    $votes = 0;
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                        die("接続エラー: " . $conn->connect_error);
-                    }
-                    $sql = "SELECT SUM(vote_count) AS total_votes FROM votes WHERE item_id = {$item['id']}";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        $row = $result->fetch_assoc();
-                        $votes = $row["total_votes"];
-                    }
-                    $conn->close();
-                    ?>
-                    <div class="bar" style="height: <?php echo $votes * 10; ?>px;"></div>
+        foreach ($items as $item) {
+            $votes = 0;
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            if ($conn->connect_error) {
+                die("接続エラー: " . $conn->connect_error);
+            }
+            $sql = "SELECT SUM(vote_count) AS total_votes FROM votes WHERE item_id = {$item['id']}";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $votes = $row["total_votes"];
+            }
+            $conn->close();
+
+            if ($votes > 0) :
+        ?>
+                <div class="item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: <?php echo $votes * 10; ?>px;"></div>
+                    </div>
+                    <div class="img-container">
+                        <?php if ($rank <= 3): ?>
+                            <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
+                        <?php endif; ?>
+                    </div>
+                    <div class="item-name"><?php echo $item['name']; ?></div>
                 </div>
-                <div class="img-container">
-                    <?php if ($rank <= 3): ?>
-                        <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
-                    <?php endif; ?>
-                </div>
-                <div class="item-name"><?php echo $item['name']; ?></div>
-            </div>
-            <?php
-            $rank++;
-        endforeach;
+        <?php
+                $rank++;
+            endif;
+        }
         ?>
     </div>
 
@@ -167,4 +169,10 @@
                     <input type="checkbox" name="items[]" value="<?php echo $item['id']; ?>">
                     <?php echo $item['name']; ?>
                 </label>
-            <?php endforeach;
+            <?php endforeach; ?>
+        </div>
+        <br>
+        <input type="submit" value="投票" class="vote-submit">
+    </form>
+</body>
+</html>
