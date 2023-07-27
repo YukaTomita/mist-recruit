@@ -66,7 +66,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "root";
-    $dbname = "selection";
+    $dbname = "voting_db";
 
     // データベースへの接続
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -138,7 +138,7 @@
             }
             $sql = "SELECT SUM(votes) AS total_votes FROM votes WHERE item_id = {$item['id']}";
             $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
+            if ($result) {
                 $row = $result->fetch_assoc();
                 $votes = $row["total_votes"];
             }
