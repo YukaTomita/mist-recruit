@@ -5,10 +5,11 @@
     <style>
         .container {
             display: flex;
+            flex-wrap: wrap; /* 2列で表示するためのスタイル */
             writing-mode: vertical-rl; /* カテゴリ名を縦書きにする */
         }
         .item {
-            flex: 1;
+            flex: 0 0 50%; /* 2列で表示するためのスタイル */
             margin: 5px;
             padding: 10px;
             text-align: center;
@@ -18,7 +19,8 @@
             flex-direction: column-reverse;
             height: 200px;
             width: 20px;
-            background-color: #ccc;
+            background-color: transparent; /* グレー部分を非表示 */
+            border: 1px solid #ccc; /* 枠を追加 */
         }
         .bar {
             background-color: lightblue;
@@ -102,11 +104,13 @@
 
     <h1>項目ランキング</h1>
     <div class="container">
-        <?php foreach ($items as $item): ?>
+        <?php
+        $rank = 1;
+        foreach ($items as $item): ?>
             <div class="item">
                 <div class="img-container">
                     <?php if ($item['votes'] > 0 && $item['votes'] <= 3): ?>
-                        <img src="rank_<?php echo $item['votes']; ?>.png" alt="Rank <?php echo $item['votes']; ?>">
+                        <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
                     <?php endif; ?>
                 </div>
                 <div class="bar-container">
@@ -114,7 +118,10 @@
                 </div>
                 <?php echo $item['name']; ?>
             </div>
-        <?php endforeach; ?>
+            <?php
+            $rank++;
+        endforeach;
+        ?>
     </div>
 
     <h2>最新の投票日：<?php echo $voteDate; ?></h2>
