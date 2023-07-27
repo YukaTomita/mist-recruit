@@ -9,7 +9,7 @@
             writing-mode: vertical-rl; /* カテゴリ名を縦書きにする */
         }
         .item {
-            flex: 0 0 50%; /* 2列で表示するためのスタイル */
+            flex: 0 0 10%; /* 1列に10%ずつ表示するためのスタイル */
             margin: 5px;
             padding: 10px;
             text-align: center;
@@ -34,7 +34,19 @@
             margin-top: 5px;
         }
         .img-container img {
-            max-width: 100px;
+            max-width: 50px;
+        }
+        .voting-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            writing-mode: horizontal-tb; /* 横書きにする */
+        }
+        .voting-button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -104,33 +116,30 @@
 
     <h1>項目ランキング</h1>
     <div class="container">
-        <?php
-        $rank = 1;
-        foreach ($items as $item): ?>
-            <div class="item">
-                <div class="img-container">
-                    <?php if ($item['votes'] > 0 && $item['votes'] <= 3): ?>
-                        <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
-                    <?php endif; ?>
+        <?php foreach ($items as $item): ?>
+            <?php if ($item['votes'] > 0): ?>
+                <div class="item">
+                    <div class="img-container">
+                        <?php if ($item['votes'] <= 3): ?>
+                            <img src="rank_<?php echo $item['votes']; ?>.png" alt="Rank <?php echo $item['votes']; ?>">
+                        <?php endif; ?>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
+                    </div>
+                    <?php echo $item['name']; ?>
                 </div>
-                <div class="bar-container">
-                    <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
-                </div>
-                <?php echo $item['name']; ?>
-            </div>
-            <?php
-            $rank++;
-        endforeach;
-        ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 
     <h2>最新の投票日：<?php echo $voteDate; ?></h2>
 
     <h2>投票する項目</h2>
     <form method="post" action="">
-        <div class="container">
+        <div class="voting-buttons">
             <?php foreach ($items as $item): ?>
-                <label>
+                <label class="voting-button">
                     <input type="checkbox" name="items[]" value="<?php echo $item['id']; ?>">
                     <?php echo $item['name']; ?>
                 </label>
