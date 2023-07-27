@@ -18,8 +18,7 @@
             flex-direction: column-reverse;
             height: 200px;
             width: 20px;
-            background-color: transparent; /* グレー部分を非表示 */
-            border: 1px solid #ccc; /* 枠を追加 */
+            background-color: #ccc;
         }
         .bar {
             background-color: lightblue;
@@ -103,13 +102,11 @@
 
     <h1>項目ランキング</h1>
     <div class="container">
-        <?php
-        $rank = 1;
-        foreach ($items as $item): ?>
+        <?php foreach ($items as $item): ?>
             <div class="item">
                 <div class="img-container">
                     <?php if ($item['votes'] > 0 && $item['votes'] <= 3): ?>
-                        <img src="rank_<?php echo $rank; ?>.png" alt="Rank <?php echo $rank; ?>">
+                        <img src="rank_<?php echo $item['votes']; ?>.png" alt="Rank <?php echo $item['votes']; ?>">
                     <?php endif; ?>
                 </div>
                 <div class="bar-container">
@@ -117,10 +114,7 @@
                 </div>
                 <?php echo $item['name']; ?>
             </div>
-            <?php
-            $rank++;
-        endforeach;
-        ?>
+        <?php endforeach; ?>
     </div>
 
     <h2>最新の投票日：<?php echo $voteDate; ?></h2>
