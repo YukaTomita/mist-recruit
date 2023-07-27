@@ -5,17 +5,20 @@
     <style>
         .container {
             display: flex;
+            writing-mode: vertical-rl; /* 縦書きにする */
         }
         .item {
             flex: 1;
             margin: 5px;
             padding: 10px;
-            border: 1px solid #ccc;
             text-align: center;
+            border: none; /* 枠を消す */
         }
         .bar {
             background-color: lightblue;
-            height: 20px;
+            width: 20px; /* 棒グラフの幅 */
+            height: <?php echo max(array_column($items, 'votes')) * 10; ?>px; /* 最大値に合わせて高さを設定 */
+            margin: 5px auto; /* 上下に余白を追加 */
         }
         .img-container {
             display: flex;
@@ -30,6 +33,7 @@
 </head>
 <body>
     <?php
+    // データベースへの接続情報
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -96,7 +100,7 @@
     <div class="container">
         <?php foreach ($items as $item): ?>
             <div class="item">
-                <div class="bar" style="width: <?php echo $item['votes'] * 10; ?>px;"></div>
+                <div class="bar" style="height: <?php echo $item['votes'] * 10; ?>px;"></div>
                 <div class="img-container">
                     <?php if ($item['votes'] > 0 && $item['votes'] <= 3): ?>
                         <img src="rank_<?php echo $item['votes']; ?>.png" alt="Rank <?php echo $item['votes']; ?>">
