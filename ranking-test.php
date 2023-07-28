@@ -1,31 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>好きなスポーツランキング</title>
-</head>
-<body>
-    <h1>好きなスポーツランキング</h1>
-    <form method="post" action="vote.php">
-        <label for="sport1">サッカー</label>
-        <input type="radio" name="sport" value="サッカー" id="sport1"><br>
-
-        <label for="sport2">野球</label>
-        <input type="radio" name="sport" value="野球" id="sport2"><br>
-
-        <label for="sport3">バスケットボール</label>
-        <input type="radio" name="sport" value="バスケットボール" id="sport3"><br>
-
-        <input type="submit" value="投票">
-    </form>
-</body>
-</html>
-
 <?php
 // データベース接続情報
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "rank";
+$servername = "データベースのホスト名";
+$username = "ユーザー名";
+$password = "パスワード";
+$dbname = "データベース名";
 
 // フォームからの投票データを取得
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -62,10 +40,24 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>好きなスポーツランキング結果</title>
+    <title>好きなスポーツランキング</title>
 </head>
 <body>
-    <h1>好きなスポーツランキング結果</h1>
+    <h1>好きなスポーツランキング</h1>
+    <form method="post">
+        <label for="sport1">サッカー</label>
+        <input type="radio" name="sport" value="サッカー" id="sport1"><br>
+
+        <label for="sport2">野球</label>
+        <input type="radio" name="sport" value="野球" id="sport2"><br>
+
+        <label for="sport3">バスケットボール</label>
+        <input type="radio" name="sport" value="バスケットボール" id="sport3"><br>
+
+        <input type="submit" value="投票">
+    </form>
+
+    <h2>投票結果</h2>
     <ol>
         <?php
         // ランキング結果の表示
