@@ -22,10 +22,10 @@
 
 <?php
 // データベース接続情報
-$servername = "データベースのホスト名";
-$username = "ユーザー名";
-$password = "パスワード";
-$dbname = "データベース名";
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "rank";
 
 // フォームからの投票データを取得
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
