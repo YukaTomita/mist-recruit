@@ -196,7 +196,7 @@ $conn = null;
             <div class="bar-graph text-align">
                 <!-- 画像を挿入 -->
                 <?php if (!empty($imagePath)) : ?>
-                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $rank; ?>位の画像" style="width: 15px; height: 15px;">
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $rank; ?>位の画像" style="width: 20px; height: 20px;">
                 <?php endif; ?>
 
                 <p class="rank"><span><?php echo $rank; ?></span>位</p>
