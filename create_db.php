@@ -185,11 +185,11 @@ $conn = null;
 
                 // 1位から3位までの場合に画像のパスを設定
                 if ($rank === 1) {
-                    $imagePath = 'path/to/img/new1.png';
+                    $imagePath = 'img/new1.png';
                 } elseif ($rank === 2) {
-                    $imagePath = 'path/to/img/new2.png';
+                    $imagePath = 'img/new2.png';
                 } elseif ($rank === 3) {
-                    $imagePath = 'path/to/img/new3.png';
+                    $imagePath = 'img/new3.png';
                 }
             ?>
 
