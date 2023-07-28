@@ -141,38 +141,7 @@ $conn = null;
 </head>
 
 <body>
-    <!-- header -->
-    <header class="header flex-box">
-        <h1 class="site-title">
-            <a href="#!">
-                <img src="img/グループ 1315.png" alt="ロゴ">
-            </a>
-        </h1>
-        <a href="#!"><img class="header-twitter" src="img/white background.png" alt="Twitter"></a>
-        <a href="#!" class="header-entry">エントリー</a>
-        <nav class="header-nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a href="#!">Service</a></li>
-                <li class="nav-item"><a href="#!">About</a></li>
-                <li class="nav-item"><a href="#!">News</a></li>
-                <li class="nav-item"><a href="#!">Conetact</a></li>
-                <li class="nav-item"><a href="#!">Recruit</a></li>
-            </ul>
-        </nav>
-        <button class="burger-btn">
-            <span class="bars">
-                <span class="bar bar_top"></span>
-                <span class="bar bar_mid"></span>
-                <span class="bar bar_bottom"></span>
-            </span>
-        </button>
-        <span class="burger-musk"></span>
-    </header>
-
-    <!-- トップ画像と中央配置 -->
-    <img class="top-img" src="img\newcomer.jpg" alt="画像">
     <div class="wrapper">
-
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
@@ -180,8 +149,6 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
-
-
         <!-- 投票機能 -->
         <p class="font-style-title">質　問</p>
         <hr class="border-line">
