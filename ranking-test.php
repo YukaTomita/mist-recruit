@@ -50,15 +50,15 @@ $conn->close();
 ?>
 
     <div class='ranking'>
-        <img src='1st_place_icon.png' alt='1位'>
+        <img src='new1.png' alt='1位'>
         <strong>1位</strong> <?php echo isset($top_five_sports[0]) ? $top_five_sports[0] : ""; ?>
     </div>
     <div class='ranking'>
-        <img src='2nd_place_icon.png' alt='2位'>
+        <img src='new2.png' alt='2位'>
         <strong>2位</strong> <?php echo isset($top_five_sports[1]) ? $top_five_sports[1] : ""; ?>
     </div>
     <div class='ranking'>
-        <img src='3rd_place_icon.png' alt='3位'>
+        <img src='new3.png' alt='3位'>
         <strong>3位</strong> <?php echo isset($top_five_sports[2]) ? $top_five_sports[2] : ""; ?>
     </div>
     <div class='ranking'>
