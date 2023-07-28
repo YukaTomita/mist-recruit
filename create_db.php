@@ -174,21 +174,40 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <?php if (!empty($ranking) && $voteHistory) : ?>
-            <div class="ranking">
-                <?php $count = 0; ?>
-                <?php foreach ($ranking as $rankData) : ?>
-                    <?php if ($count >= 5) break; ?> <!-- 5つ以上の要素は表示しない -->
-                    <div class="bar-graph text-align">
-                        <img src='img/new1.png' alt='1位' class="rank-img">
-                        <p class="rank"><span><?php echo $rankData['rank']; ?></span>位</p>
-                        <p class="sportName"><?php echo $rankData['sportName']; ?></p>
-                    </div>
-                    <?php $count++; ?>
-                <?php endforeach; ?>
+    <div class="ranking">
+        <?php $count = 0; ?>
+        <?php foreach ($ranking as $rankData) : ?>
+            <?php if ($count >= 5) break; ?> <!-- 5つ以上の要素は表示しない -->
+            <?php
+                $rank = $rankData['rank'];
+                $sportName = $rankData['sportName'];
+                $imagePath = ''; // 画像のパスを指定する変数
+
+                // 1位から3位までの場合に画像のパスを設定
+                if ($rank === 1) {
+                    $imagePath = 'path/to/img/new1.png';
+                } elseif ($rank === 2) {
+                    $imagePath = 'path/to/img/new2.png';
+                } elseif ($rank === 3) {
+                    $imagePath = 'path/to/img/new3.png';
+                }
+            ?>
+
+            <div class="bar-graph text-align">
+                <!-- 画像を挿入 -->
+                <?php if (!empty($imagePath)) : ?>
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $rank; ?>位の画像">
+                <?php endif; ?>
+
+                <p class="rank"><span><?php echo $rank; ?></span>位</p>
+                <p class="sportName"><?php echo $sportName; ?></p>
             </div>
-        <?php else : ?>
-            <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
-        <?php endif; ?>
+            <?php $count++; ?>
+        <?php endforeach; ?>
+    </div>
+<?php else : ?>
+    <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
+<?php endif; ?>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
