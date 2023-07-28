@@ -57,6 +57,10 @@
     font-weight: bold;
     color: #8B2022;
 }
+.rank-img{
+    width: 15px;
+    height: auto;
+}
 /*------------------
  事業切り替えボタン 
  ------------------*/

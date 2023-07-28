@@ -179,7 +179,7 @@ $conn = null;
                 <?php foreach ($ranking as $rankData) : ?>
                     <?php if ($count >= 5) break; ?> <!-- 5つ以上の要素は表示しない -->
                     <div class="bar-graph text-align">
-                        <img src='img/new1.png' alt='1位'>
+                        <img src='img/new1.png' alt='1位' class="rank-img">
                         <p class="rank"><span><?php echo $rankData['rank']; ?></span>位</p>
                         <p class="sportName"><?php echo $rankData['sportName']; ?></p>
                     </div>
