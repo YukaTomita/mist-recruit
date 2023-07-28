@@ -43,32 +43,31 @@ $conn->close();
     <title>好きなスポーツランキング</title>
 </head>
 <body>
+    <h2>投票結果</h2>
+        <ol>
+            <?php
+            // ランキング結果の表示
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<li>" . $row["sport_name"] . " - " . $row["votes"] . "票</li>";
+                }
+            } else {
+                echo "<li>データがありません。</li>";
+            }
+            ?>
+        </ol>
+
     <h1>好きなスポーツランキング</h1>
     <form method="post">
+        <input type="radio" name="sport" value="サッカー" id="sport1">
         <label for="sport1">サッカー</label>
-        <input type="radio" name="sport" value="サッカー" id="sport1"><br>
-
+        <input type="radio" name="sport" value="野球" id="sport2">
         <label for="sport2">野球</label>
-        <input type="radio" name="sport" value="野球" id="sport2"><br>
-
+        <input type="radio" name="sport" value="バスケットボール" id="sport3">
         <label for="sport3">バスケットボール</label>
-        <input type="radio" name="sport" value="バスケットボール" id="sport3"><br>
 
         <input type="submit" value="投票">
     </form>
 
-    <h2>投票結果</h2>
-    <ol>
-        <?php
-        // ランキング結果の表示
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<li>" . $row["sport_name"] . " - " . $row["votes"] . "票</li>";
-            }
-        } else {
-            echo "<li>データがありません。</li>";
-        }
-        ?>
-    </ol>
 </body>
 </html>
