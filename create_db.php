@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':user_ip', $userIp);
     $stmt->execute();
     $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
-    $lastVotingDate = $stmt->fetchColumn();
 
     if (!$voteHistory) {
         // 投票結果をデータベースに保存
@@ -102,11 +101,19 @@ foreach ($voteResults as $result) {
 
 // 投票済みかどうかをチェック
 $userIp = $_SERVER['REMOTE_ADDR'];
-$query = "SELECT * FROM votes_history WHERE user_ip = :user_ip";
+$query = "SELECT created_at FROM votes_history WHERE user_ip = :user_ip ORDER BY created_at DESC LIMIT 1";
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':user_ip', $userIp);
 $stmt->execute();
-$voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
+$lastVotingDate = $stmt->fetchColumn();
+
+if ($lastVotingDate) {
+    // $lastVotingDateを利用して必要な処理を行う
+    echo "最終投票日時： " . $lastVotingDate;
+} else {
+    // 投票履歴がない場合の処理
+    echo "まだ投票がありません。";
+}
 
 //last voting date
 if ($lastVotingDate) {
