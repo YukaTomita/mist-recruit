@@ -269,6 +269,7 @@ $conn = null;
 
         <!-- 投票欄 -->
         <div class="ranking-section" id="rankingSection">
+            <div class="wrapper">
             <div class="font-style-comments2 line-height">
                 <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
                 <div class="vote">
@@ -291,6 +292,7 @@ $conn = null;
                     </div>              
                 </div>
                 </p>
+            </div>
             </div>
         </div>
 
