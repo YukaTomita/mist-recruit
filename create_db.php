@@ -160,6 +160,11 @@ $conn = null;
             background-color: #f0f0f0;
             padding: 10px;
         }
+        .radio-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
+        }
     </style>
 </head>
 
@@ -271,22 +276,17 @@ $conn = null;
                 <?php if (!$voteHistory) : ?>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <div class="radio-buttons">
-                            <?php $count = 0; ?>
                             <?php foreach ($sports as $sport) : ?>
                                 <label>
                                     <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
                                     <?php echo $sport['name']; ?>
                                 </label>
-                                <?php $count++; ?>
-                                <?php if ($count % 4 === 0) : ?>
-                                    <br>
-                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     </form>
-                    <?php else : ?>
-                        <p class="asterisk">※すでに投票済みです。</p>
-                    <?php endif; ?>                
+                <?php else : ?>
+                    <p class="asterisk">※すでに投票済みです。</p>
+                <?php endif; ?>                
                 </div>              
             </div>
             </p>
