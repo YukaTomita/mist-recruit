@@ -163,7 +163,10 @@ $conn = null;
         .radio-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px; /* 選択肢の間隔を調整する場合は適宜変更してください */
+            gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
+        }
+        .radio-column {
+            flex-basis: 25%; /* 各列の幅を調整する場合は適宜変更してください */
         }
     </style>
 </head>
@@ -274,19 +277,52 @@ $conn = null;
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="radio-buttons">
                 <?php if (!$voteHistory) : ?>
-                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <div class="radio-buttons">
-                            <?php foreach ($sports as $sport) : ?>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="radio-buttons">
+                    <div class="radio-column">
+                        <?php $count = 0; ?>
+                        <?php foreach ($sports as $sport) : ?>
+                            <?php if ($count < 4) : ?>
                                 <label>
                                     <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
                                     <?php echo $sport['name']; ?>
                                 </label>
-                            <?php endforeach; ?>
-                        </div>
-                    </form>
-                <?php else : ?>
-                    <p class="asterisk">※すでに投票済みです。</p>
-                <?php endif; ?>                
+                            <?php endif; ?>
+                            <?php $count++; ?>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <div class="radio-column">
+                        <?php $count = 0; ?>
+                        <?php foreach ($sports as $sport) : ?>
+                            <?php if ($count >= 4 && $count < 8) : ?>
+                                <label>
+                                    <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
+                                    <?php echo $sport['name']; ?>
+                                </label>
+                            <?php endif; ?>
+                            <?php $count++; ?>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <div class="radio-column">
+                        <?php $count = 0; ?>
+                        <?php foreach ($sports as $sport) : ?>
+                            <?php if ($count >= 8) : ?>
+                                <label>
+                                    <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
+                                    <?php echo $sport['name']; ?>
+                                </label>
+                            <?php endif; ?>
+                            <?php $count++; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </form>
+        <?php else : ?>
+            <p class="asterisk">※すでに投票済みです。</p>
+        <?php endif; ?>
+
                 </div>              
             </div>
             </p>
