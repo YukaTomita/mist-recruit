@@ -154,6 +154,21 @@ $conn = null;
 <body>
     <div class="wrapper">
         <!-- 隙間 -->
+
+        <script>
+            function toggleRanking() {
+                var rankingSection = document.getElementById("rankingSection");
+                var rankingButton = document.getElementById("rankingButton");
+                if (rankingSection.style.display === "none") {
+                    rankingSection.style.display = "block";
+                    rankingButton.textContent = "ランキングを閉じる";
+                } else {
+                    rankingSection.style.display = "none";
+                    rankingButton.textContent = "ランキングに参加する";
+                }
+            }
+        </script>
+
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
@@ -242,6 +257,8 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <!-- 投票欄 -->
+    <div class="ranking-section">
+        <div id="rankingSection">
         <div class="font-style-comments2 line-height">
             <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
             <div class="vote">
@@ -257,6 +274,10 @@ $conn = null;
                     </form>
                 <?php endif; ?>
             </div>
+            </p>
+        </div>
+        </div>
+    </div>
             <P class="font-style-comments2">
                 エンジニアに何故スポーツ？と思う方もいるかもしれませんが、エンジニアはスポーツで培った個々のポジションの役割、チームワークなど、今回社員になったSESのルーキーたちは、
                 皆スポーツをしていて、現在の業務や仕事に取り組む際の姿勢のベースになっています。エンジニアの現場経験がなかったり、経験が短期だったとしても、実際の現場では人間力も
