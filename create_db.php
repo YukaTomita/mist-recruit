@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':user_ip', $userIp);
     $stmt->execute();
     $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
+    $lastVotingDate = $stmt->fetchColumn();
 
     if (!$voteHistory) {
         // 投票結果をデータベースに保存
@@ -108,13 +109,7 @@ $stmt->execute();
 $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //last voting date
-if ($lastVotingDate) {
-    // $lastVotingDateを利用して必要な処理を行う
-    echo "最終投票日時： " . $lastVotingDate;
-} else {
-    // 投票履歴がない場合の処理
-    echo "まだ投票がありません。";
-}
+
 
 // データベース接続のクローズ
 $conn = null;
