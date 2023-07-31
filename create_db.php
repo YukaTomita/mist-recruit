@@ -108,21 +108,8 @@ $stmt->bindParam(':user_ip', $userIp);
 $stmt->execute();
 $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// 投票済みかどうかをチェック
-$userIp = $_SERVER['REMOTE_ADDR'];
-$query = "SELECT created_at FROM votes_history WHERE user_ip = :user_ip ORDER BY created_at DESC LIMIT 1";
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':user_ip', $userIp);
-$stmt->execute();
-$lastVotingDate = $stmt->fetchColumn();
+//last voting date
 
-if ($lastVotingDate) {
-    // $lastVotingDateを利用して必要な処理を行う
-    echo "最終投票日時： " . $lastVotingDate;
-} else {
-    // 投票履歴がない場合の処理
-    echo "まだ投票がありません。";
-}
 
 // データベース接続のクローズ
 $conn = null;
@@ -178,15 +165,8 @@ $conn = null;
 
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
-            <?php
-            if ($lastVotingDate) {
-                // $lastVotingDateを利用して必要な処理を行う
-                echo "最終投票日時： " . $lastVotingDate;
-            } else {
-                // 投票履歴がない場合の処理
-                echo "まだ投票がありません。";
-            }
-            ?>
+
+            <p>更新: <?php echo $last_voting_date; ?></p>
 
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
