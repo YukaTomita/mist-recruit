@@ -281,7 +281,8 @@ $conn = null;
                 </form>
                     <?php else : ?>
                         <p class="asterisk">※すでに投票済みです。</p>
-                    <?php endif; ?>                
+                    <?php endif; ?>  
+                </div>              
             </div>
             </p>
         </div>
