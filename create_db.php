@@ -266,17 +266,23 @@ $conn = null;
         <div class="font-style-comments2 line-height">
             <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
             <div class="vote">
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <div class="radio-buttons">
-                <?php foreach ($sports as $sport) : ?>
-                    <label>
-                        <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
-                        <?php echo $sport['name']; ?>
-                    </label>
-                <?php endforeach; ?>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="radio-buttons">
+                    <?php if (!$voteHistory) : ?>
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <div class="radio-buttons">
+                        <?php foreach ($sports as $sport) : ?>
+                            <label>
+                                <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
+                                <?php echo $sport['name']; ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
+                </form>
+                    <?php else : ?>
+                        <p class="asterisk">※すでに投票済みです。</p>
+                    <?php endif; ?>                
             </div>
-        </form>
-                </div>
             </p>
         </div>
     </div>
