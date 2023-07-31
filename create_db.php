@@ -149,6 +149,18 @@ $conn = null;
     <link rel="stylesheet" href="CSS/common.css">
     <link rel="stylesheet" href="CSS/newcomer.css">
     <link rel="stylesheet" href="CSS/expert.css">
+
+    <style>
+        .ranking-section {
+            display: none;
+        }
+
+        .ranking-section.open {
+            display: block;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -158,14 +170,7 @@ $conn = null;
         <script>
             function toggleRanking() {
                 var rankingSection = document.getElementById("rankingSection");
-                var rankingButton = document.getElementById("rankingButton");
-                if (rankingSection.style.display === "none") {
-                    rankingSection.style.display = "block";
-                    rankingButton.textContent = "ランキングを閉じる";
-                } else {
-                    rankingSection.style.display = "none";
-                    rankingButton.textContent = "ランキングに参加する";
-                }
+                rankingSection.classList.toggle("open");
             }
         </script>
 
@@ -249,7 +254,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
 
-        <button id="rankingButton" class="cercle" onclick="toggleRanking()">ランキングに参加する</button>
+        <button class="cercle" onclick="toggleRanking()">ランキングに参加する</button>
         <div class="Arrow-Bottom"></div>
         <div class="Arrow-Bottom"></div>
 
@@ -257,8 +262,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <!-- 投票欄 -->
-    <div class="ranking-section">
-        <div id="rankingSection">
+    <div class="ranking-section" id="rankingSection">
         <div class="font-style-comments2 line-height">
             <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
             <div class="vote">
@@ -275,7 +279,6 @@ $conn = null;
                 <?php endif; ?>
             </div>
             </p>
-        </div>
         </div>
     </div>
             <P class="font-style-comments2">
