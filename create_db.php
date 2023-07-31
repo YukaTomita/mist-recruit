@@ -174,6 +174,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <?php if (!empty($ranking) && $voteHistory) : ?>
+
     <div class="ranking">
         <?php $count = 0; ?>
         <?php foreach ($ranking as $rankData) : ?>
@@ -197,6 +198,8 @@ $conn = null;
                 <!-- 画像を挿入 -->
                 <?php if (!empty($imagePath)) : ?>
                     <img src="<?php echo $imagePath; ?>" alt="<?php echo $rank; ?>位の画像" style="width: 40px; height: 30px;">
+                <?php else : ?>
+                    <div style="width: 40px; height: 30px;"></div>
                 <?php endif; ?>
 
                 <p class="rank"><span><?php echo $rank; ?></span>位</p>
@@ -205,9 +208,9 @@ $conn = null;
             <?php $count++; ?>
         <?php endforeach; ?>
     </div>
-<?php else : ?>
-    <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
-<?php endif; ?>
+    <?php else : ?>
+        <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
+    <?php endif; ?>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
