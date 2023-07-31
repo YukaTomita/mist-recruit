@@ -268,20 +268,25 @@ $conn = null;
             <div class="vote">
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="radio-buttons">
-                    <?php if (!$voteHistory) : ?>
+                <?php if (!$voteHistory) : ?>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                    <div class="radio-buttons">
-                        <?php foreach ($sports as $sport) : ?>
-                            <label>
-                                <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
-                                <?php echo $sport['name']; ?>
-                            </label>
-                        <?php endforeach; ?>
-                    </div>
-                </form>
+                        <div class="radio-buttons">
+                            <?php $count = 0; ?>
+                            <?php foreach ($sports as $sport) : ?>
+                                <label>
+                                    <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
+                                    <?php echo $sport['name']; ?>
+                                </label>
+                                <?php $count++; ?>
+                                <?php if ($count % 4 === 0) : ?>
+                                    <br>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </form>
                     <?php else : ?>
                         <p class="asterisk">※すでに投票済みです。</p>
-                    <?php endif; ?>  
+                    <?php endif; ?>                
                 </div>              
             </div>
             </p>
