@@ -163,7 +163,7 @@ $conn = null;
         .radio-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
+            gap: 40px; /* 選択肢の間隔を調整する場合は適宜変更してください */
         }
     </style>
 </head>
