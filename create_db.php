@@ -249,7 +249,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
 
-        <div class="cercle">ランキングに参加する</div>
+        <button id="rankingButton" class="cercle" onclick="toggleRanking()">ランキングに参加する</button>
         <div class="Arrow-Bottom"></div>
         <div class="Arrow-Bottom"></div>
 
