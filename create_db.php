@@ -11,6 +11,27 @@ $conn = new PDO("mysql:host=$host;dbname=$db", $user, $password);
 // タイムゾーンを設定
 date_default_timezone_set('Asia/Tokyo');
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+var_dump($conn); // 接続が成功しているかどうかを確認するために追加
+
+// 最終投票日を取得するクエリ
+$sql_last_voting_date = "SELECT MAX(participation_date) AS last_voting_date FROM rank_history";
+
+$result_last_voting_date = $conn->query($sql_last_voting_date);
+
+if (!$result_last_voting_date) {
+    die("クエリエラー: " . $conn->error);
+}
+
+if ($result_last_voting_date->num_rows > 0) {
+    $row_last_voting_date = $result_last_voting_date->fetch_assoc();
+    $last_voting_date = $row_last_voting_date['last_voting_date'];
+} else {
+    $last_voting_date = '不明';
+}
+
 // 投票結果のリセット処理、1分間ボタンが押せなくなる、指定した時間に開いていないとリセットされない
 if (date('H:i') === '03:00') {
     // 投票数をゼロにリセットするクエリを実行
@@ -108,6 +129,7 @@ $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // データベース接続のクローズ
 $conn = null;
+
 ?>
 
 <!DOCTYPE html>
@@ -160,9 +182,7 @@ $conn = null;
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
 
-            <div class="load">
-                <p id="currentDate"></p>
-            </div>
+            <p>更新: <?php echo $last_voting_date; ?></p>
 
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
