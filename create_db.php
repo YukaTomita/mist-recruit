@@ -154,7 +154,7 @@ $conn = null;
         .v-text{
             font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
             text-align: left;
-            line-height: 1.7rem;
+            line-height: 2rem;
         }
         .ranking-section {
             display: none;
