@@ -186,6 +186,7 @@ $conn = null;
             }
             .arrow-container {
                 position: relative;
+                margin: auto;
                 }
 
                 .arrow-bottom {
