@@ -177,22 +177,38 @@ $conn = null;
         }
         .arrow-container {
             position: relative;
-            margin: auto;
-        }
-
-            .arrow-bottom {
-            position: absolute;
-            border-bottom: solid 2px #8B2022;
-            border-right: solid 2px #8B2022;
-            width: 24px;
-            height: 24px;
-            transform: rotate(45deg);
-            margin: auto;
-        }
-
-            .arrow-bottom-Shifted {
-            top: 15px;
+            width: 20px; /* 矢印の幅 */
+            height: 20px; /* 矢印の高さ */
             }
+
+            .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #8B2022; /* 矢印の色を設定 */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            }
+            .arrow-container {
+                position: relative;
+                margin: auto;
+                }
+
+                .arrow-bottom {
+                position: absolute;
+                border-bottom: solid 2px #8B2022;
+                border-right: solid 2px #8B2022;
+                width: 24px;
+                height: 24px;
+                transform: rotate(45deg);
+                margin: auto;
+                }
+
+                .arrow-bottom-Shifted {
+                top: 15px;
+                }
 
 
     </style>
