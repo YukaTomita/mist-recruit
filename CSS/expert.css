@@ -28,6 +28,25 @@
   line-height: 2.5rem;
 }
 
+/*HR 交互に*/
+.HRbox{
+  margin: auto;
+}
+.HRimg{
+  margin: auto;
+  margin-top: 30px;
+}
+.HRtext{
+  margin-top: 30px;
+}
+.HRbox:nth-child(even){
+  display: flex;
+  flex-direction: row-reverse;
+}
+.HRbox:nth-child(odd){
+  display: flex;
+   }
+  
 
   /*更新中・・・*/
   .blink {

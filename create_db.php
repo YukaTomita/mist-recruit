@@ -173,10 +173,20 @@ $conn = null;
         <!-- 隙間 -->
 
         <script>
-            function toggleRanking() {
+           function toggleRanking() {
                 var rankingSection = document.getElementById("rankingSection");
-                rankingSection.classList.toggle("open");
+                var rankingButton = document.getElementById("rankingButton");
+                if (rankingSection.style.display === "none") {
+                    rankingSection.style.display = "block";
+                    rankingButton.textContent = "× 閉じる";
+                    rankingButton.style.backgroundColor = "#e0e0e0";
+                } else {
+                    rankingSection.style.display = "none";
+                    rankingButton.textContent = "ランキングに参加する";
+                    rankingButton.style.backgroundColor = ""; // ボタンの色を元に戻す
+                }
             }
+
         </script>
 
         <div class="gap-control-probram"></div>
