@@ -170,14 +170,14 @@ $conn = null;
             flex-wrap: wrap;
             text-align: left;
             margin-left: 30px;
-            gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
+            gap: 20px; /* 選択肢の間隔調整 */
         }
         .radio-column {
-            flex-basis: 30%; /* 各列の幅を調整する場合は適宜変更してください */
+            flex-basis: 30%; /* 各列の幅を調整 */
         }
         .arrow-container {
             position: relative;
-            margin: auto;
+            align-items: center;
             }
             .arrow-bottom {
             position: absolute;
@@ -217,6 +217,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
+        
         <!-- 投票機能 -->
     <div class="wrapper">
         <p class="font-style-title">質　問</p>
