@@ -165,6 +165,9 @@ $conn = null;
             flex-wrap: wrap;
             gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
         }
+        .radio-column {
+            flex-basis: 33.33%; /* 各列の幅を調整する場合は適宜変更してください */
+        }
         .toggle-button {
             background-color: #e0e0e0;
             border: none;
@@ -186,7 +189,6 @@ $conn = null;
                 if (rankingSection.style.display === "none") {
                     rankingSection.style.display = "block";
                     rankingButton.textContent = "× 閉じる";
-                    rankingButton.style.backgroundColor = "#e0e0e0";
                 } else {
                     rankingSection.style.display = "none";
                     rankingButton.textContent = "ランキングに参加する";
