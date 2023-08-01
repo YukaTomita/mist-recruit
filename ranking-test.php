@@ -143,6 +143,14 @@ $conn = null;
             <?php endforeach; ?>
 
             // チャートの描画
+            <?php
+            // 1位から3位までのランキングの画像ファイル名を配列で定義する
+            $rankingImages = array(
+                'img/ex1.png',
+                'img/ex2.png',
+                'img/ex3.png'
+            );
+            ?>
             const ctx = document.getElementById('barChart').getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
@@ -151,21 +159,37 @@ $conn = null;
                     datasets: [{
                         label: '投票数',
                         data: data,
-                        backgroundColor: 'transparent', // 棒グラフの背景色
-                        borderColor: '#FF2D2D', // 棒グラフの枠線の色
-                        borderWidth: 2 // 棒グラフの枠線の太さ
+                        backgroundColor: '#8B2022', // 全ての棒グラフに#8B2022カラーを使用
+                        borderWidth: 0 // 棒グラフの枠線を削除
                     }]
                 },
                 options: {
                     responsive: true,
+                    indexAxis: 'y', // ラベルをY軸に表示
+
                     scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1, // X軸に整数のみ表示
+                                callback: function (value, index, values) {
+                                    // 1位、2位、3位の画像をラベルの下に表示
+                                    return (index === 0 || index === 1 || index === 2) ? 
+                                    `<img src="images/ranking_${index + 1}.png" alt="${value}" width="20" height="20" style="vertical-align: middle;">` :
+                                    '';
+                                }
+                            }
+                        },
                         y: {
                             beginAtZero: true,
-                            max: Math.max(...data) + 2, // 最大値 + 2 を設定
-                            title: {
-                                display: false,
-                                text: '投票数'
+                            grid: {
+                                display: false // Y軸のグリッド線を非表示
                             }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // 凡例を非表示
                         }
                     }
                 }
