@@ -169,7 +169,7 @@ $conn = null;
             display: flex;
             flex-wrap: wrap;
             text-align: left;
-            margin-left: 20px;
+            margin-left: 30px;
             gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
         }
         .radio-column {
@@ -177,38 +177,22 @@ $conn = null;
         }
         .arrow-container {
             position: relative;
-            width: 20px; /* 矢印の幅 */
-            height: 20px; /* 矢印の高さ */
-            }
+            margin: auto;
+        }
 
-            .arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid #8B2022; /* 矢印の色を設定 */
+            .arrow-bottom {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            }
-            .arrow-container {
-                position: relative;
-                margin: auto;
-                }
+            border-bottom: solid 2px #8B2022;
+            border-right: solid 2px #8B2022;
+            width: 24px;
+            height: 24px;
+            transform: rotate(45deg);
+            margin: auto;
+        }
 
-                .arrow-bottom {
-                position: absolute;
-                border-bottom: solid 2px #8B2022;
-                border-right: solid 2px #8B2022;
-                width: 24px;
-                height: 24px;
-                transform: rotate(45deg);
-                margin: auto;
-                }
-
-                .arrow-bottom-Shifted {
-                top: 15px;
-                }
+            .arrow-bottom-Shifted {
+            top: 15px;
+        }
 
 
     </style>
@@ -216,19 +200,20 @@ $conn = null;
 
 <body>
         <script>
-            function toggleRanking() {
-                var rankingSection = document.getElementById("rankingSection");
-                var rankingButton = document.getElementById("rankingButton");
-                if (rankingSection.style.display === "none") {
-                    rankingSection.style.display = "block";
-                    rankingButton.textContent = "× 閉じる";
-                    rankingButton.style.backgroundColor = "#f0f0f0";
-                } else {
-                    rankingSection.style.display = "none";
-                    rankingButton.textContent = "ランキングに参加する";
-                    rankingButton.style.backgroundColor = "#8B2022";
-                }
-            }    
+function toggleRanking() {
+    var rankingSection = document.getElementById("rankingSection");
+    var rankingButton = document.getElementById("rankingButton");
+    if (rankingSection.style.display === "none") {
+        rankingSection.style.display = "block";
+        rankingButton.textContent = "× 閉じる";
+        rankingButton.style.backgroundColor = "#f0f0f0"; // ボタンの背景色をグレーに変更
+    } else {
+        rankingSection.style.display = "none";
+        rankingButton.textContent = "ランキングに参加する";
+        rankingButton.style.backgroundColor = "#8B2022"; // ボタンの背景色を元の色に変更
+    }
+}
+            
         </script>
 
         <div class="gap-control-probram"></div>
