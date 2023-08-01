@@ -169,6 +169,7 @@ $conn = null;
             display: flex;
             flex-wrap: wrap;
             text-align: left;
+            margin-left: 20px;
             gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
         }
         .radio-column {
