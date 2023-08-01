@@ -165,6 +165,13 @@ $conn = null;
             flex-wrap: wrap;
             gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
         }
+        .toggle-button {
+            background-color: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -278,7 +285,7 @@ $conn = null;
     </div>
 
         <!-- 投票欄 -->
-        <div class="ranking-section" id="rankingSection">
+        <div class="ranking-section" id="rankingSection" style="display: none;">
             <div class="wrapper">
             <div class="font-style-comments2 line-height">
                 <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
