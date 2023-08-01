@@ -192,7 +192,7 @@ $conn = null;
 
             .arrow-bottom-Shifted {
             top: 15px;
-        }
+            }
 
 
     </style>
@@ -200,20 +200,19 @@ $conn = null;
 
 <body>
         <script>
-function toggleRanking() {
-    var rankingSection = document.getElementById("rankingSection");
-    var rankingButton = document.getElementById("rankingButton");
-    if (rankingSection.style.display === "none") {
-        rankingSection.style.display = "block";
-        rankingButton.textContent = "× 閉じる";
-        rankingButton.style.backgroundColor = "#f0f0f0"; // ボタンの背景色をグレーに変更
-    } else {
-        rankingSection.style.display = "none";
-        rankingButton.textContent = "ランキングに参加する";
-        rankingButton.style.backgroundColor = "#8B2022"; // ボタンの背景色を元の色に変更
-    }
-}
-            
+            function toggleRanking() {
+                var rankingSection = document.getElementById("rankingSection");
+                var rankingButton = document.getElementById("rankingButton");
+                if (rankingSection.style.display === "none") {
+                    rankingSection.style.display = "block";
+                    rankingButton.textContent = "× 閉じる";
+                    rankingButton.style.backgroundColor = "#f0f0f0";
+                } else {
+                    rankingSection.style.display = "none";
+                    rankingButton.textContent = "ランキングに参加する";
+                    rankingButton.style.backgroundColor = "#8B2022";
+                }
+            }    
         </script>
 
         <div class="gap-control-probram"></div>
