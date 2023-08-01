@@ -97,6 +97,11 @@ $conn = null;
         /* 項目名の間隔を設定 */
         .vertical-labels p {
             margin: 15px 0;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            text-align: center;
+            line-height: 1;
+            font-size: 10px;
         }
     </style>
 </head>
@@ -177,7 +182,7 @@ $conn = null;
             options: {
                 scales: {
                     xAxes: [{
-                        barPercentage: 1, // 棒の幅を調整（1で100%）
+                        barPercentage: 0.5, // 棒の幅を調整（0.5で15px）
                         gridLines: {
                             display: false // 縦方向のグリッド線を非表示
                         },
