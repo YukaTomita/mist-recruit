@@ -180,7 +180,7 @@ $conn = null;
         <!-- 隙間 -->
 
         <script>
-           function toggleRanking() {
+            function toggleRanking() {
                 var rankingSection = document.getElementById("rankingSection");
                 var rankingButton = document.getElementById("rankingButton");
                 if (rankingSection.style.display === "none") {
@@ -190,10 +190,8 @@ $conn = null;
                 } else {
                     rankingSection.style.display = "none";
                     rankingButton.textContent = "ランキングに参加する";
-                    rankingButton.style.backgroundColor = ""; // ボタンの色を元に戻す
                 }
             }
-
         </script>
 
         <div class="gap-control-probram"></div>
