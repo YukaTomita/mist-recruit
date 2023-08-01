@@ -167,14 +167,7 @@ $conn = null;
         }
         .radio-column {
             flex-basis: 33.33%; /* 各列の幅を調整する場合は適宜変更してください */
-        }
-        .toggle-button {
-            background-color: #e0e0e0;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+        }        
     </style>
 </head>
 
@@ -193,7 +186,7 @@ $conn = null;
                     rankingSection.style.display = "none";
                     rankingButton.textContent = "ランキングに参加する";
                 }
-            }
+            }        
         </script>
 
         <div class="gap-control-probram"></div>
@@ -276,7 +269,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
 
-        <button class="cercle" onclick="toggleRanking()">ランキングに参加する</button>
+        <button class="cercle" id="RankingButton" onclick="toggleRanking()">ランキングに参加する</button>
         <div class="Arrow-Bottom"></div>
         <div class="Arrow-Bottom"></div>
 
