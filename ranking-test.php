@@ -143,33 +143,26 @@ $conn = null;
 
     <!-- エンジニアが選ぶ企業のポイント　ランキング -->
     <div class="wrapper">
-        <canvas id="barChart"></canvas>
+        <canvas id="barChart" style="max-width: 100%;"></canvas>
     <!-- 項目名を縦書きで表示 -->
     <div class="vertical-labels">
-            <?php foreach ($results as $result) : ?>
-                <p><?php echo $result['name']; ?></p>
-            <?php endforeach; ?>
+        <?php foreach ($results as $result) { ?>
+            <p><?php echo $result['name']; ?></p>
+        <?php } ?>
     </div>
-    <!-- ...（その他のコンテンツ）... -->
-    <?php
-    // 1位から3位までのランキングの画像ファイル名を配列で定義する
-    $rankingImages = array(
-        'img/ex1.png',
-        'img/ex2.png',
-        'img/ex3.png'
-    );
-    ?>
-        <script>
-            const labels = [];
-            const data = [];
 
-            <?php foreach ($results as $result) : ?>
-                labels.push('<?php echo $result['name']; ?>');
-                data.push(<?php echo $result['count']; ?>);
-            <?php endforeach; ?>
+    <script>
+        // データの準備
+        const labels = [];
+        const data = [];
 
-            // チャートの描画
-            const ctx = document.getElementById('barChart').getContext('2d');
+        <?php foreach ($results as $result) : ?>
+            labels.push('<?php echo $result['name']; ?>');
+            data.push(<?php echo $result['count']; ?>);
+        <?php endforeach; ?>
+
+        // チャートの描画
+        const ctx = document.getElementById('barChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar', // 縦棒グラフに変更
             data: {
@@ -184,22 +177,16 @@ $conn = null;
             options: {
                 scales: {
                     xAxes: [{
+                        barPercentage: 1, // 棒の幅を調整（1で100%）
+                        gridLines: {
+                            display: false // 縦方向のグリッド線を非表示
+                        },
                         ticks: {
-                            beginAtZero: true,
-                            stepSize: 1, // X軸に整数のみ表示
-                            callback: function (value, index, values) {
-                                // 1位、2位、3位の画像をラベルの下に表示
-                                return (index === 0 || index === 1 || index === 2) ? 
-                                    `<img src="images/ranking_${index + 1}.png" alt="${value}" width="20" height="20" style="vertical-align: middle;">` :
-                                    '';
-                            }
+                            beginAtZero: true
                         }
                     }],
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            display: false // Y軸のグリッド線を非表示
-                        }
+                        display: false // 縦軸ラベルを非表示
                     }]
                 },
                 legend: {
