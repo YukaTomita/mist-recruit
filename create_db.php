@@ -168,19 +168,28 @@ $conn = null;
         .radio-column {
             flex-basis: 30%; /* 各列の幅を調整する場合は適宜変更してください */
         }
-        .arrow-container {
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #8B2022; /* 矢印の色を設定 */
+            display: inline-block;
             position: relative;
             }
 
-            .arrow-container::after {
-                content: "＞＞"; /* 2つの矢印を挿入 */
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translateX(-50%) rotate(180deg); /* 180度回転して下向きに */
-                font-size: 20px;
-                line-height: 0; /* 行間を0にして距離を縮める */
-                }  
+            .arrow-down::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #8B2022; /* 矢印の色を設定 */
+            }
+
     </style>
 </head>
 
@@ -284,7 +293,7 @@ $conn = null;
     <div class="wrapper">
         <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
        
-        <div class="arrow-container"></div>
+        <div class="arrow-down"></div>
 
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
