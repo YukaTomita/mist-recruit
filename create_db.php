@@ -184,6 +184,23 @@ $conn = null;
             bottom: 0;
             left: 0;
             }
+            .arrow-container {
+                position: relative;
+                }
+
+                .arrow-bottom {
+                position: absolute;
+                border-bottom: solid 2px #8B2022;
+                border-right: solid 2px #8B2022;
+                width: 24px;
+                height: 24px;
+                transform: rotate(45deg);
+                margin: auto;
+                }
+
+                .arrow-bottom-Shifted {
+                top: 15px;
+                }
 
 
     </style>
@@ -290,7 +307,8 @@ $conn = null;
         <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
        
         <div class="arrow-container">
-            <div class="arrow-down"></div>
+            <div class="arrow-bottom"></div>
+            <div class="arrow-bottom arrow-bottom-Shifted"></div>
         </div>
 
         <div class="gap-control-probram"></div>

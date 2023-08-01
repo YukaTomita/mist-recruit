@@ -60,8 +60,12 @@
   }
 
 /*く矢印*/
-.Arrow-Bottom {
+.arrow-container {
   position: relative;
+}
+
+.arrow-bottom {
+  position: absolute;
   border-bottom: solid 2px #8B2022;
   border-right: solid 2px #8B2022;
   width: 24px;
@@ -70,6 +74,9 @@
   margin: auto;
 }
 
+.arrow-bottom-Shifted {
+  top: 15px;
+}
  
 /* cercle */
 .cercle{
