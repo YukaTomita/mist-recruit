@@ -70,7 +70,7 @@ $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // 投票日取得：更新
 $userIp = $_SERVER['REMOTE_ADDR'];
-$query = "SELECT updated_at FROM votes_history WHERE user_ip = :user_ip ORDER BY updated_at DESC LIMIT 1";
+$query = "SELECT created_at FROM votes_history WHERE user_ip = :user_ip ORDER BY created_at DESC LIMIT 1";
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':user_ip', $userIp);
 $stmt->execute();
@@ -146,7 +146,7 @@ $conn = null;
             </div>
         </div>
     </div>
-    
+
     <!-- エンジニアが選ぶ企業のポイント　ランキング -->
     <div class="wrapper">
         <canvas id="barChart"></canvas>
