@@ -83,9 +83,22 @@ $conn = null;
     <link rel="stylesheet" href="CSS/expert.css" type="text/css">
     <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- favicon -->
+    <!-- Chart.jsを読み込む -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>    <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
+    <style>
+        /* 縦書きのスタイル */
+        .vertical-labels {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            text-align: center;
+        }
+
+        /* 項目名の間隔を設定 */
+        .vertical-labels p {
+            margin: 15px 0;
+        }
+    </style>
 </head>
 <body>
     <!-- header -->
@@ -131,9 +144,22 @@ $conn = null;
     <!-- エンジニアが選ぶ企業のポイント　ランキング -->
     <div class="wrapper">
         <canvas id="barChart"></canvas>
-
+    <!-- 項目名を縦書きで表示 -->
+    <div class="vertical-labels">
+            <?php foreach ($results as $result) : ?>
+                <p><?php echo $result['name']; ?></p>
+            <?php endforeach; ?>
+    </div>
+    <!-- ...（その他のコンテンツ）... -->
+    <?php
+    // 1位から3位までのランキングの画像ファイル名を配列で定義する
+    $rankingImages = array(
+        'img/ex1.png',
+        'img/ex2.png',
+        'img/ex3.png'
+    );
+    ?>
         <script>
-            // データの準備
             const labels = [];
             const data = [];
 
@@ -143,57 +169,46 @@ $conn = null;
             <?php endforeach; ?>
 
             // チャートの描画
-            <?php
-            // 1位から3位までのランキングの画像ファイル名を配列で定義する
-            $rankingImages = array(
-                'img/ex1.png',
-                'img/ex2.png',
-                'img/ex3.png'
-            );
-            ?>
             const ctx = document.getElementById('barChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: '投票数',
-                        data: data,
-                        backgroundColor: '#8B2022', // 全ての棒グラフに#8B2022カラーを使用
-                        borderWidth: 0 // 棒グラフの枠線を削除
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    indexAxis: 'y', // ラベルをY軸に表示
-
-                    scales: {
-                        x: {
+        new Chart(ctx, {
+            type: 'bar', // 縦棒グラフに変更
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '投票数',
+                    data: data,
+                    backgroundColor: '#8B2022', // 全ての棒グラフに#8B2022カラーを使用
+                    borderWidth: 0 // 棒グラフの枠線を削除
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
                             beginAtZero: true,
-                            ticks: {
-                                stepSize: 1, // X軸に整数のみ表示
-                                callback: function (value, index, values) {
-                                    // 1位、2位、3位の画像をラベルの下に表示
-                                    return (index === 0 || index === 1 || index === 2) ? 
+                            stepSize: 1, // X軸に整数のみ表示
+                            callback: function (value, index, values) {
+                                // 1位、2位、3位の画像をラベルの下に表示
+                                return (index === 0 || index === 1 || index === 2) ? 
                                     `<img src="images/ranking_${index + 1}.png" alt="${value}" width="20" height="20" style="vertical-align: middle;">` :
                                     '';
-                                }
                             }
-                        },
-                        y: {
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
                             beginAtZero: true,
-                            grid: {
-                                display: false // Y軸のグリッド線を非表示
-                            }
+                            display: false // Y軸のグリッド線を非表示
                         }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false // 凡例を非表示
-                        }
-                    }
-                }
-            });
+                    }]
+                },
+                legend: {
+                    display: false // 凡例を非表示
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
         </script>
 
         <!-- 隙間 -->
