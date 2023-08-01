@@ -167,14 +167,36 @@ $conn = null;
         }
         .radio-column {
             flex-basis: 33.33%; /* 各列の幅を調整する場合は適宜変更してください */
-        }        
+        }
+        .cercle{
+            background-color: #8B2022;
+            color: white;
+            font-size: 2.5rem;
+            font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+            width: 400px;
+            height: 40px;
+            border-radius: 150px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 40px;
+        }
+        .wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .txt {
+            display: inline-block;
+            text-align: left;
+        }
+        .gap-control-probram {
+            height: 2rem;
+        }
+        
     </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- 隙間 -->
-
         <script>
             function toggleRanking() {
                 var rankingSection = document.getElementById("rankingSection");
@@ -196,6 +218,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
         <!-- 投票機能 -->
+    <div class="wrapper">
         <p class="font-style-title">質　問</p>
         <hr class="border-line">
         <p class="font-style-words2">「あなたの好きなスポーツは何ですか？」</p>
@@ -221,7 +244,7 @@ $conn = null;
             <div class="gap-control-probram"></div>
 
             <p class="font-style-words text-center">現在のランキング</p>
-
+    
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
@@ -268,8 +291,8 @@ $conn = null;
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
-
-        <button class="cercle" id="RankingButton" onclick="toggleRanking()">ランキングに参加する</button>
+    <div class="wrapper">
+        <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
         <div class="Arrow-Bottom"></div>
         <div class="Arrow-Bottom"></div>
 
@@ -279,17 +302,15 @@ $conn = null;
 
         <!-- 投票欄 -->
         <div class="ranking-section" id="rankingSection" style="display: none;">
-            <div class="wrapper">
+        <div class="wrapper">
             <div class="font-style-comments2 line-height">
-                <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
+                <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）</p>
                 <div class="vote">
-                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                    <div class="radio-buttons">
                     <?php if (!$voteHistory) : ?>
                         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <div class="radio-buttons">
                                 <?php foreach ($sports as $sport) : ?>
-                                    <label>
+                                    <label class="radio-column">
                                         <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
                                         <?php echo $sport['name']; ?>
                                     </label>
@@ -298,13 +319,11 @@ $conn = null;
                         </form>
                     <?php else : ?>
                         <p class="asterisk">※すでに投票済みです。</p>
-                    <?php endif; ?>                
-                    </div>              
+                    <?php endif; ?>
                 </div>
-                </p>
-            </div>
             </div>
         </div>
+    </div>
 
     <div class="gap-control-probram"></div>
     <div class="gap-control-probram"></div>
