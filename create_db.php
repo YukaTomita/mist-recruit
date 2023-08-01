@@ -204,11 +204,13 @@ $conn = null;
                 if (rankingSection.style.display === "none") {
                     rankingSection.style.display = "block";
                     rankingButton.textContent = "× 閉じる";
+                    rankingButton.style.backgroundColor = "#f0f0f0";
                 } else {
                     rankingSection.style.display = "none";
                     rankingButton.textContent = "ランキングに参加する";
+                    rankingButton.style.backgroundColor = "#8B2022";
                 }
-            }        
+            }    
         </script>
 
         <div class="gap-control-probram"></div>
