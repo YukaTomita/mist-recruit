@@ -173,13 +173,14 @@ $conn = null;
             }
 
             .arrow-container::after {
-            content: "▼"; /* 矢印アイコンを挿入 */
+            content: "＞＞"; /* 2つの矢印を挿入 */
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
             font-size: 20px;
-            }        
+            line-height: 0; /* 行間を0にして距離を縮める */
+            }    
     </style>
 </head>
 
