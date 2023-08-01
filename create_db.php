@@ -166,32 +166,16 @@ $conn = null;
             gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
         }
         .radio-column {
-            flex-basis: 33.33%; /* 各列の幅を調整する場合は適宜変更してください */
+            flex-basis: 30%; /* 各列の幅を調整する場合は適宜変更してください */
         }
-        .cercle{
-            background-color: #8B2022;
-            color: white;
-            font-size: 2.5rem;
-            font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
-            width: 400px;
-            height: 40px;
-            border-radius: 150px;
-            margin: 0 auto;
-            text-align: center;
-            line-height: 40px;
-        }
-        .wrapper {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .txt {
-            display: inline-block;
-            text-align: left;
-        }
-        .gap-control-probram {
-            height: 2rem;
-        }
+        .arrow-bottom {
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 30px solid #8B2022;
+        margin: 0 auto;
+    }
         
     </style>
 </head>
@@ -295,7 +279,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
     <div class="wrapper">
         <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
-        <div class="Arrow-Bottom"></div>
+        <div class="arrow-Bottom"></div>
         <div class="Arrow-Bottom"></div>
 
         <div class="gap-control-probram"></div>
