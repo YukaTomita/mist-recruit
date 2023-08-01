@@ -68,14 +68,6 @@ $stmt->bindParam(':user_ip', $userIp);
 $stmt->execute();
 $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// 投票日取得：更新
-$userIp = $_SERVER['REMOTE_ADDR'];
-$query = "SELECT created_at FROM votes_history WHERE user_ip = :user_ip ORDER BY created_at DESC LIMIT 1";
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':user_ip', $userIp);
-$stmt->execute();
-$lastVotingDateTime = $stmt->fetchColumn();
-
 // データベース接続のクローズ
 $conn = null;
 ?>
@@ -127,17 +119,6 @@ $conn = null;
 
                 <div class="gap-control-probram"></div>
                 <div class="gap-control-probram"></div>
-
-                <?php
-            if ($lastVotingDateTime) {
-                // 最終投票日時を指定のフォーマットに変換して表示
-                $formattedLastVotingDate = date('更新：Y.m.d', strtotime($lastVotingDateTime));
-                echo $formattedLastVotingDate;
-            } else {
-                // 投票履歴がない場合の処理
-                echo "まだ投票がありません。";
-            }            
-            ?>
 
                 <div class="gap-control-probram"></div>
                 <div class="gap-control-probram"></div>
