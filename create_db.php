@@ -151,6 +151,9 @@ $conn = null;
     <link rel="stylesheet" href="CSS/expert.css">
 
     <style>
+        .v-text{
+            text-align: left;
+        }
         .ranking-section {
             display: none;
         }
@@ -163,6 +166,7 @@ $conn = null;
         .radio-buttons {
             display: flex;
             flex-wrap: wrap;
+            text-align: left;
             gap: 20px; /* 選択肢の間隔を調整する場合は適宜変更してください */
         }
         .radio-column {
@@ -320,7 +324,7 @@ $conn = null;
         <div class="ranking-section" id="rankingSection" style="display: none;">
         <div class="wrapper">
             <div class="font-style-comments2 line-height">
-                <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）</p>
+                <p class="v-text">「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）</p>
                 <div class="vote">
                     <?php if (!$voteHistory) : ?>
                         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -345,7 +349,7 @@ $conn = null;
     <div class="gap-control-probram"></div>
 
     <div class="wrapper">
-            <P class="font-style-comments2">
+            <P class="v-text">
                 エンジニアに何故スポーツ？と思う方もいるかもしれませんが、エンジニアはスポーツで培った個々のポジションの役割、チームワークなど、今回社員になったSESのルーキーたちは、
                 皆スポーツをしていて、現在の業務や仕事に取り組む際の姿勢のベースになっています。エンジニアの現場経験がなかったり、経験が短期だったとしても、実際の現場では人間力も
                 強い武器になってきます。
