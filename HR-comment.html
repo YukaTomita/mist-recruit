@@ -29,6 +29,25 @@
     <script type="text/javascript" src="js/common.js"></script>
     <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
+    <style>
+            .arrow-container {
+                position: relative;
+                }
+
+            .arrow-bottom {
+                position: absolute;
+                border-bottom: solid 2px #8B2022;
+                border-right: solid 2px #8B2022;
+                width: 24px;
+                height: 24px;
+                transform: rotate(45deg);
+                }
+
+            .arrow-bottom-Shifted {
+                top: 15px;
+                }
+
+    </style>
 </head>
 <body>
 
@@ -62,6 +81,10 @@
 
     <!-- トップ画像 -->
     <div><img src="img/HR-TOP.png" class="top-img" alt=""></div>
+    <div class="arrow-container">
+        <div class="arrow-bottom"></div>
+        <div class="arrow-bottom arrow-bottom-Shifted"></div>
+    </div>
 
     <!-- 隙間 -->
     <div class="gap-control-probram"></div>
