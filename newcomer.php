@@ -235,7 +235,7 @@ $conn = null;
 
         <!-- 投票欄 -->
         <div class="font-style-comments2 line-height">
-            <p>「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）
+            <p>経験したことのあるスポーツを下記から一つお選びください</p>
             <div class="vote">
                 <?php if ($voteHistory) : ?>
                     <p class="asterisk">※既に投票済みです。</p>
@@ -250,9 +250,9 @@ $conn = null;
                 <?php endif; ?>
             </div>
             <P class="font-style-comments2">
-                エンジニアに何故スポーツ？と思う方もいるかもしれませんが、エンジニアはスポーツで培った個々のポジションの役割、チームワークなど、今回社員になったSESのルーキーたちは、
-                皆スポーツをしていて、現在の業務や仕事に取り組む際の姿勢のベースになっています。エンジニアの現場経験がなかったり、経験が短期だったとしても、実際の現場では人間力も
-                強い武器になってきます。
+            エンジニアに何故スポーツ？と思う方もいるかもしませんが、今回入社した若手エンジニアたちは、皆スポーツ経験者です。
+            彼らの仕事に取り組む姿勢にスポーツでの経験が活かされています。
+            エンジニアとしての実務経験がなかったり、短かったりしても、取り組む姿勢は強い武器になっています。
             </p>
         </div>
 
@@ -265,18 +265,9 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <div class="newcomer__title">
-            <p class="font-style-title">SES</P>
-            <hr class="border-line">
             <h2 class="font-style-words">
-                「世の中に求められている技術！<br>
-                必要とされているから<br>
-                困難であっても頑張れる！」
-            </h2>
-            
-            <!-- 隙間 -->
-            <div class="gap-control-probram"></div>
-
-            <P class="font-style-comments">新しい同志たち</p>
+                「求められているから頑張れる！」
+            </h2>            
         </div>
 
         <!-- 隙間 -->
@@ -288,6 +279,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <!-- タブ切り替え -->
+        <!--
         <section id="ict-link" class="section__contents anchor center">
             <div class="contents__bg">
                 <div class="contents__change-button">
@@ -300,6 +292,7 @@ $conn = null;
                         <p class="tab__subtitle">着任：四国エリア</p>
                     </a>
                 </div>
+                        -->
                 <div class="contents__ict container" id="target2">
                     <img class="first-img" src="img/グループ 1098.jpg" alt="サンプル画像">
                     <div class="detail1">
