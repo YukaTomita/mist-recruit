@@ -161,7 +161,7 @@ $conn = null;
         const labels = [];
         const data = [];
 
-        <?php foreach ($results as $result) : ?>
+        <?php foreach ($results as $index => $result) : ?>
             labels.push('<?php echo $result['name']; ?>');
             data.push(<?php echo $result['count']; ?>);
         <?php endforeach; ?>
@@ -173,21 +173,20 @@ $conn = null;
             data: {
                 labels: labels,
                 datasets: [{
-                    label: '投票数',
                     data: data,
-                    backgroundColor: '#8B2022', // 全ての棒グラフに#8B2022カラーを使用
+                    backgroundColor: [
+                        <?php foreach ($results as $index => $result) : ?>
+                            <?php echo ($index >= 3) ? "'rgba(139, 32, 34, 0.5)'" : "'#8B2022'"; ?>,
+                        <?php endforeach; ?>
+                    ],
                     borderWidth: 0 // 棒グラフの枠線を削除
                 }]
             },
             options: {
                 scales: {
                     x: {
-                        barThickness: 15, // 棒の幅を調整（デフォルトの15pxより優先）
                         grid: {
                             display: false // 縦方向のグリッド線を非表示
-                        },
-                        ticks: {
-                            beginAtZero: true
                         }
                     },
                     y: {
