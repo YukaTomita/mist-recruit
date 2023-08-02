@@ -181,21 +181,23 @@ $conn = null;
             },
             options: {
                 scales: {
-                    xAxes: [{
-                        barPercentage: 0.5, // 棒の幅を調整（0.5で15px）
-                        gridLines: {
+                    x: {
+                        barThickness: 15, // 棒の幅を調整（デフォルトの15pxより優先）
+                        grid: {
                             display: false // 縦方向のグリッド線を非表示
                         },
                         ticks: {
                             beginAtZero: true
                         }
-                    }],
-                    yAxes: [{
+                    },
+                    y: {
                         display: false // 縦軸ラベルを非表示
-                    }]
+                    }
                 },
-                legend: {
-                    display: false // 凡例を非表示
+                plugins: {
+                    legend: {
+                        display: false // 凡例を非表示
+                    }
                 },
                 responsive: true,
                 maintainAspectRatio: false
