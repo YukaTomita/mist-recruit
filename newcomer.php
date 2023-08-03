@@ -293,18 +293,18 @@ $conn = null;
                     </a>
                 </div>
                         -->
-                    <div class="contents__ict container" id="target2">
-                        <img class="first-img" src="img/rugby.png" alt="サンプル画像">
-                        <div class="detail1">
-                            <div class="title-and-photo">
-                                <h2 class="spop-title">タイトル</h2>
-                                <img class="spop-photo" src="img/写真のファイル名.jpg" alt="写真の説明">
+                        <div class="contents__ict container" id="target2">
+                            <img class="first-img" src="img/グループ 1098.jpg" alt="サンプル画像">
+                            <div class="detail1">
+                                <div class="title-and-photo">
+                                    <h2 class="spop-title">タイトル</h2>
+                                    <img class="spop-photo" src="img/rugby.png" alt="写真の説明">
+                                </div>
+                                <p class="spop-comment">コメントをここに入力してください。</p>
                             </div>
-                            <p class="spop-comment">コメントをここに入力してください。</p>
+                            <p class="newcomer-text">僕はラグビー<br>をしてました。</p>
+                            <button class="newcomer-btn1">もっと見る</button>
                         </div>
-                        <p class="newcomer-text">僕はラグビー<br>をしてました。</p>
-                        <button class="newcomer-btn1">もっと見る</button>
-                    </div>
                     <img class="first-img" src="img/グループ 1100.jpg" alt="サンプル画像">
                     <div class="detail2">
                         <img class="open-img" src="img/グループ 1819.png" alt="サンプル画像">
