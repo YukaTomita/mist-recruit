@@ -293,21 +293,18 @@ $conn = null;
                     </a>
                 </div>
                         -->
-                <div class="contents__ict container" id="target2">
-                    <img class="first-img" src="img/グループ 1098.jpg" alt="サンプル画像">
-                    <div class="detail1">
-                        <div class="open-img">
-                            <div class="poptitle">「スポーツで培った習慣は<br>今の仕事に役立っていると感じる時があります！」</div>
-                            <div class="spop-flex">
-                                <img src="img/rugby.png" class="popimg">
-                                <p class="pop-text">ラグビーでのチームワークが、プロジェクト進行のほうれんそうの習慣など、
-                                    業務に役立っていると思います。またラグビーは個々のポジションが明確で、
-                                    今の仕事でも自分が何をしなければならないかなど責任をはたすところで活きてます。</p>
+                    <div class="contents__ict container" id="target2">
+                        <img class="first-img" src="img/rugby.png" alt="サンプル画像">
+                        <div class="detail1">
+                            <div class="title-and-photo">
+                                <h2 class="spop-title">タイトル</h2>
+                                <img class="spop-photo" src="img/写真のファイル名.jpg" alt="写真の説明">
                             </div>
+                            <p class="spop-comment">コメントをここに入力してください。</p>
                         </div>
+                        <p class="newcomer-text">僕はラグビー<br>をしてました。</p>
+                        <button class="newcomer-btn1">もっと見る</button>
                     </div>
-                    <p class="newcomer-text">僕はラグビー<br>をしてました。</p>
-                    <button class="newcomer-btn1">もっと見る</button>
                     <img class="first-img" src="img/グループ 1100.jpg" alt="サンプル画像">
                     <div class="detail2">
                         <img class="open-img" src="img/グループ 1819.png" alt="サンプル画像">
@@ -325,8 +322,8 @@ $conn = null;
                     <div class="contents">
                     </div>
                 </div>
-            </div>
-        </section>
+<!--        </div>
+        </section>  -->
         <div class="flex">
             <p>2022年入社　新卒入社</p>
             <p>先輩たちをもっと見る→</p>

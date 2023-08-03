@@ -161,19 +161,25 @@
     padding:0;
     margin-bottom: -250px;
 }
-.spop-flex {
-    display: flex; /*横並び*/
+
+.title-and-photo {
+    display: flex;
+    align-items: center;
     justify-content: center;
-  }
-  .spop-flex .spop-text {
-    text-align: left;
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-    .spoptitle{
-      text-align: left;
-      font-size: 2rem;
-    }
+    margin-bottom: 10px;
+}
+
+.spop-title {
+    margin-right: 10px;
+}
+
+.spop-photo {
+    width: 60%;
+}
+
+.spop-comment {
+    text-align: center;
+}
   
 .container button{
     max-width:800px;
