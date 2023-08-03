@@ -397,7 +397,10 @@ button.next {
     grid-gap: 0px; /* 隙間 */
     background-color: #FFFFFF;
 }
-
+.background-gray{
+  height: 1200px;
+  background-color: #F7F7F7;
+}
 .club-box1{
     margin-top: 50px;
     text-align: center;
@@ -431,7 +434,7 @@ button.next {
     vertical-align: middle;
     grid-column: 1 / 4;
     grid-row: 3 / 6; 
-    margin-top: 0;
+    margin-top: 15px;
 }
 .club-box6{
     margin: auto;
@@ -439,7 +442,7 @@ button.next {
     vertical-align: middle;
     grid-column: 4 / 7;
     grid-row: 3 / 6; 
-    margin-top: 0;
+    margin-top: 15px;
 }
 .club-box8{
   grid-column: 2 / 4;
@@ -453,8 +456,13 @@ button.next {
     grid-column: 2 / 6;
     grid-row: 9; 
 }
+.club-box10{
+  grid-column: 2 / 6;
+  grid-row: 7 / 9;
+  margin-top: 15px; 
+}
 .line-height{
-  line-height: 2rem;
+  line-height: 2.5rem;
 }
   .new-bs-img {
     margin: 0;
@@ -507,15 +515,15 @@ button.next {
     text-align: center;
   }
 
-/* SNS写真・テキスト */
+/* トピックス　写真・テキスト */
 
 .sns-flex{
     display: flex;
     justify-content: center;
 }
 
-.sns-flex > p{
-    width: 45%;
+.sns-txt{
+    width: 30%;
     text-align: left;
     margin-top:30px;
     margin-left:15px;
@@ -528,37 +536,64 @@ button.next {
     font-size: 2rem;
 }
 
+.txt-right{
+  text-align: right;
+}
+
 /* お知らせ一覧 */
 .news-banner {
-    margin: auto;
-    display: flex;
-    margin-bottom: 20px;
-    align-items: center;
-    width: 800px; /* バナーの幅 */
-    height: 50px; /* バナーの高さ */
-    border-radius: 30px; /* バナーの両端の丸さ */
-    background-color: yellow; /* バナーの背景色 */
-    overflow: hidden; /* 内部の要素がはみ出さないようにする */
-  }
-  
-  .news-circle {
-    margin-right: 80px;
-    margin-left: 150px;
-    width: 25px; /* 円の直径 */
-    height: 25px; /* 円の直径 */
-    border-radius: 50%;
-    background-color: #8B2022; /* 円の背景色 */
-  }  
+  display: flex;
+  align-items: center; /* 垂直方向の中央寄せ */
+  justify-content: center; /* 水平方向の中央寄せ */
+}
 
-  .news-date {
-    font-size: 2rem; /* 日付のフォントサイズ */
-    margin-right: 10px; /* 日付とテキストの間隔 */
-  } 
+/* 以前のCSSコードをそのまま利用 */
+.news-icon {
+  position: relative;
+  padding-left: 20px;
+  margin-right: 30px;
+  font-size: 1.7rem;
+  line-height: 3rem;
+}
 
-  .news-text {
-    margin-left: 30px;
-    font-size: 2rem; /* テキストのフォントサイズ */
-  }
+.news-icon::before {
+  position: absolute;
+  content: '';
+  width: 17px;
+  height: 17px;
+  background: #8B2022;
+  border-radius: 50%;
+  top: 50%;
+  left: 0;
+  margin-top: -7px;
+}
+
+.news-icon::after {
+  position: absolute;
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-top: solid 1px #fff;
+  border-right: solid 1px #fff;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 50%;
+  left: 5px;
+  margin-top: -1px;
+}
+
+.news-title {
+  margin-left: 20px; /* アイコンの右側に余白を設定 */
+  font-size: 1.7rem;
+  line-height: 3rem;
+}
+
+/* リンクのスタイルを設定 */
+.news-title a {
+  text-decoration: none;
+  color: #333; /* リンクのテキストカラーを指定 */
+}
+
   
 /* Youtube */
 .youtube-container {
