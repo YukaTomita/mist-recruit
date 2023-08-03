@@ -296,7 +296,13 @@ $conn = null;
                 <div class="contents__ict container" id="target2">
                     <img class="first-img" src="img/グループ 1098.jpg" alt="サンプル画像">
                     <div class="detail1">
-                        <img class="open-img" src="img/グループ 1822.png" alt="サンプル画像">
+                        <div class="poptitle">「スポーツで培った習慣は<br>今の仕事に役立っていると感じる時があります！」</div>
+                        <div class="spop-flex">
+                                <img src="img/rugby.png" class="popimg">
+                                <p class="pop-text">ラグビーでのチームワークが、プロジェクト進行のほうれんそうの習慣など、
+                                    業務に役立っていると思います。またラグビーは個々のポジションが明確で、
+                                    今の仕事でも自分が何をしなければならないかなど責任をはたすところで活きてます。</p>
+                        </div>
                     </div>
                     <p class="newcomer-text">僕はラグビー<br>をしてました。</p>
                     <button class="newcomer-btn1">もっと見る</button>

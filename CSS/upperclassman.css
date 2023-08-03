@@ -62,19 +62,27 @@
   padding: 20px;
   z-index: 1;
 }
-  .popimg{
-    width: 60%;
-    height: auto;
-    margin-top: 20px;
-  }
+
+.pop-flex {
+  display: flex; /*横並び*/
+  justify-content: center;
+  margin-top: 30px;
+}
+.pop-flex .pop-text {
+  margin: 15px 0 0 20px;
+  padding: 0;
+  text-align: left;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
   .poptitle{
     margin-top: 25px;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .poptxt{
     margin-top: 25px;
-    line-height: 2rem;
+    line-height: 2.2rem;
   }
   .popup .close-button {
     position: absolute;
