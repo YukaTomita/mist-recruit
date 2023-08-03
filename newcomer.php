@@ -298,9 +298,9 @@ $conn = null;
                                 <img class="first-img" src="img/グループ 1098.jpg" alt="サンプル画像">
                                 <div class="spopup">
                                     <div class="spopup-content">
-                                        <h2 class="spop-title">タイトル</h2>
-                                        <img class="spop-photo" src="img/rugby.png" alt="写真の説明">
-                                        <p class="spop-comment">コメントをここに入力してください。</p>
+                                        <h2 class="stitle">タイトル</h2>
+                                        <img class="sphoto" src="img/写真のファイル名.jpg" alt="写真の説明">
+                                        <p class="scomment">コメントをここに入力してください。</p>
                                     </div>
                                 </div>
                             </div>

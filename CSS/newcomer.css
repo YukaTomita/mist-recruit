@@ -169,16 +169,15 @@
 
 .spopup {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: -10px;
-    transform: translateY(-50%);
+    display: none;
     background-color: #ffffff; /* 白い背景 */
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: none;
     z-index: 1;
-    max-width: 250px; /* ポップアップの幅を調整 */
+    width: 200px; /* ポップアップの幅を調整 */
 }
 
 .spopup.open {
@@ -188,9 +187,8 @@
 .spopup:before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: -10px;
-    transform: translateY(-50%);
+    top: 10px;
+    left: 100%;
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent transparent #ffffff;
@@ -198,19 +196,31 @@
 
 .spopup-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.spop-title {
-    margin-right: 10px;
+.stitle {
+    margin-bottom: 5px;
 }
 
-.spop-photo {
-    width: 60%;
+.sphoto {
+    width: 100%;
 }
 
-.spop-comment {
+.scomment {
     text-align: center;
+}
+
+
+.simage-container {
+    position: relative;
+    width: 100%;
+}
+
+.first-img {
+    width: 100%;
+    margin: 0 10px;
 }
 
   
