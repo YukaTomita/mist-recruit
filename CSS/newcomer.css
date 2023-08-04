@@ -197,7 +197,7 @@
     display: block;
 }
 
-
+/*--
 .container{
     max-width:800px;
     height: 1000px;
@@ -224,63 +224,82 @@
     width: 100%;
     margin: 0 10px;
 }
+--*/
+.sport-container {
+    text-align: center;
+    position: relative;
+}
+.sport-image-container {
+    position: relative;
+    display: inline-block;
+}
 
-.spopup {
+.sport-main-image {
+    width: 100%;
+    height: auto;
+}
+.sport-word {
     position: absolute;
-    top: 0;
-    left: -10px;
+    top: 35%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    color: #000;
+    text-align: left;
+}
+
+.more-link {
+    position: absolute;
+    top: 45%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    color: white;
+}
+
+.sport-popup {
     display: none;
-    background-color: #ffffff; /* 白い背景 */
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    width: 200px; /* ポップアップの幅を調整 */
-}
-
-.spopup.open {
-    display: block;
-}
-
-.spopup:before {
-    content: '';
     position: absolute;
-    top: 10px;
-    left: 100%;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    max-width: 420px;
+}
+.sport-popup:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%; 
+    transform: translateY(-50%);
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent transparent #ffffff;
+    border-color: transparent transparent transparent white;
 }
-
-.spopup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stitle {
-    margin-bottom: 5px;
-}
-
-.sphoto {
-    width: 100%;
-}
-
-.scomment {
+.sport-popup-content {
     text-align: center;
 }
 
-
-.simage-container {
-    position: relative;
-    width: 100%;
+.sport-popup-title {
+    margin: 0 0 10px 0;
 }
 
-.first-img {
-    width: 100%;
-    margin: 0 10px;
+.sport-popup-info {
+    display: flex;
+    justify-content: space-between;
 }
 
+.sport-popup-image {
+    width: 50%;
+    height: auto;
+}
+
+.sport-popup-comment {
+    width: 50%;
+}
   
 .container button{
     max-width:800px;

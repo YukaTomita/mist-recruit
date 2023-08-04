@@ -118,7 +118,6 @@ $lastVotingDateTime = $stmt->fetchColumn();
 
 // データベース接続のクローズ
 $conn = null;
-
 ?>
 
 <!DOCTYPE html>
@@ -145,12 +144,12 @@ $conn = null;
     <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
     <title>新人の声</title>
+    <!--css-->
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/common.css">
     <link rel="stylesheet" href="CSS/newcomer.css">
     <link rel="stylesheet" href="CSS/expert.css">
 </head>
-
 <body>
     <!-- header -->
     <header class="header flex-box">
@@ -182,18 +181,17 @@ $conn = null;
 
     <!-- トップ画像と中央配置 -->
 <img class="top-img" src="img\newcomer.jpg" alt="画像">
+
+    <!-- 隙間 -->
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+
+    <!-- 投票機能 -->
 <div class="wrapper">
-
-        <!-- 隙間 -->
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-
-
-        <!-- 投票機能 -->
         <p class="font-style-title">質　問</p>
         <hr class="border-line">
         <p class="font-style-words2">「あなたの好きなスポーツは何ですか？」</p>
@@ -202,6 +200,7 @@ $conn = null;
             </div>
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
+
         <?php
             if ($lastVotingDateTime) {
                 // 最終投票日時を指定のフォーマットに変換して表示
@@ -212,10 +211,11 @@ $conn = null;
                 echo "まだ投票がありません。";
             }            
             ?>
+
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
 
-            <p class="font-style-words text-center">現在のランキング</p>
+        <p class="font-style-words text-center">現在のランキング</p>
         <?php if (!empty($ranking) && $voteHistory) : ?>
 
         <div class="ranking">
@@ -265,8 +265,10 @@ $conn = null;
         <div class="gap-control-probram"></div>
 
         <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
-        <div class="Arrow-Bottom"></div>
-        <div class="Arrow-Bottom"></div>
+        <div class="arrow-container">
+            <div class="arrow-bottom"></div>
+            <div class="arrow-bottom arrow-bottom-Shifted"></div>
+        </div>
 
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
@@ -343,39 +345,64 @@ $conn = null;
                     </a>
                 </div>
                         -->
-                        <div class="contents__ict container" id="target2">
-                            <div class="image-container">
-                                <img class="first-img" src="img/グループ 1098.jpg" alt="サンプル画像">
-                                <div class="spopup">
-                                    <div class="spopup-content">
-                                        <h2 class="stitle">タイトル</h2>
-                                        <img class="sphoto" src="img/写真のファイル名.jpg" alt="写真の説明">
-                                        <p class="scomment">コメントをここに入力してください。</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail1">
-                                <p class="newcomer-text">僕はラグビー<br>をしてました。</p>
-                                <button class="newcomer-btn1">もっと見る</button>
-                            </div>
-                        </div>
-                    <img class="first-img" src="img/グループ 1100.jpg" alt="サンプル画像">
-                    <div class="detail2">
-                        <img class="open-img" src="img/グループ 1819.png" alt="サンプル画像">
-                    </div>
-                    <p class="newcomer-text">僕はサッカー<br>をしてました。</p>
-                    <button class="newcomer-btn2">もっと見る</button>
-                    <img class="first-img" src="img/グループ 1101.jpg" alt="サンプル画像">
-                    <div class="detail3">
-                        <img class="open-img" src="img/グループ 1821.png" alt="サンプル画像">
-                    </div>
-                    <p class="newcomer-text">僕はバスケ<br>をしてました。</p>
-                    <button class="newcomer-btn3">もっと見る</button>
-                </div>
-                <div class="contents__lbd" id="target">
-                    <div class="contents">
+    <!--<div class="contents__ict container" id="target2"></div>-->
+    <div class="sport-container">
+        <div class="sport-image-container">
+            <img src="img/グループ 1098.jpg" alt="画像１" class="sport-main-image">
+            <p class="sport-word">僕はラグビー<br>をしてました。</p>
+            <p class="more-link" onclick="togglePopup('popup1')">▶ もっと見る</p>
+            <!-- ポップアップ -->
+            <div class="sport-popup popup1">
+                <div class="sport-popup-content">
+                    <div class="sport-popup-title">ポップアップのタイトル</div>
+                    <div class="sport-popup-info">
+                        <img src="img/rugby.png" alt="ポップアップ画像" class="sport-popup-image">
+                        <p class="sport-popup-comment">ここにコメントを記入</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+    <!--<div class="contents__ict container" id="target2"></div>-->
+    <div class="sport-container">
+        <div class="sport-image-container">
+            <img src="img/グループ 1100.jpg" alt="画像１" class="sport-main-image">
+            <p class="sport-word">僕はサッカー<br>をしてました。</p>
+            <p class="more-link" onclick="togglePopup('popup2')">▶ もっと見る</p>
+            <!-- ポップアップ -->
+            <div class="sport-popup popup2">
+                <div class="sport-popup-content">
+                    <div class="sport-popup-title">ポップアップのタイトル</div>
+                    <div class="sport-popup-info">
+                        <img src="img/soccor.png" alt="ポップアップ画像" class="sport-popup-image">
+                        <p class="sport-popup-comment">ここにコメントを記入</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+    <!--<div class="contents__ict container" id="target2"></div>-->
+    <div class="sport-container">
+        <div class="sport-image-container">
+            <img src="img/グループ 1101.jpg" alt="画像１" class="sport-main-image">
+            <p class="sport-word">僕はバスケ<br>をしてました。</p>
+            <p class="more-link" onclick="togglePopup('popup3')">▶ もっと見る</p>
+            <!-- ポップアップ -->
+            <div class="sport-popup popup3">
+                <div class="sport-popup-content">
+                    <div class="sport-popup-title">ポップアップのタイトル</div>
+                    <div class="sport-popup-info">
+                        <img src="img/basketball.png" alt="ポップアップ画像" class="sport-popup-image">
+                        <p class="sport-popup-comment">ここにコメントを記入</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--        </div>
         </section>  -->
         <div class="flex">
@@ -450,6 +477,32 @@ $conn = null;
                 return false; 
             }    
         </script>
+    <script>
+        // 例: ポップアップを表示する関数
+        function showPopup(popupClass) {
+            var popup = document.querySelector("." + popupClass);
+            if (popup) {
+                popup.style.display = "block";
+            }
+        }
 
+        // 例: ポップアップを非表示にする関数
+        function hidePopup(popupClass) {
+            var popup = document.querySelector("." + popupClass);
+            if (popup) {
+                popup.style.display = "none";
+            }
+        }
+        function togglePopup(popupClass) {
+            var popup = document.querySelector("." + popupClass);
+            if (popup) {
+                if (popup.style.display === "block") {
+                    popup.style.display = "none";
+                } else {
+                    popup.style.display = "block";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
