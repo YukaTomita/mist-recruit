@@ -11,6 +11,7 @@ $conn = new PDO("mysql:host=$host;dbname=$db", $user, $password);
 // タイムゾーンを設定
 date_default_timezone_set('Asia/Tokyo');
 
+
 // 投票結果のリセット処理、1分間ボタンが押せなくなる、指定した時間に開いていないとリセットされない
 if (date('H:i') === '03:00') {
     // 投票数をゼロにリセットするクエリを実行
@@ -41,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':user_ip', $userIp);
     $stmt->execute();
     $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
+    $lastVotingDate = $stmt->fetchColumn();
 
     if (!$voteHistory) {
         // 投票結果をデータベースに保存
@@ -106,8 +108,17 @@ $stmt->bindParam(':user_ip', $userIp);
 $stmt->execute();
 $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
+// 投票日取得：更新
+$userIp = $_SERVER['REMOTE_ADDR'];
+$query = "SELECT updated_at FROM votes_history WHERE user_ip = :user_ip ORDER BY updated_at DESC LIMIT 1";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':user_ip', $userIp);
+$stmt->execute();
+$lastVotingDateTime = $stmt->fetchColumn();
+
 // データベース接続のクローズ
 $conn = null;
+
 ?>
 
 <!DOCTYPE html>
@@ -170,8 +181,8 @@ $conn = null;
     </header>
 
     <!-- トップ画像と中央配置 -->
-    <img class="top-img" src="img\newcomer.jpg" alt="画像">
-    <div class="wrapper">
+<img class="top-img" src="img\newcomer.jpg" alt="画像">
+<div class="wrapper">
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
@@ -193,68 +204,111 @@ $conn = null;
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
 
-            <div class="load">
-                <p id="currentDate"></p>
-            </div>
-
-            <div class="gap-control-probram"></div>
-            <div class="gap-control-probram"></div>
-
+        <?php
+            if ($lastVotingDateTime) {
+                // 最終投票日時を指定のフォーマットに変換して表示
+                $formattedLastVotingDate = date('更新：Y.m.d', strtotime($lastVotingDateTime));
+                echo $formattedLastVotingDate;
+            } else {
+                // 投票履歴がない場合の処理
+                echo "まだ投票がありません。";
+            }            
+            ?>
             <p class="font-style-words text-center">現在のランキング</p>
-
-        <!-- 隙間 -->
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-
         <?php if (!empty($ranking) && $voteHistory) : ?>
-            <div class="ranking">
-                <?php $count = 0; ?>
-                <?php foreach ($ranking as $rankData) : ?>
-                    <?php if ($count >= 5) break; ?> <!-- 5つ以上の要素は表示しない -->
-                    <div class="bar-graph text-align">
-                        <p class="rank"><span><?php echo $rankData['rank']; ?></span>位</p>
-                        <p class="sportName"><?php echo $rankData['sportName']; ?></p>
-                    </div>
-                    <?php $count++; ?>
-                <?php endforeach; ?>
+
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+
+        <div class="ranking">
+        <?php $count = 0; ?>
+        <?php foreach ($ranking as $rankData) : ?>
+            <?php if ($count >= 5) break; ?> <!-- 5つ以上の要素は表示しない -->
+            <?php
+                $rank = $rankData['rank'];
+                $sportName = $rankData['sportName'];
+                $imagePath = ''; // 画像のパスを指定する変数
+
+            // 1位から3位までの場合に画像のパスを設定
+            if ($rank === 1) {
+                $imagePath = 'img/new1.png';
+                $rankClass = 'rank-1'; /* 1位の場合のクラスを追加 */
+            } elseif ($rank === 2) {
+                $imagePath = 'img/new2.png';
+                $rankClass = 'rank-2'; /* 2位の場合のクラスを追加 */
+            } elseif ($rank === 3) {
+                $imagePath = 'img/new3.png';
+                $rankClass = 'rank-3'; /* 3位の場合のクラスを追加 */
+            } else {
+                $rankClass = ''; /* 1位から3位以外はクラスを空にする */
+            }
+            ?>
+
+            <div class="bar-graph text-align <?php echo $rankClass; ?>">
+                <!-- 画像を挿入 -->
+                <?php if (!empty($imagePath)) : ?>
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $rank; ?>位の画像" style="width: 40px; height: 30px;">
+                <?php else : ?>
+                    <div style="width: 40px; height: 30px;"></div>
+                <?php endif; ?>
+
+                <p class="rank"><span><?php echo $rank; ?></span>位</p>
+                <p class="sportName"><?php echo $sportName; ?></p>
             </div>
-        <?php else : ?>
-            <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
-        <?php endif; ?>
+            <?php $count++; ?>
+        <?php endforeach; ?>
+    </div>
+    <?php else : ?>
+        <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
+    <?php endif; ?>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
 
-        <div class="cercle">ランキングに参加する</div>
+        <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
         <div class="Arrow-Bottom"></div>
         <div class="Arrow-Bottom"></div>
 
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
-
-        <!-- 投票欄 -->
-        <div class="font-style-comments2 line-height">
-            <p>経験したことのあるスポーツを下記から一つお選びください</p>
-            <div class="vote">
-                <?php if ($voteHistory) : ?>
-                    <p class="asterisk">※既に投票済みです。</p>
-                <?php else : ?>
-                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <?php foreach ($sports as $sport) : ?>
-                            <button class="sport-button" type="submit" name="sport" value="<?php echo $sport['id']; ?>">
-                                <?php echo $sport['name']; ?>
-                            </button>
-                        <?php endforeach; ?>
-                    </form>
-                <?php endif; ?>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+</div>
+    <!-- 投票欄 -->
+    <div class="ranking-section" id="rankingSection">
+        <div class="wrapper">
+            <div class="font-style-comments2 line-height">
+                <p class="v-text">「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）</p>
+                <div class="vote">
+                    <?php if (!$voteHistory) : ?>
+                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <div class="radio-buttons">
+                                <?php foreach ($sports as $sport) : ?>
+                                    <label class="radio-column">
+                                        <input type="radio" name="sport" value="<?php echo $sport['id']; ?>" onchange="this.form.submit()">
+                                        <?php echo $sport['name']; ?>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
+                        </form>
+                    <?php else : ?>
+                        <p class="asterisk">※すでに投票済みです。</p>
+                    <?php endif; ?>
+                </div>
             </div>
-            <P class="font-style-comments2">
-            エンジニアに何故スポーツ？と思う方もいるかもしませんが、今回入社した若手エンジニアたちは、皆スポーツ経験者です。
-            彼らの仕事に取り組む姿勢にスポーツでの経験が活かされています。
-            エンジニアとしての実務経験がなかったり、短かったりしても、取り組む姿勢は強い武器になっています。
-            </p>
         </div>
+    </div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+
+        <P class="font-style-comments2">
+        エンジニアに何故スポーツ？と思う方もいるかもしませんが、今回入社した若手エンジニアたちは、皆スポーツ経験者です。
+        彼らの仕事に取り組む姿勢にスポーツでの経験が活かされています。
+        エンジニアとしての実務経験がなかったり、短かったりしても、取り組む姿勢は強い武器になっています。
+        </p>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
@@ -384,6 +438,22 @@ $conn = null;
 <script src="js\header.js"></script>
 <script src="js/upperclassman.js"></script>
 <script src="js/newcomer.js"></script>
+<script>
+            function toggleRanking() {
+                var rankingSection = document.getElementById("rankingSection");
+                var rankingButton = document.getElementById("rankingButton");
+                if (rankingSection.style.display === "none") {
+                    rankingSection.style.display = "block";
+                    rankingButton.textContent = "× 閉じる";
+                    rankingButton.style.backgroundColor = "#f0f0f0";
+                } else {
+                    rankingSection.style.display = "none";
+                    rankingButton.textContent = "ランキングに参加する";
+                    rankingButton.style.backgroundColor = "#8B2022";
+                }
+                return false; 
+            }    
+        </script>
 
 </body>
 </html>

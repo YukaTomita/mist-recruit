@@ -22,9 +22,13 @@
     <title>募集要項</title>
     <!-- css,js -->
     <link rel="stylesheet" href="CSS/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="CSS/common.css" type="text/css">
     <link rel="stylesheet" href="CSS/expert.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
     <script type="text/javascript" src="js/common.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">   
 </head>
@@ -96,14 +100,18 @@
 <div class="container-fluid">
     <div class="row">
         <div class="wrapper">
-            <div class="title-p">仕事内容</div>
-            <p class="font-style-comments3">アプリ開発エンジニア/インフラエンジニア/WEBエンジニア</p>
-            <div class="gap-control-probram"></div>
-            <div class="gap-control-probram"></div>
-            <div class="gap-control-probram"></div>
-            <div class="title-p">求める人材</div>
+            <div class="title-p">募集要項</div>
             <p class="font-style-comments3">1.《プロフェッショナル》<br>
             SESから自社プロダクト、受託開発サービスと様々な案件に携われます。</p>
+            <div class="gap-control-probram"></div>
+            <p class="font-style-comments3">2.《現場経験半年から1年》<br>
+                現時点でのスキルを活かしエンジニアとして活躍できます。<br>※下記、当てはまる方は優遇します！</p>
+            <div class="gap-control-probram"></div>
+            <div class="font-style-comments3">■何かしらのITエンジニアとしての実務経験が半年から1年ある方</div>
+            <div class="gap-control-probram"></div>
+            <div class="font-style-comments3">■大学やその他スクールでITについて勉強していた方</div>
+            <div class="gap-control-probram"></div>
+            <div class="font-style-comments3">■独学でプログラミングを学んだ方</div>
             <div class="gap-control-probram"></div>
             <div class="font-style-comments3">■アプリ開発エンジニア</div>
             <div class="font-style-comments3">（Ruby[on Rails] / PHP / Node.js / Java / Python / Go / Scala / Elixir / JavaScript / React / Vue / Angular / Flutter etc）<br>・自社プロダクト</div>
@@ -114,15 +122,6 @@
             <div class="font-style-comments3">■インフラエンジニア</div>
             <div class="font-style-comments3">・自社プロダクト（OpenStack＋ARMアーキテクチャ製のIaaS）<br>・AWSネットワーク基板設計／構築（AWS／Linux etc）<br>
             ・大規模プラットフォームのインフラ監視／運用（GCP／Linux）<br>・VMwareを使用した仮想化基盤</div>
-            <div class="gap-control-probram"></div>
-            <p class="font-style-comments3">2.《現場経験半年から1年》<br>
-                現時点でのスキルを活かしエンジニアとして活躍できます。<br>※下記、当てはまる方は優遇します！</p>
-            <div class="gap-control-probram"></div>
-            <div class="font-style-comments3">■何かしらのITエンジニアとしての実務経験が半年から1年ある方</div>
-            <div class="gap-control-probram"></div>
-            <div class="font-style-comments3">■大学やその他スクールでITについて勉強していた方</div>
-            <div class="gap-control-probram"></div>
-            <div class="font-style-comments3">■独学でプログラミングを学んだ方</div>
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
@@ -174,6 +173,37 @@
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
+
+<!--等級制度-->
+<div class="row mb-3">
+    <div class="col-12 w-100">
+      <div class="swiper-parent">
+        <!-- Swiper START -->
+        <div class="swiper-container">
+          <!-- メイン表示部分 -->
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img class="d-block img-fluid" src="img/役割等級制度.png" alt="Swiper01役割等級制度">
+            </div><!-- ./swiper-slide -->
+            <div class="swiper-slide">
+              <img class="d-block img-fluid" src="img/役割等級制度_説明.png" alt="Swiper02役割等級制度説明">
+            </div><!-- ./swiper-slide -->
+            <div class="swiper-slide">
+              <img class="d-block img-fluid" src="img/評価フローイメージ.png" alt="Swiper03評価フローイメージ">
+            </div><!-- ./swiper-slide -->
+          </div><!-- ./swiper-wrapper -->
+          <!-- ページネーション -->
+          <div class="swiper-pagination swiper-pagination-black"></div>
+        </div><!-- ./swiper-container -->
+        <!-- Swiper END -->
+        <!-- 前ページボタン -->
+        <div class="swiper-button-prev swiper-button-black"></div>
+        <!-- 次ページボタン -->
+        <div class="swiper-button-next swiper-button-black"></div>
+      </div><!-- ./swiper-parent -->
+    </div><!-- ./col-12 -->
+  </div><!-- ./row -->
+
          
 <!--エントリー-->
 <div class="wrapper">
@@ -205,6 +235,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="js\header.js"></script>
 <script src="js/upperclassman.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script>
+var swiper = new Swiper('.swiper-container', {
+   navigation: {
+     nextEl: '.swiper-button-next',
+     prevEl: '.swiper-button-prev',
+   },
+   loop: true,
+   pagination: {
+ el: '.swiper-pagination',
+ type: 'bullets',
+ clickable: true,
+},
+   autoplay: {
+     delay: 5000,
+     disableOnInteraction: true
+   },
+ });
+</script>
 </body>
 </html>    

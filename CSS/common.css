@@ -150,7 +150,7 @@ header
 ---------------------- */
 .header {
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     width: 100%;
     height: 90px;
@@ -358,3 +358,35 @@ footer
     text-align: center;
     font-weight: bold;
 }
+
+/* ================================ * /
+          swiper
+==================================== */
+
+/*swiperの設定*/
+.swiper-button-prev,
+.swiper-button-next {
+  width: 32px!important;
+  height: 32px!important;
+  margin-top: -16px!important;
+}
+/* Swiperの親要素 */
+.swiper-parent {
+	position: relative;
+}
+/* Swiper本体 */
+.swiper-container {
+	width: calc(100% - 100px);	/* ☆前・次ページボタンの幅をそれぞれ50pxとして、その分を引く */
+	padding-bottom: 50px;		/* ★ページネーション・スクロールバー分の余白50pxを下に取る */
+	box-sizing: content-box;
+}
+/* 前・次スライドボタンの縦位置調整（スライドの高さの中央に合わせる） */
+.swiper-button-prev, .swiper-button-next {
+	top: calc((100% - 50px) * 0.5);	/* ☆★ページネーション・スクロールバー（50px）を除く縦位置の中央（＝スライドの高さの中央）に一旦配置 */
+	margin-top: -22px;			/* ★ボタンの高さ（44px）の半分のネガティブマージンで上に少しずらす */
+}
+
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+    }
