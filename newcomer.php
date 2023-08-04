@@ -200,10 +200,8 @@ $conn = null;
             <div class="load">
                 <div id="loadingText">上位5つを更新中<span class="dots">...</span></div>
             </div>
-
             <div class="gap-control-probram"></div>
             <div class="gap-control-probram"></div>
-
         <?php
             if ($lastVotingDateTime) {
                 // 最終投票日時を指定のフォーマットに変換して表示
@@ -214,13 +212,11 @@ $conn = null;
                 echo "まだ投票がありません。";
             }            
             ?>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+
             <p class="font-style-words text-center">現在のランキング</p>
         <?php if (!empty($ranking) && $voteHistory) : ?>
-
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
 
         <div class="ranking">
         <?php $count = 0; ?>

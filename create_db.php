@@ -127,30 +127,86 @@ $conn = null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-    <meta name="description" content="株式会社MIST solution - トップページ 株式会社ミストソリューションは、異なった業界との接点を持つことで化学反応を起こし、
-    幅広いニーズにより的確にお応えできる、常に進化しているIT企業です。">
-    <meta name="keywords" content="株式会社ミストソリューション,ミストソリューション,MISTsolution,ミスト" />
-    <meta name="copyright" content="© 1997, 2023 mistsolution. All Rights Reserved.">
-    <meta name="format-detection" content="telephone=no">
-    <!-- OGP -->
-    <meta property="og:url" content="https://www.mistnet.co.jp">
-    <meta property="og:title" content="株式会社MIST solution | WEBサイト" />
-    <meta property="og:site_name" content="株式会社MIST solution | WEBサイト">
-    <meta name="og:description" content="株式会社MIST solution - トップページ 株式会社ミストソリューションは、異なった業界との接点を持つことで化学反応を起こし、
-    幅広いニーズにより的確にお応えできる、常に進化しているIT企業です。">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ja-JP">
-    <meta property="og:image" content="assets/img/mist-ogp.jpg">
-    <meta name="twitter:card" content="summary" />
-    <!-- favicon -->
-    <link rel="icon" href="img/favicon.ico">
     <title>testtest</title>
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/common.css">
     <link rel="stylesheet" href="CSS/newcomer.css">
     <link rel="stylesheet" href="CSS/expert.css">
-
     <style>
+        .ranking {
+            margin: 60px 10px;
+        }
+        .vote{
+            margin: 60px 10px; 
+        }
+        .bar-graph {
+            height: 20px;
+            position: relative;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sport-button {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #f2f2f2;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .sport-button:hover {
+            background-color: #e0e0e0;
+        }
+        .sportName {
+            border: 1.5px solid #BBBBBB;
+            width: 400px;
+            height: 25px;
+            border-radius: 100vh;
+            padding-top: 10px;
+        }
+        .rank {
+            width: 50px;
+            font-size: 2rem;
+        }
+        .rank-1 .sportName {
+            border-color: #CAA846; /* 1位の場合の枠の色を黄緑 (#CAA846) に変更 */
+            border-width: 3px;
+        }
+
+        .rank-2 .sportName {
+            border-color: #B2BABA; /* 2位の場合の枠の色を灰色 (#B2BABA) に変更 */
+            border-width: 3px;
+        }
+
+        .rank-3 .sportName {
+            border-color: #8B4513; /* 3位の場合の枠の色を茶色 (#8B4513) に変更 */
+            border-width: 3px;
+        }
+        .rank span {
+            font-size: 3rem;
+            line-height: 1;
+        }
+        .title-ranking {
+            font-size: 1.7rem;
+            line-height: 140%;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .asterisk {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #8B2022;
+            margin: auto;
+        }
+        .rank-img{
+            width: 15px;
+            height: auto;
+        }
+
         .v-text{
             font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
             text-align: left;
@@ -158,13 +214,12 @@ $conn = null;
         }
         .ranking-section {
             display: none;
+            width: 100%;
+            padding: 20px; /* 必要な場合はランキングセクションの内容との間に適切な余白を設定 */
+            box-sizing: border-box; 
+            background-color: #f2f2f2; /* ランキングセクションの背景色をグレー (#f2f2f2) に変更 */
         }
 
-        .ranking-section.open {
-            display: block;
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
         .radio-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -177,7 +232,8 @@ $conn = null;
         }
         .arrow-container {
             position: relative;
-            align-items: center;
+            display: flex;
+            justify-content: center;
             }
             .arrow-bottom {
             position: absolute;
@@ -193,7 +249,6 @@ $conn = null;
             }
     </style>
 </head>
-
 <body>
         <script>
             function toggleRanking() {
@@ -208,16 +263,10 @@ $conn = null;
                     rankingButton.textContent = "ランキングに参加する";
                     rankingButton.style.backgroundColor = "#8B2022";
                 }
+                return false; 
             }    
         </script>
 
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        
         <!-- 投票機能 -->
     <div class="wrapper">
         <p class="font-style-title">質　問</p>
@@ -226,10 +275,6 @@ $conn = null;
             <div class="load">
                 <div id="loadingText">上位5つを更新中<span class="dots">...</span></div>
             </div>
-
-            <div class="gap-control-probram"></div>
-            <div class="gap-control-probram"></div>
-
             <?php
             if ($lastVotingDateTime) {
                 // 最終投票日時を指定のフォーマットに変換して表示
@@ -240,16 +285,7 @@ $conn = null;
                 echo "まだ投票がありません。";
             }            
             ?>
-
-            <div class="gap-control-probram"></div>
-            <div class="gap-control-probram"></div>
-
             <p class="font-style-words text-center">現在のランキング</p>
-    
-        <!-- 隙間 -->
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-
         <?php if (!empty($ranking) && $voteHistory) : ?>
 
     <div class="ranking">
@@ -261,17 +297,22 @@ $conn = null;
                 $sportName = $rankData['sportName'];
                 $imagePath = ''; // 画像のパスを指定する変数
 
-                // 1位から3位までの場合に画像のパスを設定
-                if ($rank === 1) {
-                    $imagePath = 'img/new1.png';
-                } elseif ($rank === 2) {
-                    $imagePath = 'img/new2.png';
-                } elseif ($rank === 3) {
-                    $imagePath = 'img/new3.png';
-                }
+            // 1位から3位までの場合に画像のパスを設定
+            if ($rank === 1) {
+                $imagePath = 'img/new1.png';
+                $rankClass = 'rank-1'; /* 1位の場合のクラスを追加 */
+            } elseif ($rank === 2) {
+                $imagePath = 'img/new2.png';
+                $rankClass = 'rank-2'; /* 2位の場合のクラスを追加 */
+            } elseif ($rank === 3) {
+                $imagePath = 'img/new3.png';
+                $rankClass = 'rank-3'; /* 3位の場合のクラスを追加 */
+            } else {
+                $rankClass = ''; /* 1位から3位以外はクラスを空にする */
+            }
             ?>
 
-            <div class="bar-graph text-align">
+            <div class="bar-graph text-align <?php echo $rankClass; ?>">
                 <!-- 画像を挿入 -->
                 <?php if (!empty($imagePath)) : ?>
                     <img src="<?php echo $imagePath; ?>" alt="<?php echo $rank; ?>位の画像" style="width: 40px; height: 30px;">
@@ -289,25 +330,18 @@ $conn = null;
         <p class="ranking asterisk">※投票するとランキングが表示されます。</p>
     <?php endif; ?>
 
-        <!-- 隙間 -->
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-
-    <div class="wrapper">
         <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
        
         <div class="arrow-container">
             <div class="arrow-bottom"></div>
             <div class="arrow-bottom arrow-bottom-Shifted"></div>
         </div>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
     </div>
-    
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-        <div class="gap-control-probram"></div>
-
         <!-- 投票欄 -->
-        <div class="ranking-section" id="rankingSection">
+    <div class="ranking-section" id="rankingSection">
         <div class="wrapper">
             <div class="font-style-comments2 line-height">
                 <p class="v-text">「学生時代していた。」もしくは、「個人でしていた。」など、該当するスポーツを下記からお選びください。（※複数されていた方は、一番長く在籍していたスポーツをお選びください。）</p>
@@ -329,15 +363,4 @@ $conn = null;
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="gap-control-probram"></div>
-    <div class="gap-control-probram"></div>
-
-    <div class="wrapper">
-            <P class="v-text">
-                エンジニアに何故スポーツ？と思う方もいるかもしれませんが、エンジニアはスポーツで培った個々のポジションの役割、チームワークなど、今回社員になったSESのルーキーたちは、
-                皆スポーツをしていて、現在の業務や仕事に取り組む際の姿勢のベースになっています。エンジニアの現場経験がなかったり、経験が短期だったとしても、実際の現場では人間力も
-                強い武器になってきます。
-            </p>
     </div>
