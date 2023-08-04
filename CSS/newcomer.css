@@ -32,7 +32,7 @@
     background-color: #e0e0e0;
 }
 .sportName {
-    border: 3px solid #f00;
+    border: 1.5px solid #BBBBBB;
     width: 400px;
     height: 25px;
     border-radius: 100vh;
@@ -41,6 +41,20 @@
 .rank {
     width: 50px;
     font-size: 2rem;
+}
+.rank-1 .sportName {
+    border-color: #CAA846; /* 1位の場合の枠の色を黄緑 (#CAA846) に変更 */
+    border-width: 3px;
+}
+
+.rank-2 .sportName {
+    border-color: #B2BABA; /* 2位の場合の枠の色を灰色 (#B2BABA) に変更 */
+    border-width: 3px;
+}
+
+.rank-3 .sportName {
+    border-color: #8B4513; /* 3位の場合の枠の色を茶色 (#8B4513) に変更 */
+    border-width: 3px;
 }
 .rank span {
     font-size: 3rem;
@@ -62,6 +76,50 @@
     width: 15px;
     height: auto;
 }
+/*------------------
+        投票
+------------------*/
+.v-text{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    text-align: left;
+    line-height: 2rem;
+}
+.ranking-section {
+    display: none;
+    width: 100%;
+    padding: 20px; /* 必要な場合はランキングセクションの内容との間に適切な余白を設定 */
+    box-sizing: border-box; 
+    background-color: #f2f2f2; /* ランキングセクションの背景色をグレー (#f2f2f2) に変更 */
+}
+
+.radio-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    margin-left: 30px;
+    gap: 20px; /* 選択肢の間隔調整 */
+}
+.radio-column {
+    flex-basis: 30%; /* 各列の幅を調整 */
+}
+.arrow-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    }
+    .arrow-bottom {
+    position: absolute;
+    border-bottom: solid 2px #8B2022;
+    border-right: solid 2px #8B2022;
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+    margin: auto;
+    }
+    .arrow-bottom-Shifted {
+    top: 15px;
+    }
+
 /*------------------
  事業切り替えボタン 
  ------------------*/

@@ -303,7 +303,7 @@ $conn = null;
     </div>
     <div class="gap-control-probram"></div>
     <div class="gap-control-probram"></div>
-
+<div class="wrapper">
         <P class="font-style-comments2">
         エンジニアに何故スポーツ？と思う方もいるかもしませんが、今回入社した若手エンジニアたちは、皆スポーツ経験者です。
         彼らの仕事に取り組む姿勢にスポーツでの経験が活かされています。
