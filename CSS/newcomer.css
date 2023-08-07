@@ -361,15 +361,16 @@
 }
 .size-img {
     max-width: 110px;
-    margin: 10px 10px 50px 10px;
+    margin: 10px 10px;
 }
 .size-text {
     width: 100px;
     margin: 0;
 }
 .text-small{
+    text-align: left;
     padding-top: 10px;
-    font-size: 0.5rem;
+    font-size: 0.9rem;
 }
 /* 画像100% */
 img {
