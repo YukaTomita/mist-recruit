@@ -405,28 +405,34 @@ $conn = null;
     </div>
 <!--        </div>
         </section>  -->
-        <div class="flex">
-            <p>2022年入社　新卒入社</p>
-            <p>先輩たちをもっと見る→</p>
-        </div>
 
-        <!-- フレックス群 -->
-        <div class="flex-img">
-            <ul class="flex-ul">
-                <li>
-                    <img class="size-img" src="img/グループ 11.png" alt="画像">
-                    <p>猪瀬</p>
-                </li>
-                <li>
-                    <img class="size-img" src="img/グループ 3.png" alt="画像">
-                    <p>岡崎</p>
-                </li>
-                <li>
-                    <img class="size-img" src="img/グループ 3.png" alt="画像">
-                    <P>渡辺陸</P>
-                </li>
-            </ul>
-        </div>
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+
+    <div class="flex-space">
+        <div>2022年入社　新卒入社</div>
+        <div>先輩たちをもっと見る →</div>
+    </div>
+
+    <!-- フレックス群 -->
+    <div class="flex-img">
+        <ul class="flex-ul">
+            <li>
+                <img class="size-img" src="img/グループ 11.png" alt="画像">
+                <div class="text-small">アプリ開発エンジニア</div>
+                <div class="text-small">猪瀬</div>
+            </li>
+            <li>
+                <img class="size-img" src="img/okazaki.png" alt="画像">
+                <div class="text-small">アプリ開発エンジニア</div>
+                <div class="text-small">岡崎</div>
+            </li>
+            <li>
+                <img class="size-img" src="img/watanabe.png" alt="画像">
+                <div class="text-small">アプリ開発エンジニア</div>
+                <div class="text-small">渡辺陸</div>
+            </li>
+        </ul>
     </div>
 
 <!--エントリー-->
