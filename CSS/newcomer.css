@@ -348,8 +348,6 @@
 ----------------------------- */
 .flex-ul {
     display: flex;
-    margin-bottom: 100px;
-    font-size: 1.4rem;
 }
 .flex-img li {
     position: relative; /* 親要素に対してposition: relative;を指定 */
@@ -363,13 +361,18 @@
 }
 .size-img {
     max-width: 110px;
-    margin: 10px 10px;
+    margin: 10px 10px 50px 10px;
 }
 .size-text {
     width: 100px;
     margin: 0;
 }
+.text-small{
+    padding-top: 10px;
+    font-size: 0.5rem;
+}
 /* 画像100% */
 img {
     width:100%;
 }
+
