@@ -369,8 +369,8 @@
 }
 .text-small{
     text-align: left;
-    padding-top: 10px;
-    font-size: 0.9rem;
+    margin-left: 10px;
+    font-size: 1rem;
 }
 /* 画像100% */
 img {
