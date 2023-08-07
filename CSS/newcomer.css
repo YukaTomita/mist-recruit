@@ -339,10 +339,9 @@
     transition: opacity 0.5s ease;
 }
 
-.flex {
+.flex-space {
     display: flex;
     justify-content: space-between;
-    margin: 100px 10px 40px 10px;
 }
 /* ---------------------------
 フレックス群 

@@ -39,11 +39,11 @@
 .HRtext{
   margin-top: 30px;
 }
-.HRbox:nth-child(even){
+.HRbox:nth-child(odd){
   display: flex;
   flex-direction: row-reverse;
 }
-.HRbox:nth-child(odd){
+.HRbox:nth-child(even){
   display: flex;
    }
   
