@@ -483,3 +483,8 @@ footer
     float: right;
   }
   
+.Gray-wrap{
+    background-color: #EEEEEE;
+    padding: 20px;
+    width: 100%;
+}

@@ -1,0 +1,47 @@
+  /* Remove bullet points from list */
+  #article-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  /* Style for "もっと見る" link */
+  #article-list li a.more-link {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Change text color */
+  }
+
+  /* Add spacing between list items */
+  #article-list li {
+    margin-bottom: 15px;
+  }
+
+  /* Style for date */
+  .date {
+    display: inline-block;
+    width: 120px; /* Adjust the width as needed */
+  }
+
+  /* Space between date, title, and "もっと見る" */
+  .title,
+  .more-link {
+    margin-left: 30px;
+  }
+  .pager {
+    margin-top: 20px;
+  }
+
+  .pager a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .pager a.current {
+    background-color: gray;
+    color: white;
+  }

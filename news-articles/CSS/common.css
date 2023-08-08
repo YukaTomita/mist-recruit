@@ -1,0 +1,485 @@
+/* ==============================
+            全体の設定
+=================================== */
+
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    margin: 0;
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+/* 文字の配置 */
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+
+/* 文字サイズ */
+.txt2{
+    margin-top: 10px;
+    font-size: 2rem;
+}
+.txt3{
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+/* 間隔あけ */
+.gap-control-probram {
+    height: 2rem;
+}
+
+/* 文字の配置：左揃え中央寄せ */
+.wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .txt {
+    display: inline-block;
+    text-align: left;
+  }
+
+/* title文字：ラインの上の文字 */
+.font-style-title{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #000;
+    font-size: 1.5rem;   
+}
+
+/* 括弧内文字ボルドー */
+.font-style-words{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #8B2022;
+    font-size: 3rem;
+    margin: 10px auto;      
+}
+
+/* 括弧内文字ブラック */
+.font-style-words2{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #000;
+    font-size: 3rem;
+    margin: 10px auto;      
+}
+
+/* コメント（太字） */
+.font-style-comments{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #000;
+    font-size: 1.6rem;   
+}
+
+/* コメント（通常） */
+.font-style-comments2{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #000;
+    font-size: 1.5rem;  
+    line-height: 2.5rem; 
+}
+
+/*短ライン*/
+.border-line{
+  border-top:1px solid #000;
+  width:25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 10px auto;
+}
+
+/*長ライン*/
+.border-line2{
+  border-top:1px solid #000;
+  width:40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 10px auto;
+}
+/* TOP画像 */
+.top-img{
+    width: 100%;
+    margin-top: 90px;
+}
+
+/* 画像 */
+.img{
+    width: 100%;
+}
+
+/*中央写真大きさ*/
+.center-img {
+    margin: 0;
+    width: 500px;
+    height: auto;
+	text-align: center;
+  }
+
+
+/* 画像配置（中央） */
+.img-center{
+    text-align: center;
+}
+
+/* 画像配置（右寄せ） */
+.img-right{
+    text-align: right;
+    width: 80%;
+}
+
+/* ボタンリセット */
+button {
+    /* 枠線を消す */
+    border: none;
+    /* 背景を透明に */
+    background-color: transparent;
+    cursor: pointer;
+}
+/* aタグリセット */
+a {
+    color: #000;
+}
+/* 行間 */
+.line-height {
+    line-height: 1.7;
+}
+
+/* ---------------------
+header
+---------------------- */
+.header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    height: 90px;
+    background-color: white;
+}
+.site-title{
+    width: 170px;
+    position: fixed;
+    top: 15px;
+    left: 55px;
+    z-index: 1;
+  }
+.flex-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-instagram {
+    width: 40px;
+    position: fixed;
+    top: 27px;
+    right: 425px;
+    z-index: 1;
+}
+.header-twitter {
+    width: 40px;
+    position: fixed;
+    top: 30px;
+    right: 355px;
+    z-index: 1;
+}
+.header-entry {
+    background-color: #fb0004;
+    color: #fff;
+    width: 240px;
+    position: fixed;
+    top: 0;
+    right: 100px;
+    z-index: 1;
+    height: 55px;
+    text-align: center;
+    padding-top: 35px;
+    font-size: 3.3rem;
+}
+.header-nav {
+    font-weight: bold;
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 36.1vw;
+    text-align: center;
+    padding: 120px 0 0;
+    background-color:rgba(230, 230, 230, 0.95);
+    z-index: 2;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform .3s,opacity .3s;
+}
+.nav-item{
+    margin-bottom: 30px;
+}
+.nav-item:first-of-type{
+    margin-bottom: 40px;
+}
+.nav-item:last-of-type{
+    margin-bottom: 0;
+}
+.header-nav a{
+    color: #000;
+}
+  /* ハンバーガーボタン（メニューが開いていないとき） */
+.burger-btn{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    width: 100px; /* ボタンの幅を変更 */
+    height: 90px; /* ボタンの高さを変更 */
+    background-color: rgba(230, 230, 230, 0.95);
+    padding-left: 20px;
+  }
+  .bar{
+    display: block;
+    background-color: #000;
+    height: 3px;
+    width: 60px;
+    border-radius: 1px;
+  }
+  .bar_top{
+    transform: translateY(-15px);
+    transition: transform .3s;
+  }
+  .bar_bottom{
+    transform: translateY(15px);
+    transition: transform .3s;
+  }
+  /* ハンバーガーボタン（メニューが開いたとき） */
+.bar.cross.bar_top{
+    transform: translateY(3px)rotate(30deg);
+    transition: transform .3s;
+  }
+  .bar.cross.bar_mid{
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .bar.cross.bar_bottom{
+    transform: translateY(-3px)rotate(-30deg);
+    transition: transform .3s;
+  }
+  /* ハンバーガーメニューが開いたとき */
+body.noscroll{
+    overflow: hidden;
+  }
+  .header-nav.open{
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform .3s,opacity .3s;
+  }
+  .burger-musk{
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:rgba(0,0,0,.5);
+    z-index: 1;
+  }
+  /* --------------------------
+エントリー
+--------------------------- */
+.entry {
+    margin-top: 200px;
+}
+.entry img {
+    width: 45%;
+    margin-bottom: 50px;
+}
+.entry-red {
+    color:#8B2022;
+    margin-bottom: 200px;
+}
+.entry-button {
+    background-color: #389D52;
+    color: #ffffff;
+    border-radius: 100px;
+    width: 277px;
+    height: 66px;
+    font-size: 2.7rem;
+    box-shadow: 2px 2px 4px gray;
+    /* ホバーアニメーションの速度 */
+    transition: 0.3s;
+    margin-bottom: 50px;
+}
+.entry-button:before {
+    content: "\025b6";
+}
+.entry-button:active {
+    box-shadow: 0 0 0;
+}
+.entry-space {
+    margin-bottom: 50px;
+}
+/* ---------------------------
+rink画像群
+---------------------------- */
+.link-img {
+    width: 330px;
+}
+.flex-link{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 10px;
+}
+/* ------------------------
+instagram 
+------------------------- */
+.instagram {
+    width: 150px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+/* --------------------------
+silverリンク
+-------------------------- */
+.silver {
+    width: 215px;
+    margin-top: -10px;
+}
+.look {
+    text-align: right;
+    margin-top: -20px;
+    margin-bottom: 100px;
+}
+/* -----------------------
+footer
+----------------------- */
+.footer{
+    line-height: 70px;
+    background-color: #9EA9B0;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ================================ * /
+          swiper
+==================================== */
+
+/*swiperの設定*/
+.swiper-button-prev,
+.swiper-button-next {
+  width: 32px!important;
+  height: 32px!important;
+  margin-top: -16px!important;
+}
+/* Swiperの親要素 */
+.swiper-parent {
+	position: relative;
+}
+/* Swiper本体 */
+.swiper-container {
+	width: calc(100% - 100px);	/* ☆前・次ページボタンの幅をそれぞれ50pxとして、その分を引く */
+	padding-bottom: 50px;		/* ★ページネーション・スクロールバー分の余白50pxを下に取る */
+	box-sizing: content-box;
+}
+/* 前・次スライドボタンの縦位置調整（スライドの高さの中央に合わせる） */
+.swiper-button-prev, .swiper-button-next {
+	top: calc((100% - 50px) * 0.5);	/* ☆★ページネーション・スクロールバー（50px）を除く縦位置の中央（＝スライドの高さの中央）に一旦配置 */
+	margin-top: -22px;			/* ★ボタンの高さ（44px）の半分のネガティブマージンで上に少しずらす */
+}
+
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+    }
+
+/*------------------------
+　　　　ひな形
+------------------------*/
+.title-band{
+    margin-top: 90px;
+    padding-top: 25px;
+    width: 100%;
+    height: 60px;
+    background-color: #EEEEEE;
+    justify-content: center;
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    color: #8B2022;
+    font-size: 2.5rem;
+}
+.breadcrumbs {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.breadcrumbs li {
+    display: inline;
+    margin-right: 5px;
+}
+
+.breadcrumbs li::after {
+    content: "/";
+    margin-left: 5px;
+}
+
+.breadcrumbs li:last-child::after {
+    content: "";
+}
+
+.topic-list {
+    list-style-type: none;
+    padding: 0;
+}
+.topic-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.topic-info {
+    flex: 1;
+    padding: 10px;
+}
+.topic-image {
+    max-width: 200px;
+    margin-right: 20px;
+}
+.topic-title {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+.topic-date {
+    color: #999;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+.more-button {
+    text-align: center;
+}
+
+.news-text{
+    margin-top: 25px;
+    line-height: 2rem;
+}
+
+#backButton {
+    float: right;
+  }
+  

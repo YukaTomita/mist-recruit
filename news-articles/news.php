@@ -1,3 +1,18 @@
+<?php
+  $articlesData = file_get_contents('article_list.json');
+  $articles = json_decode($articlesData)->articles;
+
+  $perPage = 20; // Number of articles per page
+  $totalPages = ceil(count($articles) / $perPage); // Calculate total pages
+
+  // Get page number from query string, default to 1
+  $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+  // Calculate the starting and ending index for the current page
+  $startIndex = ($currentPage - 1) * $perPage;
+  $endIndex = min($startIndex + $perPage - 1, count($articles) - 1);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -19,11 +34,11 @@
     <meta property="og:image" content="assets/images/mist-ogp.jpg">
     <meta name="twitter:card" content="summary"/>
     <!-- 各々変更 -->
-    <title>日々の出来事</title>
+    <title>WHAT NEWS</title>
     <!-- css,js -->
     <link rel="stylesheet" href="CSS/reset.css" type="text/css">
     <link rel="stylesheet" href="CSS/common.css" type="text/css">
-    <link rel="stylesheet" href="CSS/expert.css" type="text/css">
+    <link rel="stylesheet" href="CSS/article.css" type="text/css">
     <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
 </head>
@@ -55,10 +70,11 @@
 </button>
 <span class="burger-musk"></span>
 </header>
+
 <!--Title-->
 <div class="title-band">
     <div class="topic-title text-center">
-        私たちの日々の出来事<span class="font-style-comments2">　／　トピックス</span>
+        WHAT NEWS<span class="font-style-comments2">　／　お知らせ</span>
     </div>
 </div>
 <div class="wrapper">
@@ -76,106 +92,73 @@
     <div class="gap-control-probram"></div>
     <div class="gap-control-probram"></div>
     <div class="gap-control-probram"></div>
-
+    
     <!--コンテンツ内容-->
     <div class="text-left txt2">過去一覧</div>
     <div class="gap-control-probram"></div>
     <div class="gap-control-probram"></div>
 
-    <ul id="history-list" class="topic-list">
-        <!-- ここにトピックが表示されます -->
-    </ul>
+<!--記事一覧-->
+  <ul id="article-list">
+    <?php
+      $articlesPerPage = 20; // Number of articles per page
+      $startIndex = ($currentPage - 1) * $articlesPerPage;
+      $endIndex = min($startIndex + $articlesPerPage - 1, count($articles) - 1);
 
-    
-</div>
+      for ($i = $startIndex; $i <= $endIndex; $i++) {
+        $article = $articles[$i];
+        echo '<li>';
+        echo '<span class="date">' . date('Y.m.d', strtotime($article->date)) . '</span>';
+        echo ' <span class="title">' . $article->title . '</span>';
+        echo ' <a href="' . $article->url . '" class="more-link">もっと見る &gt;</a>';
+        echo '</li>';
+      }
+    ?>
+  </ul>
+
+  <div class="gap-control-probram"></div>
+  <div class="gap-control-probram"></div>
+
+<!-- Pager -->
+  <div class="pager">
+    <?php
+      echo '<a href="?page=' . max($currentPage - 1, 1) . '">＜</a> '; // Previous page link
+
+      for ($page = 1; $page <= $totalPages; $page++) {
+        echo '<a href="?page=' . $page . '" class="' . ($page === $currentPage ? 'current' : '') . '">' . $page . '</a> ';
+      }
+
+      echo '<a href="?page=' . min($currentPage + 1, $totalPages) . '">＞</a>'; // Next page link
+    ?>
+  </div>
+
 <!--エントリー以下-->
-<div class="wrapper">
-    <div class="entry">
-        <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
-        <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
-        <p class="entry-red">入社からプロジェクト着任までのフローが知りたい方はこちら ></p>
-    </div>
-    <div class="flex-link">
-        <img class="link-img" src="img/グループ 1824.png">
-        <img class="link-img" src="img/グループ 1826.png">
-    </div>
-    <div class="flex-link">
-        <img class="link-img" src="img/グループ 1827.png">
-        <img class="link-img" src="img/グループ 1828.png">
-    </div>
-    </div>
-    
-    <div class="gap-control-probram"></div>
-    <div class="gap-control-probram"></div>
-    <div class="gap-control-probram"></div>
-    <div class="gap-control-probram"></div>
-    <div class="gap-control-probram"></div>
-            
-    <!-- footer -->
-    <footer class="footer">
-    <small>&copy; 1997,2023 mistsolution.All Rights Reserved.</small>
-    </footer>
+  <div class="entry">
+      <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
+      <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
+      <p class="entry-red">入社からプロジェクト着任までのフローが知りたい方はこちら ></p>
+  </div>
+  <div class="flex-link">
+    <img class="link-img" src="img/グループ 1824.png">
+    <img class="link-img" src="img/グループ 1826.png">
+  </div>
+  <div class="flex-link">
+    <img class="link-img" src="img/グループ 1827.png">
+    <img class="link-img" src="img/グループ 1828.png">
+  </div>
+</div>
+
+
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
+<!-- footer -->
+<footer class="footer">
+  <small>&copy; 1997,2023 mistsolution.All Rights Reserved.</small>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="js\header.js"></script>
-<script>
-    const historyList = document.getElementById('history-list');
-    let topics = [];
-    let currentPage = 1;
-    const topicsPerPage = 3;
 
-    async function loadTopics() {
-        try {
-            const response = await fetch('topics.json');
-            topics = await response.json();
-            displayTopics();
-        } catch (error) {
-            console.error('トピックの読み込みに失敗しました:', error);
-        }
-    }
-
-    function displayTopics() {
-        historyList.innerHTML = '';
-        const startIndex = (currentPage - 1) * topicsPerPage;
-        const endIndex = startIndex + topicsPerPage;
-
-        for (let i = startIndex; i < endIndex && i < topics.length; i++) {
-            const topic = topics[i];
-            const li = document.createElement('li');
-
-            const topicImage = document.createElement('img');
-            topicImage.src = topic.image;
-            topicImage.alt = topic.title;
-            topicImage.className = 'topic-image';
-            li.appendChild(topicImage);
-
-            const topicInfo = document.createElement('div');
-            topicInfo.className = 'topic-info';
-
-            const topicTitle = document.createElement('h2');
-            topicTitle.textContent = topic.title;
-            topicInfo.appendChild(topicTitle);
-
-            const topicDate = document.createElement('p');
-            topicDate.textContent = topic.date;
-            topicInfo.appendChild(topicDate);
-
-            li.appendChild(topicInfo);
-
-            historyList.appendChild(li);
-        }
-
-        const moreButton = document.createElement('button');
-        moreButton.textContent = 'もっと見る';
-        moreButton.addEventListener('click', loadMoreTopics);
-        historyList.appendChild(moreButton);
-    }
-
-    function loadMoreTopics() {
-        currentPage++;
-        displayTopics();
-    }
-
-    window.onload = loadTopics;
-</script>
 </body>
 </html>
+

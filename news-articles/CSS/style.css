@@ -1,0 +1,45 @@
+/* styles.css */
+
+body{
+  align-items: center;
+}
+
+/* 間隔あけ */
+.gap-control-probram {
+  height: 2rem;
+}
+
+
+input.text{
+  width:200px;
+}
+
+.form-row {
+  margin-bottom: 10px;
+}
+
+.input-description {
+  color: gray;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 送信ボタン */
+.submit-btn {
+  /* buttonタグのリセットCSS */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+
+  color: #fff;
+  padding: 8px 24px;
+  background-color: #3abec1;
+  cursor: pointer; /* ポインターカーソルを表示 */
+}
+
+.submit-btn[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed; /* クリック不可のカーソルを表示 */
+}

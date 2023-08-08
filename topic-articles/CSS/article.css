@@ -1,0 +1,68 @@
+/* 既存のスタイル */
+.article-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.article {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.article-image {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.article-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.article-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.article-date {
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.article-title {
+    margin: 0;
+    font-size: 2rem;
+    text-align: left;
+}
+.read-more {
+    text-decoration: none;
+    color: #000;
+    margin-left: auto;
+}
+
+  .pager {
+    margin-top: 20px;
+  }
+
+  .pager a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .pager a.current {
+    background-color: gray;
+    color: white;
+  }

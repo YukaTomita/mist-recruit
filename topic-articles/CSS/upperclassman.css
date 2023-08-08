@@ -1,0 +1,91 @@
+.engineer {
+    margin-bottom: 100px;
+}
+/* ------------------------------
+フレックスポップアップ
+------------------------------- */
+.flex-ul {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    font-size: 1.4rem;
+}
+.flex-img li {
+    position: relative; /* 親要素に対してposition: relative;を指定 */
+}
+.flex-img p {
+    margin: -22px 25px;
+    text-align: left;
+    line-height: 1.1;
+}
+.size-img {
+    max-width: 200px;
+    margin: 5px 20px;
+}
+.flex-img button{
+    max-width:800px;
+    position: relative;
+    left: 40px;
+    bottom:35px;
+    padding:0;
+    margin: 0;
+}
+.btn-white {
+    color: #fff;
+    border-bottom:solid 1px #fff;
+}
+.btn-black {
+    color: #000;
+    border-bottom:solid 1px #000;
+}
+.flex-img button:before {
+    content: "\025b6";
+}
+
+.img-bottom {
+  margin: auto;
+  display: block;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+/* popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 400px;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 1;
+}
+
+.pop-flex {
+  display: flex; /*横並び*/
+  justify-content: center;
+  margin-top: 30px;
+}
+.pop-flex .pop-text {
+  margin: 15px 0 0 20px;
+  padding: 0;
+  text-align: left;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+  .poptitle{
+    margin-top: 25px;
+    text-align: center;
+    font-size: 2.5rem;
+  }
+  .poptxt{
+    margin-top: 25px;
+    line-height: 2.2rem;
+  }
+  .popup .close-button {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+  }

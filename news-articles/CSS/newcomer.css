@@ -1,0 +1,385 @@
+/* --------------------- 
+ スポーツランキング
+ --------------------- */
+.ranking {
+    margin: 60px 10px;
+}
+.vote{
+    margin: 60px 10px; 
+}
+.bar-graph {
+    height: 20px;
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sport-button {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sport-button:hover {
+    background-color: #e0e0e0;
+}
+.sportName {
+    border: 1.5px solid #BBBBBB;
+    width: 400px;
+    height: 25px;
+    border-radius: 100vh;
+    padding-top: 10px;
+}
+.rank {
+    width: 50px;
+    font-size: 2rem;
+}
+.rank-1 .sportName {
+    border-color: #CAA846; /* 1位の場合の枠の色を黄緑 (#CAA846) に変更 */
+    border-width: 3px;
+}
+
+.rank-2 .sportName {
+    border-color: #B2BABA; /* 2位の場合の枠の色を灰色 (#B2BABA) に変更 */
+    border-width: 3px;
+}
+
+.rank-3 .sportName {
+    border-color: #8B4513; /* 3位の場合の枠の色を茶色 (#8B4513) に変更 */
+    border-width: 3px;
+}
+.rank span {
+    font-size: 3rem;
+    line-height: 1;
+}
+.title-ranking {
+    font-size: 1.7rem;
+    line-height: 140%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.asterisk {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #8B2022;
+    margin: auto;
+}
+.rank-img{
+    width: 15px;
+    height: auto;
+}
+/*------------------
+        投票
+------------------*/
+.v-text{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    text-align: left;
+    line-height: 2rem;
+}
+.ranking-section {
+    display: none;
+    width: 100%;
+    padding: 20px; /* 必要な場合はランキングセクションの内容との間に適切な余白を設定 */
+    box-sizing: border-box; 
+    background-color: #f2f2f2; /* ランキングセクションの背景色をグレー (#f2f2f2) に変更 */
+}
+
+.radio-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    margin-left: 30px;
+    gap: 20px; /* 選択肢の間隔調整 */
+}
+.radio-column {
+    flex-basis: 30%; /* 各列の幅を調整 */
+}
+.arrow-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    }
+    .arrow-bottom {
+    position: absolute;
+    border-bottom: solid 2px #8B2022;
+    border-right: solid 2px #8B2022;
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+    margin: auto;
+    }
+    .arrow-bottom-Shifted {
+    top: 15px;
+    }
+
+/*------------------
+ 事業切り替えボタン 
+ ------------------*/
+.contents__change-button {
+    display: flex;
+    z-index: 1;
+    position: relative;
+    line-height: 2;
+}
+.contents__change-button span {
+    font-size: 4rem;
+    line-height: 1;
+}
+
+.contents__change-button h2 {
+    font-weight: 300;
+}
+
+.change-button__ict,
+.change-button__lbd {
+    width: 50%;
+    height: 5rem;
+    opacity: 1;
+    text-align: center;
+    padding: 2.4rem 0;
+}
+.change-button__ict img,
+.change-button__lbd img {
+    max-width: 150px;
+}
+.change-button__lbd {
+    opacity: 0.3;
+    background-color: #F6F6F5;
+}
+
+.change-button__ict.lbd-show {
+    opacity: 0.3;
+    background-color: #F6F6F5;
+}
+
+.change-button__lbd.lbd-show {
+    opacity: 1;
+    background-color: #ffffff;
+}
+.tab__title {
+    font-size: 2.5rem;
+}
+.triangle:before {
+    content: "\025bd";
+}
+  /*-------------------------
+   業内容表示時
+  -------------------------*/
+.contents__ict,
+.contents__lbd {
+    height: 50rem;
+}
+.contents__ict {
+    background-position: center 0;
+    position: relative;
+}
+.contents__ict.lbd-show {
+    display: none;
+}
+.contents__lbd {
+    display: none;
+    color: black;
+}
+.contents__lbd image {
+    background-size: cover;
+    background-position: center 0;
+    position: relative;
+}
+.contents__lbd.lbd-show {
+    display: block;
+}
+
+/*--
+.container{
+    max-width:800px;
+    height: 1000px;
+    position: relative;
+    margin: 60px 10px;
+    z-index: 0;
+}
+.open-img{
+    position: relative;
+    right: 90px;
+    bottom: 270px;
+    width: 60%;
+    z-index: 3;
+    display: block;
+    padding:0;
+    margin-bottom: -250px;
+}
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+.first-img {
+    width: 100%;
+    margin: 0 10px;
+}
+--*/
+.sport-container {
+    text-align: center;
+    position: relative;
+}
+.sport-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.sport-main-image {
+    width: 100%;
+    height: auto;
+}
+.sport-word {
+    position: absolute;
+    top: 35%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    color: #000;
+    text-align: left;
+}
+
+.more-link {
+    position: absolute;
+    top: 45%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    color: white;
+}
+
+.sport-popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    max-width: 420px;
+}
+.sport-popup:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%; 
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent white;
+}
+.sport-popup-content {
+    text-align: center;
+}
+
+.sport-popup-title {
+    margin: 0 0 10px 0;
+}
+
+.sport-popup-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sport-popup-image {
+    width: 50%;
+    height: auto;
+}
+
+.sport-popup-comment {
+    width: 50%;
+}
+  
+.container button{
+    max-width:800px;
+    position: relative;
+    right: -250px;
+    bottom:225px;
+    color: white;
+    padding:0;
+    margin: 0;
+    border-bottom:solid 1px white;
+}
+.container button:before {
+    content: "\025b6";
+  }
+.container p{
+    max-width: 200px;
+    text-align: left;
+    position: relative;
+    right: -550px;
+    bottom:230px;
+    color: black;
+    padding:10px 0;
+    margin: 0;
+    font-weight: 500;
+    overflow-x: hidden;
+}
+.detail1,
+.detail2,
+.detail3 {
+    opacity: 0;
+}
+
+.detail1.open,
+.detail2.open,
+.detail3.open {
+    opacity: 1; 
+    transition: opacity 0.5s ease;
+}
+
+.flex-space {
+    display: flex;
+    justify-content: space-between;
+}
+/* ---------------------------
+フレックス群 
+----------------------------- */
+.flex-ul {
+    display: flex;
+}
+.flex-img li {
+    position: relative; /* 親要素に対してposition: relative;を指定 */
+}
+
+.flex-img p {
+    position: absolute; /* pタグにposition: absolute;を指定 */
+    bottom: -10px; /* 下端に配置 */
+    left: 10px; /* 左端に配置 */
+    margin: 0;
+}
+.size-img {
+    max-width: 110px;
+    margin: 10px 10px;
+}
+.size-text {
+    width: 100px;
+    margin: 0;
+}
+.text-small{
+    text-align: left;
+    margin-left: 5px;
+    font-size: 1.2rem;
+}
+.text-small2{
+    text-align: left;
+    margin-left: 5px;
+    margin-top: 8px;
+    font-size: 1.5rem;
+}
+/* 画像100% */
+img {
+    width:100%;
+}
+

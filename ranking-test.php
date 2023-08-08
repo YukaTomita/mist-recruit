@@ -86,24 +86,6 @@ $conn = null;
     <!-- Chart.jsを読み込む -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>    <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
-    <style>
-        /* 縦書きのスタイル */
-        .vertical-labels {
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            text-align: center;
-        }
-
-        /* 項目名の間隔を設定 */
-        .vertical-labels p {
-            margin: 15px 0;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            text-align: center;
-            line-height: 1;
-            font-size: 10px;
-        }
-    </style>
 </head>
 <body>
     <!-- header -->
@@ -149,13 +131,6 @@ $conn = null;
     <!-- エンジニアが選ぶ企業のポイント　ランキング -->
     <div class="wrapper">
         <canvas id="barChart" style="max-width: 100%;"></canvas>
-    <!-- 項目名を縦書きで表示 -->
-    <div class="vertical-labels">
-        <?php foreach ($results as $result) { ?>
-            <p><?php echo $result['name']; ?></p>
-        <?php } ?>
-    </div>
-
     <script>
         // データの準備
         const labels = [];

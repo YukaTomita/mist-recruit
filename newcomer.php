@@ -411,7 +411,7 @@ $conn = null;
 
     <div class="flex-space">
         <div>2022年入社　新卒入社</div>
-        <div>先輩たちをもっと見る →</div>
+        <div><a href="#!">先輩たちをもっと見る →</a></div>
     </div>
 
     <!-- フレックス群 -->
@@ -420,23 +420,22 @@ $conn = null;
             <li>
                 <img class="size-img" src="img/グループ 11.png" alt="画像">
                 <div class="text-small">アプリ開発エンジニア</div>
-                <div class="text-small">猪瀬</div>
+                <div class="text-small2">猪瀬</div>
             </li>
             <li>
                 <img class="size-img" src="img/okazaki.png" alt="画像">
                 <div class="text-small">アプリ開発エンジニア</div>
-                <div class="text-small">岡崎</div>
+                <div class="text-small2">岡崎</div>
             </li>
             <li>
                 <img class="size-img" src="img/watanabe.png" alt="画像">
                 <div class="text-small">アプリ開発エンジニア</div>
-                <div class="text-small">渡辺陸</div>
+                <div class="text-small2">渡辺陸</div>
             </li>
         </ul>
     </div>
 
 <!--エントリー-->
-<div class="wrapper">
     <div class="entry">
         <P class="font-style-comments entry-space">まずはあなたのキャリアプランを聞かせてください。</P>
         <button onclick="location.href='#!'" class="entry-button">　エントリー</button>
