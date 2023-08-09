@@ -40,8 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "INSERT INTO votes_history (user_ip, option_id) VALUES (:user_ip, :option_id)";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':user_ip', $userIp);
-        $stmt->bindParam(':option_id', $option);
-        $stmt->execute();
+
+        foreach ($selectedOptions as $option) {
+            $stmt->bindParam(':option_id', $option);
+            $stmt->execute();
+        }
     }
 
     // ページをリロードして再投稿を防止するためのリダイレクト
@@ -72,7 +75,6 @@ $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 $conn = null;
 ?>
 
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -81,11 +83,17 @@ $conn = null;
     <link rel="stylesheet" href="CSS/reset.css" type="text/css">
     <link rel="stylesheet" href="CSS/common.css" type="text/css">
     <link rel="stylesheet" href="CSS/expert.css" type="text/css">
-    <script type="text/javascript" src="js/header.js"></script>
-    <script type="text/javascript" src="js/common.js"></script>
     <!-- Chart.jsを読み込む -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>    <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
+    <style>
+  .vertical-label {
+    writing-mode: vertical-rl; /* 縦書きスタイルを設定 */
+    text-orientation: mixed; /* 必要に応じて調整 */
+    transform: rotate(180deg); /* 必要に応じて調整 */
+  }
+</style>
+
 </head>
 <body>
     <!-- header -->
@@ -136,16 +144,23 @@ $conn = null;
         const labels = [];
         const data = [];
 
-        <?php foreach ($results as $index => $result) : ?>
+        <?php foreach ($results as $result) : ?>
             labels.push('<?php echo $result['name']; ?>');
             data.push(<?php echo $result['count']; ?>);
         <?php endforeach; ?>
+
+        const images = [
+            "img/ex-1.png", // 1位の画像パス
+            "img/ex-2.png", // 2位の画像パス
+            "img/ex-3.png"  // 3位の画像パス
+        ];
 
         // チャートの描画
         const ctx = document.getElementById('barChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar', // 縦棒グラフに変更
             data: {
+                labels: ['事業内容', '技術力', 'ネームバリュー', '職場環境', '年収', '勤務地', '会社の成長', '福利厚生', '雰囲気', 'その他'],
                 labels: labels,
                 datasets: [{
                     data: data,
@@ -154,30 +169,58 @@ $conn = null;
                             <?php echo ($index >= 3) ? "'rgba(139, 32, 34, 0.5)'" : "'#8B2022'"; ?>,
                         <?php endforeach; ?>
                     ],
-                    borderWidth: 0 // 棒グラフの枠線を削除
                 }]
             },
             options: {
+                responsive: true,
                 scales: {
-                    x: {
-                        grid: {
-                            display: false // 縦方向のグリッド線を非表示
+                    yAxes: [
+                        {
+                        display: false,
+                        ticks: {
+                            beginAtZero: true //0から始まる
+                        },
+                        gridLines: {
+                            display: false 
+                        },  
+                        max: Math.max(...data) + 2,
+                        min: 0,
+                        title: {
+                            display: false,
+                            text: '投票数'
                         }
-                    },
-                    y: {
-                        display: false // 縦軸ラベルを非表示
+                    },],
+                    xAxes: {
+                        display: false,
+                        ticks: {
+                            callback: function(value) {
+                                return value.split("").join("\n"); // 項目名を改行して縦書きにする
+                            },
+                        }
                     }
                 },
                 plugins: {
                     legend: {
-                        display: false // 凡例を非表示
+                        display: false
+                    },
+                    afterDraw: (chart) => {
+                        const { ctx, scales: { x }, width, height } = chart;
+
+                        // 1位から3位までの画像を表示
+                        for (let i = 0; i < 3; i++) {
+                            const image = new Image();
+                            image.src = images[i];
+                            const xPosition = x.getPixelForValue(i);
+                            const yPosition = height - 30;
+                            ctx.drawImage(image, xPosition - 15, yPosition, 30, 30);
+                        }
                     }
                 },
                 responsive: true,
-                maintainAspectRatio: false
             }
         });
-        </script>
+        
+    </script>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
