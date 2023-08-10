@@ -84,16 +84,9 @@ $conn = null;
     <link rel="stylesheet" href="CSS/common.css" type="text/css">
     <link rel="stylesheet" href="CSS/expert.css" type="text/css">
     <!-- Chart.jsを読み込む -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>    <!-- favicon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <!-- favicon -->
     <link rel="icon" href="img/favicon.ico">
-    <style>
-  .vertical-label {
-    writing-mode: vertical-rl; /* 縦書きスタイルを設定 */
-    text-orientation: mixed; /* 必要に応じて調整 */
-    transform: rotate(180deg); /* 必要に応じて調整 */
-  }
-</style>
-
 </head>
 <body>
     <!-- header -->
@@ -160,7 +153,6 @@ $conn = null;
         new Chart(ctx, {
             type: 'bar', // 縦棒グラフに変更
             data: {
-                labels: ['事業内容', '技術力', 'ネームバリュー', '職場環境', '年収', '勤務地', '会社の成長', '福利厚生', '雰囲気', 'その他'],
                 labels: labels,
                 datasets: [{
                     data: data,
@@ -169,10 +161,17 @@ $conn = null;
                             <?php echo ($index >= 3) ? "'rgba(139, 32, 34, 0.5)'" : "'#8B2022'"; ?>,
                         <?php endforeach; ?>
                     ],
+                    borderWidth: 0,
                 }]
             },
             options: {
                 responsive: true,
+                data: data,
+                options:{
+                    legend: {
+                        display: false
+                    }
+                },
                 scales: {
                     yAxes: [
                         {
@@ -183,6 +182,9 @@ $conn = null;
                         gridLines: {
                             display: false 
                         },  
+                        gridLines: {
+                            drawBorder: false
+                        },
                         max: Math.max(...data) + 2,
                         min: 0,
                         title: {
@@ -191,11 +193,10 @@ $conn = null;
                         }
                     },],
                     xAxes: {
-                        display: false,
-                        ticks: {
-                            callback: function(value) {
-                                return value.split("").join("\n"); // 項目名を改行して縦書きにする
-                            },
+                        display: true,
+                        stacked: false,
+                        gridLines: {
+                            display: false
                         }
                     }
                 },

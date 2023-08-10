@@ -1,174 +1,143 @@
-<?php
-// データベース接続情報
-$host = 'localhost';
-$db = 'enterprise';
-$user = 'root';
-$password = 'root';
-
-// データベースに接続
-$conn = new PDO("mysql:host=$host;dbname=$db", $user, $password);
-
-// オプションの一覧を取得
-$query = "SELECT * FROM options";
-$stmt = $conn->prepare($query);
-$stmt->execute();
-$options = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// フォームが送信された場合の処理
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $selectedOptions = isset($_POST['vote']) ? $_POST['vote'] : [];
-
-    // 投票履歴をチェック
-    $userIp = $_SERVER['REMOTE_ADDR'];
-    $query = "SELECT * FROM votes_history WHERE user_ip = :user_ip";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':user_ip', $userIp);
-    $stmt->execute();
-    $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$voteHistory && count($selectedOptions) > 0) {
-        // 投票結果をデータベースに保存
-        $query = "INSERT INTO votes (option_id) VALUES (:option_id)";
-        $stmt = $conn->prepare($query);
-
-        foreach ($selectedOptions as $option) {
-            $stmt->bindParam(':option_id', $option);
-            $stmt->execute();
-        }
-
-        // 投票履歴を保存
-        $query = "INSERT INTO votes_history (user_ip, option_id) VALUES (:user_ip, :option_id)";
-        $stmt = $conn->prepare($query);
-        $stmt->bindParam(':user_ip', $userIp);
-
-        foreach ($selectedOptions as $option) {
-            $stmt->bindParam(':option_id', $option);
-            $stmt->execute();
-        }
-    }
-
-    // ページをリロードして再投稿を防止するためのリダイレクト
-    header("Location: " . $_SERVER['PHP_SELF']);
-    exit;
-}
-
-// 集計クエリ実行
-$query = "SELECT o.name, COUNT(*) AS count
-FROM options o
-JOIN votes v ON o.id = v.option_id
-GROUP BY o.name
-ORDER BY count DESC;
-";
-$stmt = $conn->prepare($query);
-$stmt->execute();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// 投票済みかどうかをチェック
-$userIp = $_SERVER['REMOTE_ADDR'];
-$query = "SELECT * FROM votes_history WHERE user_ip = :user_ip";
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':user_ip', $userIp);
-$stmt->execute();
-$voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// データベース接続のクローズ
-$conn = null;
-?>
-
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <title>ranking-test</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>    <!-- favicon -->
-    <link rel="icon" href="img/favicon.ico">
-    <style>
-  .vertical-label {
-    writing-mode: vertical-rl; /* 縦書きスタイルを設定 */
-    text-orientation: mixed; /* 必要に応じて調整 */
-    transform: rotate(180deg); /* 必要に応じて調整 */
-  }
-</style>
-
+    <title>Voting Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="wrapper">
-        <canvas id="barChart" style="max-width: 100%;"></canvas>
+    <div style="position: relative; width: 80%; margin: auto;">
+        <canvas id="voteChart" height="600px" width="700px"></canvas>
+    </div>
+
     <script>
-        // データの準備
-        const labels = [];
-        const data = [];
+        // データの取得
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+        $dbname = "enterprise";
 
-        <?php foreach ($results as $result) : ?>
-            labels.push('<?php echo $result['name']; ?>');
-            data.push(<?php echo $result['count']; ?>);
-        <?php endforeach; ?>
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // チャートの描画
-        const ctx = document.getElementById('barChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar', // 縦棒グラフに変更
-            data: {
-                labels: ['事業内容', '技術力', 'ネームバリュー', '職場環境', '年収', '勤務地', '会社の成長', '福利厚生', '雰囲気', 'その他'],
-                labels: labels,
-                datasets: [{
-                    data: data,
-                    backgroundColor: [
-                        <?php foreach ($results as $index => $result) : ?>
-                            <?php echo ($index >= 3) ? "'rgba(139, 32, 34, 0.5)'" : "'#8B2022'"; ?>,
-                        <?php endforeach; ?>
-                    ],
-                }]
-            },
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "
+            SELECT o.name AS option_name, COUNT(v.id) AS vote_count
+            FROM options o
+            LEFT JOIN votes v ON o.id = v.option_id
+            GROUP BY o.id
+            ORDER BY vote_count DESC;
+        ";
+
+        $result = $conn->query($sql);
+        $data = array();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = array(
+                    "option_name" => $row["option_name"],
+                    "vote_count" => $row["vote_count"]
+                );
+            }
+        }
+
+        $conn->close();
+        ?>
+
+        // データの設定
+        var data = {
+            labels: <?php echo json_encode(array_column($data, "option_name")); ?>.map((v) => v.replace('ー', '丨').split("")),
+            datasets: [{
+                data: <?php echo json_encode(array_column($data, "vote_count")); ?>,
+                backgroundColor: [
+                    <?php
+                    for ($i = 0; $i < count($data); $i++) {
+                        if ($i < 3) {
+                            echo "'#8B2022',";
+                        } else {
+                            echo "'rgba(139, 32, 34, 0.5)',";
+                        }
+                    }
+                    ?>
+                ],
+                borderWidth: 0 // 区切り線を非表示
+            }]
+        };
+
+        // グラフ作成
+        var ctx = document.getElementById('voteChart').getContext('2d');
+        var voteChart = new Chart(ctx, {
+            type: 'bar', // 縦棒グラフ
+            data: data,
             options: {
-                responsive: true,
                 scales: {
-                    yAxes: [
-                        {
-                        ticks: {
-                            beginAtZero: true //0から始まる
-                        },
-                        gridLines: {
-                            display: false 
-                        },  
-                        max: Math.max(...data) + 2,
-                        min: 0,
-                        title: {
-                            display: false,
-                            text: '投票数'
-                        }
-                    },],
-                    xAxes: {
-                        ticks: {
-                            callback: function(value) {
-                                return value.split("").join("\n"); // 項目名を改行して縦書きにする
-                            },
-                        }
+                    x: {
+                        display: true, // X軸目盛り表示
+                    },
+                    y: {
+                        display: false, // Y軸目盛り非表示
                     }
                 },
                 plugins: {
                     legend: {
-                        display: false
-                    },
-                    afterDraw: (chart) => {
-                        const { ctx, scales: { x }, width, height } = chart;
-
-                        // 1位から3位までの画像を表示
-                        for (let i = 0; i < 3; i++) {
-                            const image = new Image();
-                            image.src = images[i];
-                            const xPosition = x.getPixelForValue(i);
-                            const yPosition = height - 30;
-                            ctx.drawImage(image, xPosition - 15, yPosition, 30, 30);
-                        }
+                        display: false, // 凡例非表示
                     }
                 },
                 responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 20,
+                        right: 20,
+                        top: 20,
+                        bottom: 20
+                    }
+                },
+                indexAxis: 'x', // 横軸に表示
             }
         });
-        <label for="option<?php echo $option['id']; ?>" class="vertical-label"><?php echo $option['name']; ?></label>
+
+        // 項目名の下に画像を挿入
+        Chart.register({
+            afterDraw: function(chart, args, options) {
+                var ctx = chart.ctx;
+                ctx.save();
+                var xAxis = chart.scales['x'];
+                var yAxis = chart.scales['y'];
+                var datasets = chart.data.datasets;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = 'bold 12px Arial';
+
+                datasets.forEach(function(dataset, datasetIndex) {
+                    var meta = chart.getDatasetMeta(datasetIndex);
+                    if (!meta.hidden) {
+                        meta.data.forEach(function(element, index) {
+                            var dataString = dataset.data[index].toString();
+                            var position = element.tooltipPosition();
+                            ctx.fillStyle = '#333'; // 項目名のテキスト色
+                            ctx.fillText(dataString, position.x, position.y - 10); // 高さを調整
+
+                            if (index < 3) {
+                                var img = new Image();
+                                img.src = 'img/ex-' + (index + 1) + '.png'; // 画像のパスを設定
+                                var imgWidth = 20; // 画像の幅
+                                var imgHeight = 20; // 画像の高さ
+                                ctx.drawImage(img, position.x - imgWidth / 2, position.y + 10, imgWidth, imgHeight);
+                            }
+                        });
+                    }
+                });
+
+                ctx.restore();
+            }
+        });
     </script>
-<!--votes-->        
-        <?php if (!$voteHistory) : ?>
+
+<?php if (!$voteHistory) : ?>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <?php foreach ($options as $option) : ?>
                     <div class="option">
@@ -182,5 +151,6 @@ $conn = null;
             <p class="vote-message asterisk">※すでに投票済みです。</p>
         <?php endif; ?>
     </div>
+
 </body>
 </html>

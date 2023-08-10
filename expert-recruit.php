@@ -40,8 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "INSERT INTO votes_history (user_ip, option_id) VALUES (:user_ip, :option_id)";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':user_ip', $userIp);
-        $stmt->bindParam(':option_id', $option);
-        $stmt->execute();
+
+        foreach ($selectedOptions as $option) {
+            $stmt->bindParam(':option_id', $option);
+            $stmt->execute();
+        }
     }
 
     // ページをリロードして再投稿を防止するためのリダイレクト
@@ -71,7 +74,6 @@ $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 // データベース接続のクローズ
 $conn = null;
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -177,47 +179,140 @@ $conn = null;
     </div>
     <!-- エンジニアが選ぶ企業のポイント　ランキング -->
     <div class="wrapper">
-        <canvas id="barChart"></canvas>
+    <div style="position: relative; margin: auto;">
+        <canvas id="voteChart" height="500px" width="100%"></canvas>
+    </div>
 
-        <script>
-            // データの準備
-            const labels = [];
-            const data = [];
+    <script>
+        // データの取得
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+        $dbname = "enterprise";
 
-            <?php foreach ($results as $result) : ?>
-                labels.push('<?php echo $result['name']; ?>');
-                data.push(<?php echo $result['count']; ?>);
-            <?php endforeach; ?>
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // チャートの描画
-            const ctx = document.getElementById('barChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: '投票数',
-                        data: data,
-                        backgroundColor: 'transparent', // 棒グラフの背景色
-                        borderColor: '#FF2D2D', // 棒グラフの枠線の色
-                        borderWidth: 2 // 棒グラフの枠線の太さ
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: Math.max(...data) + 2, // 最大値 + 2 を設定
-                            title: {
-                                display: false,
-                                text: '投票数'
-                            }
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "
+            SELECT o.name AS option_name, COUNT(v.id) AS vote_count
+            FROM options o
+            LEFT JOIN votes v ON o.id = v.option_id
+            GROUP BY o.id
+            ORDER BY vote_count DESC;
+        ";
+
+        $result = $conn->query($sql);
+        $data = array();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = array(
+                    "option_name" => $row["option_name"],
+                    "vote_count" => $row["vote_count"]
+                );
+            }
+        }
+
+        $conn->close();
+        ?>
+
+        // データの設定
+        var data = {
+            labels: <?php echo json_encode(array_column($data, "option_name")); ?>.map((v) => v.replace(/ー/g, '丨').split("")),
+            datasets: [{
+                data: <?php echo json_encode(array_column($data, "vote_count")); ?>,
+                backgroundColor: [
+                    <?php
+                    for ($i = 0; $i < count($data); $i++) {
+                        if ($i < 3) {
+                            echo "'#8B2022',";
+                        } else {
+                            echo "'rgba(139, 32, 34, 0.5)',";
                         }
                     }
-                }
-            });
-        </script>
+                    ?>
+                ],
+                borderWidth: 0 // 区切り線を非表示
+            }]
+        };
+
+        // グラフ作成
+        var ctx = document.getElementById('voteChart').getContext('2d');
+        var voteChart = new Chart(ctx, {
+            type: 'bar', // 縦棒グラフ
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        display: true, // X軸目盛り表示
+                    },
+                    y: {
+                        display: false, // Y軸目盛り非表示
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false, // 凡例非表示
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 20,
+                        right: 20,
+                        top: 20,
+                        bottom: 20
+                    }
+                },
+                indexAxis: 'x', // 横軸に表示
+            }
+        });
+
+        // 項目名の下に画像を挿入
+        Chart.register({
+            afterDraw: function(chart, args, options) {
+                var ctx = chart.ctx;
+                ctx.save();
+                var xAxis = chart.scales['x'];
+                var yAxis = chart.scales['y'];
+                var datasets = chart.data.datasets;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = 'bold 12px Arial';
+
+
+//画像挿入のところ　うまくいかないから来週再チャレ箇所
+                datasets.forEach(function(dataset, datasetIndex) {
+                    var meta = chart.getDatasetMeta(datasetIndex);
+                    if (!meta.hidden) {
+                        meta.data.forEach(function(element, index) {
+                            var dataString = dataset.data[index].toString();
+                            var position = element.tooltipPosition();
+                            ctx.fillStyle = '#000'; // 項目名のテキスト色
+                            ctx.fillText(dataString, position.x, position.y - 10); // 高さを調整
+
+                            if (index < 3) {
+                                var img = new Image();
+                                img.src = 'img/ex-' + (index + 1) + '.png'; // 画像のパスを設定
+                                var imgWidth = 20; // 画像の幅
+                                var imgHeight = 20; // 画像の高さ
+                                ctx.drawImage(img, position.x - imgWidth / 2, position.y + 10, imgWidth, imgHeight);
+                            }
+                        });
+                    }
+                });
+//ここまで
+
+                ctx.restore();
+            }
+        });
+    </script>
 
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
@@ -259,6 +354,7 @@ $conn = null;
             </div>
         </div>
     </div>
+
 
     <!-- 隙間 -->
     <div class="gap-control-probram"></div>
