@@ -275,7 +275,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
 </div>
-    <!-- 投票欄 -->
+<!-- 投票欄 -->
     <div class="ranking-section" id="rankingSection">
         <div class="wrapper">
             <div class="font-style-comments2 line-height">
@@ -467,47 +467,47 @@ $conn = null;
 <script src="js/upperclassman.js"></script>
 <script src="js/newcomer.js"></script>
 <script>
-            function toggleRanking() {
-                var rankingSection = document.getElementById("rankingSection");
-                var rankingButton = document.getElementById("rankingButton");
-                if (rankingSection.style.display === "none") {
-                    rankingSection.style.display = "block";
-                    rankingButton.textContent = "× 閉じる";
-                    rankingButton.style.backgroundColor = "#f0f0f0";
-                } else {
-                    rankingSection.style.display = "none";
-                    rankingButton.textContent = "ランキングに参加する";
-                    rankingButton.style.backgroundColor = "#8B2022";
-                }
-                return false; 
-            }    
-        </script>
-    <script>
-        // 例: ポップアップを表示する関数
-        function showPopup(popupClass) {
-            var popup = document.querySelector("." + popupClass);
-            if (popup) {
+    function toggleRanking() {
+        var rankingSection = document.getElementById("rankingSection");
+        var rankingButton = document.getElementById("rankingButton");
+        if (rankingSection.style.display === "none") {
+            rankingSection.style.display = "block";
+            rankingButton.textContent = "× 閉じる";
+            rankingButton.style.backgroundColor = "#f0f0f0";
+        } else {
+            rankingSection.style.display = "none";
+            rankingButton.textContent = "ランキングに参加する";
+            rankingButton.style.backgroundColor = "#8B2022";
+        }
+        return false; 
+    }    
+</script>
+<script>
+    // 例: ポップアップを表示する関数
+    function showPopup(popupClass) {
+        var popup = document.querySelector("." + popupClass);
+        if (popup) {
+            popup.style.display = "block";
+        }
+    }
+
+    // 例: ポップアップを非表示にする関数
+    function hidePopup(popupClass) {
+        var popup = document.querySelector("." + popupClass);
+        if (popup) {
+            popup.style.display = "none";
+        }
+    }
+    function togglePopup(popupClass) {
+        var popup = document.querySelector("." + popupClass);
+        if (popup) {
+            if (popup.style.display === "block") {
+                popup.style.display = "none";
+            } else {
                 popup.style.display = "block";
             }
         }
-
-        // 例: ポップアップを非表示にする関数
-        function hidePopup(popupClass) {
-            var popup = document.querySelector("." + popupClass);
-            if (popup) {
-                popup.style.display = "none";
-            }
-        }
-        function togglePopup(popupClass) {
-            var popup = document.querySelector("." + popupClass);
-            if (popup) {
-                if (popup.style.display === "block") {
-                    popup.style.display = "none";
-                } else {
-                    popup.style.display = "block";
-                }
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
