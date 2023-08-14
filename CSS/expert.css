@@ -62,9 +62,10 @@
 /*く矢印*/
 .arrow-container {
   position: relative;
-}
-
-.arrow-bottom {
+  display: flex;
+  justify-content: center;
+  }
+  .arrow-bottom {
   position: absolute;
   border-bottom: solid 2px #8B2022;
   border-right: solid 2px #8B2022;
@@ -72,12 +73,11 @@
   height: 24px;
   transform: rotate(45deg);
   margin: auto;
-}
-
-.arrow-bottom-Shifted {
+  }
+  .arrow-bottom-Shifted {
   top: 15px;
-}
- 
+  }
+
 /* cercle */
 .cercle{
     background-color: #8B2022;

@@ -177,169 +177,186 @@ $conn = null;
             </div>
         </div>
     </div>
-    <!-- エンジニアが選ぶ企業のポイント　ランキング -->
+<!-- エンジニアが選ぶ企業のポイント　ランキング -->
     <div class="wrapper">
-    <div style="position: relative; margin: auto;">
-        <canvas id="voteChart" height="500px" width="100%"></canvas>
-    </div>
+            <div style="position: relative; margin: auto;">
+                <canvas id="voteChart" height="500px" width="100%"></canvas>
+                <div id="imageContainer" style="position: absolute; bottom: 0; left: 0;"></div>
+            </div>
 
-    <script>
-        // データの取得
-        <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "enterprise";
+            <script>
+                // データの取得
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "root";
+                $dbname = "enterprise";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
 
-        $sql = "
-            SELECT o.name AS option_name, COUNT(v.id) AS vote_count
-            FROM options o
-            LEFT JOIN votes v ON o.id = v.option_id
-            GROUP BY o.id
-            ORDER BY vote_count DESC;
-        ";
+                $sql = "
+                    SELECT o.name AS option_name, COUNT(v.id) AS vote_count
+                    FROM options o
+                    LEFT JOIN votes v ON o.id = v.option_id
+                    GROUP BY o.id
+                    ORDER BY vote_count DESC;
+                ";
 
-        $result = $conn->query($sql);
-        $data = array();
+                $result = $conn->query($sql);
+                $data = array();
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $data[] = array(
-                    "option_name" => $row["option_name"],
-                    "vote_count" => $row["vote_count"]
-                );
-            }
-        }
-
-        $conn->close();
-        ?>
-
-        // データの設定
-        var data = {
-            labels: <?php echo json_encode(array_column($data, "option_name")); ?>.map((v) => v.replace(/ー/g, '丨').split("")),
-            datasets: [{
-                data: <?php echo json_encode(array_column($data, "vote_count")); ?>,
-                backgroundColor: [
-                    <?php
-                    for ($i = 0; $i < count($data); $i++) {
-                        if ($i < 3) {
-                            echo "'#8B2022',";
-                        } else {
-                            echo "'rgba(139, 32, 34, 0.5)',";
-                        }
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $data[] = array(
+                            "option_name" => $row["option_name"],
+                            "vote_count" => $row["vote_count"]
+                        );
                     }
-                    ?>
-                ],
-                borderWidth: 0 // 区切り線を非表示
-            }]
-        };
+                }
 
-        // グラフ作成
-        var ctx = document.getElementById('voteChart').getContext('2d');
-        var voteChart = new Chart(ctx, {
-            type: 'bar', // 縦棒グラフ
-            data: data,
-            options: {
-                scales: {
-                    x: {
-                        display: true, // X軸目盛り表示
-                    },
-                    y: {
-                        display: false, // Y軸目盛り非表示
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false, // 凡例非表示
-                    }
-                },
-                responsive: true,
-                maintainAspectRatio: false,
-                layout: {
-                    padding: {
-                        left: 20,
-                        right: 20,
-                        top: 20,
-                        bottom: 20
-                    }
-                },
-                indexAxis: 'x', // 横軸に表示
-            }
-        });
+                $conn->close();
+                ?>
 
-        // 項目名の下に画像を挿入
-        Chart.register({
-            afterDraw: function(chart, args, options) {
-                var ctx = chart.ctx;
-                ctx.save();
-                var xAxis = chart.scales['x'];
-                var yAxis = chart.scales['y'];
-                var datasets = chart.data.datasets;
-
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.font = 'bold 12px Arial';
-
-
-//画像挿入のところ　うまくいかないから来週再チャレ箇所
-                datasets.forEach(function(dataset, datasetIndex) {
-                    var meta = chart.getDatasetMeta(datasetIndex);
-                    if (!meta.hidden) {
-                        meta.data.forEach(function(element, index) {
-                            var dataString = dataset.data[index].toString();
-                            var position = element.tooltipPosition();
-                            ctx.fillStyle = '#000'; // 項目名のテキスト色
-                            ctx.fillText(dataString, position.x, position.y - 10); // 高さを調整
-
-                            if (index < 3) {
-                                var img = new Image();
-                                img.src = 'img/ex-' + (index + 1) + '.png'; // 画像のパスを設定
-                                var imgWidth = 20; // 画像の幅
-                                var imgHeight = 20; // 画像の高さ
-                                ctx.drawImage(img, position.x - imgWidth / 2, position.y + 10, imgWidth, imgHeight);
+                // データの設定
+                var data = {
+                    labels: <?php echo json_encode(array_column($data, "option_name")); ?>.map((v) => v.replace(/ー/g, '丨').split("")),
+                    datasets: [{
+                        data: <?php echo json_encode(array_column($data, "vote_count")); ?>,
+                        backgroundColor: [
+                            <?php
+                            for ($i = 0; $i < count($data); $i++) {
+                                if ($i < 3) {
+                                    echo "'#8B2022',";
+                                } else {
+                                    echo "'rgba(139, 32, 34, 0.5)',";
+                                }
                             }
-                        });
-                    }
+                            ?>
+                        ],
+                        borderWidth: 0 // 区切り線を非表示
+                    }]
+                };
+
+                // グラフ作成
+                var ctx = document.getElementById('voteChart').getContext('2d');
+                var voteChart = new Chart(ctx, {
+                    type: 'bar', // 縦棒グラフ
+                    data: data,
+                    options: {
+                        scales: {
+                            x: {
+                                display: true, // X軸目盛り表示
+                                ticks: {
+                                    color: 'black', // 項目名の色
+                                    weight: 'bold' // 項目名の太さ
+                                }
+                            },
+                            y: {
+                                display: false, // Y軸目盛り非表示
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false, // 凡例非表示
+                            },
+                            tooltip: {
+                                enabled: false
+                            },
+                            
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                left: 20,
+                                right: 20,
+                                top: 20,
+                                bottom: 20
+                            }
+                        },
+                        indexAxis: 'x', // 横軸に表示
+                    },
+                    plugins: [{
+                        afterDraw: function(chart) {
+                            displayImagesBelowBars(chart);
+                        }
+                    }]
                 });
-//ここまで
 
-                ctx.restore();
-            }
-        });
-    </script>
+                // 画像を表示する関数
+                function displayImagesBelowBars(chart) {
+                    var imageContainer = document.getElementById('imageContainer');
+                    var imageUrls = [
+                        'img/ex-1.png', // 1位の画像URL
+                        'img/ex-2.png', // 2位の画像URL
+                        'img/ex-3.png'  // 3位の画像URL
+                    ];
 
+                    var xAxis = chart.scales.x;
+                    var barWidth = xAxis.width / chart.data.labels.length;
+
+                    chart.data.datasets[0].data.forEach(function(dataValue, index) {
+                        if (index < imageUrls.length) {
+                            var img = new Image();
+                            img.src = imageUrls[index];
+                            img.width = 45
+                            img.height = 70;
+
+                            var position = xAxis.getPixelForValue(index);
+                            var imgContainer = document.createElement('div');
+                            imgContainer.style.position = 'absolute';
+                            imgContainer.style.left = (position - img.width / 2) + 'px';
+                            imgContainer.style.bottom = '-60px'; // 画像をさらに下に移動
+                            imgContainer.appendChild(img);
+
+                            imageContainer.appendChild(imgContainer);
+                        }
+                    });
+                }
+            </script>
+        </div>
         <!-- 隙間 -->
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
-
-        <div class="cercle">ランキングに参加する</div>
-        <div class="Arrow-Bottom"></div>
-        <div class="Arrow-Bottom"></div>
-
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
-
-        <p class="font-style-comments2 txt line-height">キャリアアップで転職される際に、重要視されるポイントを下記よりお選びください。<br>※複数選択可能</p>
-        <?php if (!$voteHistory) : ?>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <?php foreach ($options as $option) : ?>
-                    <div class="option">
-                        <input type="checkbox" id="option<?php echo $option['id']; ?>" name="vote[]" value="<?php echo $option['id']; ?>">
-                        <label for="option<?php echo $option['id']; ?>"><?php echo $option['name']; ?></label>
-                    </div>
-                <?php endforeach; ?>
-                <button class="post-btn" type="submit">投票する</button>
-            </form>
-        <?php else : ?>
-            <p class="vote-message asterisk">※すでに投票済みです。</p>
-        <?php endif; ?>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+    <div class="wrapper">
+        <button class="cercle" id="rankingButton" onclick="toggleRanking()">ランキングに参加する</button>
+        <div class="arrow-container">
+            <div class="arrow-bottom"></div>
+            <div class="arrow-bottom arrow-bottom-Shifted"></div>
+        </div>
     </div>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+        <div class="gap-control-probram"></div>
+<!-- 投票 -->
+    <div class="ranking-section" id="rankingSection">
+        <div class="wrapper">
+            <p class="font-style-comments2 txt line-height">キャリアアップで転職される際に、重要視されるポイントを下記よりお選びください。<br>※複数選択可能</p>
+            <?php if (!$voteHistory) : ?>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                    <?php foreach ($options as $option) : ?>
+                        <div class="option">
+                            <input type="checkbox" id="option<?php echo $option['id']; ?>" name="vote[]" value="<?php echo $option['id']; ?>">
+                            <label for="option<?php echo $option['id']; ?>"><?php echo $option['name']; ?></label>
+                        </div>
+                    <?php endforeach; ?>
+                    <button class="post-btn" type="submit">投票する</button>
+                </form>
+            <?php else : ?>
+                <p class="vote-message asterisk">※すでに投票済みです。</p>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
     <!-- コメント -->
     <div class="container-fluid">
         <div class="row">
@@ -585,6 +602,21 @@ $conn = null;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="js\header.js"></script>
 <script src="js/upperclassman.js"></script>
-
+<script>
+    function toggleRanking() {
+        var rankingSection = document.getElementById("rankingSection");
+        var rankingButton = document.getElementById("rankingButton");
+        if (rankingSection.style.display === "none") {
+            rankingSection.style.display = "block";
+            rankingButton.textContent = "× 閉じる";
+            rankingButton.style.backgroundColor = "#f0f0f0";
+        } else {
+            rankingSection.style.display = "none";
+            rankingButton.textContent = "ランキングに参加する";
+            rankingButton.style.backgroundColor = "#8B2022";
+        }
+        return false; 
+    }    
+</script>
 </body>
 </html>
