@@ -275,7 +275,7 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
 </div>
-    <!-- 投票欄 -->
+<!-- 投票欄 -->
     <div class="ranking-section" id="rankingSection">
         <div class="wrapper">
             <div class="font-style-comments2 line-height">
