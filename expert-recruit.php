@@ -71,6 +71,14 @@ $stmt->bindParam(':user_ip', $userIp);
 $stmt->execute();
 $voteHistory = $stmt->fetch(PDO::FETCH_ASSOC);
 
+// 最終投票日を取得するクエリ実行
+$query = "SELECT MAX(vote_date) AS last_vote_date FROM votes_history WHERE user_ip = :user_ip";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':user_ip', $userIp);
+$stmt->execute();
+$lastVoteDateResult = $stmt->fetch(PDO::FETCH_ASSOC);
+$lastVoteDate = $lastVoteDateResult['last_vote_date'];
+
 // データベース接続のクローズ
 $conn = null;
 ?>
@@ -167,9 +175,12 @@ $conn = null;
                 <div class="gap-control-probram"></div>
 
                 <div class="load">
-                    <p id="currentDate"></p>
-                </div>
-
+                    <?php if ($lastVoteDate) : ?>
+                        <p>最終投票日: <?php echo date('Y.m.d', strtotime($lastVoteDate)); ?></p>
+                     <?php else : ?>
+                        <p>まだ投票がありません。</p>
+                    <?php endif; ?>
+                </div>                
                 <div class="gap-control-probram"></div>
                 <div class="gap-control-probram"></div>
 
@@ -183,7 +194,6 @@ $conn = null;
                 <canvas id="voteChart" height="500px" width="100%"></canvas>
                 <div id="imageContainer" style="position: absolute; bottom: 0; left: 0;"></div>
             </div>
-
             <script>
                 // データの取得
                 <?php
@@ -337,8 +347,11 @@ $conn = null;
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
         <div class="gap-control-probram"></div>
-<!-- 投票 -->
-    <div class="ranking-section" id="rankingSection">
+    <!-- 投票 -->
+    <div class="ranking-section" id="rankingSection" style="display: none;">
+    <div class="gap-control-probram"></div>
+    <div class="gap-control-probram"></div>
+
         <div class="wrapper">
             <p class="font-style-comments2 txt line-height">キャリアアップで転職される際に、重要視されるポイントを下記よりお選びください。<br>※複数選択可能</p>
             <?php if (!$voteHistory) : ?>
@@ -349,7 +362,7 @@ $conn = null;
                             <label for="option<?php echo $option['id']; ?>"><?php echo $option['name']; ?></label>
                         </div>
                     <?php endforeach; ?>
-                    <button class="post-btn" type="submit">投票する</button>
+                    <button class="post-btn" type="submit"　onclick="showChart()">投票する</button>
                 </form>
             <?php else : ?>
                 <p class="vote-message asterisk">※すでに投票済みです。</p>
@@ -357,6 +370,9 @@ $conn = null;
         </div>
     </div>
 </div>
+<div class="gap-control-probram"></div>
+<div class="gap-control-probram"></div>
+
     <!-- コメント -->
     <div class="container-fluid">
         <div class="row">

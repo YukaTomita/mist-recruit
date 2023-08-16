@@ -1,27 +1,29 @@
- <?php
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
+    $to = "yuka_tomita@mistnet.co.jp"; // 宛先のメールアドレス
+    $subject = "お問い合わせフォームからのメッセージ";
+
+    // フォームデータの取得
+    $name = $_POST["last-name"] . " " . $_POST["first-name"];
+    $furigana = $_POST["last-name-furigana"] . " " . $_POST["first-name-furigana"];
+    $experience = $_POST["experience"];
     $email = $_POST["email"];
-    $message = $_POST["message"];
+    $interview = $_POST["interview"];
+    $role = $_POST["role"];
+    $remarks = $_POST["remarks"];
 
-    if (empty($name) || empty($email) || empty($message)) {
-        echo "全てのフィールドを入力してください。";
-    } else {
-        
-        // ここで受信したデータを処理するための任意のコードを追加できます
+    // メール本文の作成
+    $message = "お名前: $name\n";
+    $message .= "フリガナ: $furigana\n";
+    $message .= "経験年数: $experience\n";
+    $message .= "メールアドレス: $email\n";
+    $message .= "希望面談形式: $interview\n";
+    $message .= "希望種別: $role\n";
+    $message .= "備考: $remarks\n";
 
-        // 例えば、データベースに保存する場合は以下のようになります
-        // $servername = "localhost";
-        // $username = "your_username";
-        // $password = "your_password";
-        // $dbname = "your_database";
-        // $conn = new mysqli($servername, $username, $password, $dbname);
-        // $sql = "INSERT INTO contacts (name, email, message) VALUES ('$name', '$email', '$message')";
-        // $conn->query($sql);
-        // $conn->close();
+    // メール送信
+    mail($to, $subject, $message);
 
-        // データの処理が完了したら、ユーザーに感謝メッセージを表示する例を以下に示します
-        echo "エントリーいただき、ありがとうございます。<br/>後日担当者よりご連絡いたします。";
-    }
+    echo "お問い合わせありがとうございます。";
 }
 ?>
