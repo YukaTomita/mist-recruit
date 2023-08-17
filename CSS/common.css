@@ -4,9 +4,12 @@
 
 html{
     font-size: 62.5%;
+    height: 100%;
 }
 body{
+    height: 100%;
     font-size: 1.6rem;
+    padding: 0;
     margin: 0;
     font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
 }
@@ -299,7 +302,7 @@ body.noscroll{
     background-color:rgba(0,0,0,.5);
     z-index: 1;
   }
-  /* --------------------------
+/* --------------------------
 エントリー
 --------------------------- */
 .entry {
@@ -369,6 +372,9 @@ silverリンク
 footer
 ----------------------- */
 .footer{
+    position: sticky;
+    top: 100vh;
+    width: 100%;
     line-height: 70px;
     background-color: #9EA9B0;
     text-align: center;
@@ -487,4 +493,20 @@ footer
     background-color: #EEEEEE;
     padding: 20px;
     width: 100%;
+}
+
+/* TOPに戻る */
+.top-button {
+    background-color: #8B2022;
+    color: #ffffff;
+    border-radius: 100px;
+    width: 250px;
+    height: 50px;
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+}
+
+.entry-contact{
+    font-size: 2.2rem;
+    line-height: 3rem;
 }
