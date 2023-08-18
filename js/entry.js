@@ -97,9 +97,41 @@ window.addEventListener("DOMContentLoaded", function() {
       agreeButton.classList.add("active");
       entryButton.removeAttribute("disabled");
       entryButton.classList.add("active");
-      entryButton.style.backgroundColor = "green";
+      entryButton.style.backgroundColor = "#8B2022";
     }
     event.preventDefault(); // ページのリロードを防止
   });
 });
 
+// 履歴書・職務経歴書アップロード　（サーバー処理要追加）
+const uploadButton = document.getElementById('uploadButton');
+const fileInput = document.getElementById('fileInput');
+const selectedFilesContainer = document.getElementById('selectedFiles');
+
+uploadButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  fileInput.click();
+});
+
+fileInput.addEventListener('change', () => {
+  const selectedFiles = fileInput.files;
+
+  if (selectedFiles.length > 0) {
+    for (const file of selectedFiles) {
+      const fileItem = document.createElement('div');
+      fileItem.className = 'file-item';
+      fileItem.innerHTML = `
+        <span>${file.name}</span>
+        <button class="delete-button">×</button>
+      `;
+      selectedFilesContainer.appendChild(fileItem);
+    }
+  }
+});
+
+selectedFilesContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-button')) {
+    const fileItem = event.target.parentNode;
+    selectedFilesContainer.removeChild(fileItem);
+  }
+});

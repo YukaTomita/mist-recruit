@@ -15,16 +15,14 @@
     display: flex;
     align-items: center;
     margin-left: 250px;
-    margin-bottom: 10px;
-    /* 行間の余白を調整 */
+    margin-bottom: 10px; /* 行間の余白を調整 */
 }
 
 label {
-    width: 100px;
-    /* 項目の幅を適宜調整 */
+    width: 100px; /* 項目の幅を適宜調整 */
     text-align: left;
-    margin-right: 10px;
-    /* 項目と入力欄の間隔を調整 */
+    margin-right: 10px; /* 項目と入力欄の間隔を調整 */
+    line-height: 3rem;
 }
 
 .flex-basis1 {
@@ -46,6 +44,7 @@ label {
 }
 
 .input-p {
+    margin-top: 0;
     font-size: 1.2rem;
 }
 
@@ -221,7 +220,6 @@ p {
 }
 
 /* Upload */
-
 .upload{
     position: relative;
     margin: auto;
@@ -235,7 +233,7 @@ p {
 }
     .upload-txt{
         text-align: center;
-        margin-top: 25px;
+        margin-top: 15px;
         font-size: 2rem;
     }
 .upload-btn{
@@ -247,6 +245,37 @@ p {
     transform: translate(-50%,-15%);
 }
 
+/* 既存のスタイルを変更 */
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 0; /* 上下の余白を調整 */
+    line-height: 1rem;
+  }
+  
+  .delete-button {
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    line-height: 15px;
+    text-align: center;
+  }
+  
+  /* ファイル名のスタイルを追加 */
+  .file-name {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.7rem;
+    color: #000;
+  }
+    
 /* 同意するボタン */
 .btn-txt{
     text-align: left;
@@ -258,12 +287,15 @@ p {
     height: 30px;
     background-color: white;
     color: #8B2022;
-    border: 2px solid #8B2022;
+    border: 3px solid #8B2022;
+    border-radius: 5px;
   }
 
-  button.active {
-    background-color: #8B2022;
-    color: white;
+  .btn1.active {
+    background-color: white;
+    color: #CCCCCC;
+    border: 3px solid #CCCCCC;
+    border-radius: 5px;
   }
 
 .btn2 {
@@ -276,7 +308,7 @@ p {
     border: none;
     font-weight: bold;
 }
- button.active {
+ .btn2.active {
     background-color: #8B2022;
     color: white;
   }
