@@ -96,6 +96,20 @@ button.next {
   right: 10px;
 }
 
+.bg-gray{
+  position: relative;
+  background-color: #EEEEEE;
+}
+.bg-gray:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 15px solid #EEEEEE;
+}
+
 /* 理由 */
 .font-style-choose{
     font-size: 5rem;
@@ -174,7 +188,7 @@ button.next {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
-    color: #8B2022;
+    color: white;
     font-weight: bold;
     line-height: 2rem;
   }
@@ -234,7 +248,7 @@ button.next {
 .top-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 幅6等分 */
-    grid-template-rows: 100px 100px 100px; /* 100pxの3行 */
+    grid-template-rows: 100px 100px; /* 100pxの3行 */
     grid-gap: 0px; /* 隙間10px */
     background-color: #F7F7F7;
 }
@@ -250,11 +264,11 @@ button.next {
 
     .txt2 {
         font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
-        font-weight: 700;
         font-style: normal;
         color: #8B2022;
-        font-size: 4rem;  
-        margin-top: 20px; 
+        font-size: 3.5rem;  
+        font-weight: 500;
+        margin-top: 30px;
     }
 
    
@@ -269,14 +283,16 @@ button.next {
     grid-column: 2 / 5;
     grid-row: 1; /* 行開始位置1 */
 }
+/*
 .box3 {
     text-align: center;
     grid-row: 2;
     grid-column: 2 / 5;
 }
+*/
 .box4 {
     margin-top: 10px;
-    grid-row: 3;
+    grid-row: 2;
     grid-column: 2 / 5;
 }
 .pbox-line{

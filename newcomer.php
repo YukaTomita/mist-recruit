@@ -411,7 +411,7 @@ $conn = null;
 
     <div class="flex-space">
         <div>2022年入社　新卒入社</div>
-        <div><a href="#!">先輩たちをもっと見る →</a></div>
+        <div><a href="upperclassman.html">先輩たちをもっと見る →</a></div>
     </div>
 
     <!-- フレックス群 -->
