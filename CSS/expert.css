@@ -383,6 +383,18 @@
   letter-spacing: 1rem;
 }
 
+.icon-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.icon {
+  margin: 15px; /* アイコン間の間隔を調整 */
+}
+
 /* コメント */
 .font-style-comments3{
   font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
