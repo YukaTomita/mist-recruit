@@ -35,6 +35,15 @@ body{
     line-height: 4rem;
 }
 
+/* font-color */
+.bd{
+    color: #8B2022;
+}
+
+.cm-font{
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+}
+
 /* 間隔あけ */
 .gap-control-probram {
     height: 2rem;
