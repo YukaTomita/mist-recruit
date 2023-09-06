@@ -150,17 +150,18 @@ button.next {
     font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
     margin-bottom: 20px;
     text-align: center;
-    font-size: 5rem;
+    font-size: 4rem;
     color: #8B2022;
   }
     .font-num{
         font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
-        font-size: 8rem;
+        font-size: 7rem;
         color: #8B2022;
     }
   .choose-img{
     text-align: center;
     margin-top: 10px;
+    height: 130px;
   }
   .choose-txt{
     margin-top: 30px;
@@ -179,70 +180,113 @@ button.next {
     position: relative;
   }
   .reason-p{
-    margin-left: -2.5rem;
-    line-height: 3rem;
+    line-height: 4rem;
+    width: 150px; /* 左側のテキストの幅 */
+    position: absolute;
+    top: 35%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    color: #8B2022;
+    font-weight: 580;
+    font-size: 2rem;
   }
+  .center-text {
+    width: 80px; /* 中央のテキストの幅 */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #8B2022;
+    line-height: 4rem;
+    font-size: 2rem;
+  }
+
   .reason-txt {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 40%;
+    right: 10%;
     transform: translate(-50%, -50%);
     font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
     color: white;
-    font-weight: bold;
-    line-height: 2rem;
+    line-height: 4rem;
+    font-size: 2rem;
   }
   .reason-ul {
     list-style-type: none;
+    width: 250px; /* 右側のリストの幅 */
+    position: absolute;
+    top: 50%;
+    right: 50%;
   }
   .reason-li {
     position: relative;
-    line-height: 1.8;
   }
   .reason-li::before{
     content: "";
     position: absolute;
-    top: .2em;
+    top: 1rem;
     left: -1.7em;
     width: 18px;
     height: 18px;
-    border: 1px solid #8B2022;
-    border-radius: 2px;
+    background-color: #000;
+    border: 1px solid #000;
   }
   .reason-li::after {
     content: '';
     display: block;
     position: absolute;
     left: -1.5em;
-    top: .5em;
+    top: 1.3rem;
     width: 10px;
     height: 5px;
-    border-left: 2px solid #8B2022;
-    border-bottom: 2px solid #8B2022;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
     transform: rotate(-45deg);
+  }
+  .reason-txt1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    color: white;
+    line-height: 5rem;
+    font-size: 2rem;
+    text-align: center;
   }
   .reason-txt2{
     position: absolute;
     width:500px;
     height: 100px;
     top: 15%;
-    left: 60%;
+    right: 20%;
     transform: translate(-50%, -50%);
     font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
-    color: #8B2022;
-    font-weight: bold;
-    line-height: 3rem;
+    color: white;
+    line-height: 4rem;
 
   }
   .reason-txt3{
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 50%;
+    width: 500px;
     transform: translate(-50%, -50%);
     font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
-    color: #8B2022;
-    font-weight: bold;
-    line-height: 2rem;
+    color: white;
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+  .reason-txt4{
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    font-family: Helvetica,"游ゴシック体", 'YuGothic', "游ゴシック", "Yu Gothic", sans-serif;
+    color: white;
+    line-height: 4rem;
+    font-size: 2rem;
   }
 
 .top-wrap {
@@ -409,7 +453,7 @@ button.next {
 .wrap-white{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 幅6等分 */
-    grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px; /* 100pxの6行 */
+    grid-template-rows: 100px 100px 80px 150px 180px 150px 100px 100px 100px;
     grid-gap: 0px; /* 隙間 */
     background-color: #FFFFFF;
 }
@@ -446,27 +490,27 @@ button.next {
 }
 .club-box5{
     margin: auto;
-    text-align: center;
-    vertical-align: middle;
     grid-column: 1 / 4;
-    grid-row: 3 / 6; 
+    grid-row: 4 / 6; 
     margin-top: 15px;
+    margin-right: 50px;
 }
 .club-box6{
     margin: auto;
     text-align: center;
-    vertical-align: middle;
     grid-column: 4 / 7;
-    grid-row: 3 / 6; 
+    grid-row: 4 / 6; 
     margin-top: 15px;
+    margin-left: 40px;
 }
 .club-box8{
   grid-column: 2 / 4;
-  grid-row: 6; 
+  grid-row: 6;
 }
 .club-box9{
-  grid-column: 5 / 6;
+  grid-column: 4 / 6;
   grid-row: 6; 
+  margin-left: 40px;
 }
 .club-box7{
     grid-column: 2 / 6;
@@ -612,21 +656,58 @@ button.next {
 
   
 /* Youtube */
+.ycontainer {
+  overflow: hidden;
+  position: relative;
+}
+
 .youtube-container {
   text-align: center;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  width:1240px;
+  overflow: hidden;
   margin: 0px auto;
+  width: 100vw;
+}
+
+.youtube-iframe{
+  border-radius: 16px;
 }
 
 .youtube-child {
   text-align: center;
-  width: 400px;
+  width: 350px;
+  margin-right: 20px; /* 動画の間隔 */
+}
+
+.youtube-child:last-child {
+  margin-right: 0; /* 最後の動画には右の間隔を適用しない */
 }
 
 .youtube-child > iframe {
-  width: 320px;
+  width: 100%;
   height: 180px;
+}
+
+.slider-controls {
+  position: fixed;
+  top: calc(50% - 25px); /* 垂直方向の中央揃え */
+  width: 30px; /* ボタンの幅 */
+  height: 30px; /* ボタンの高さ */
+  background-color: #BBBBBB;
+  border-radius: 50%; /* 丸い形状 */
+  color: white; /* ボタンのテキスト色 */
+  font-size: 24px; /* ボタンのテキストサイズ */
+  text-align: center;
+  line-height: 30px; /* 垂直方向の中央揃え */
+  cursor: pointer;
+  z-index: 1; /* 動画より上に表示 */
+}
+
+.slider-controls.left {
+  left: 10px; /* 左端に配置 */
+}
+
+.slider-controls.right {
+  right: 10px; /* 右端に配置 */
 }
