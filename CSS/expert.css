@@ -209,17 +209,18 @@
 /* HR-Step */
 .HR-step-content {
     margin: auto;
+    background-color: #EEEEEE;
   }
   
   .step-inner {
     margin: auto;
     width: 1000px;
-    padding-top: 10px;
     display: flex;
     justify-content: space-evenly;
   }
 
   .step{
+    margin-top: 25px;
     margin-bottom: 20px;
     text-align: center;
     font-size: 3rem;
@@ -229,6 +230,23 @@
         font-size: 6rem;
         color: #8B2022;
     }
+
+    .step-balloon{
+      position: relative; 
+      padding: 20px;
+      margin: 0 auto; /* 上 左右 下のマージン */
+      background: #EEEEEE; /* 背景色 */
+  }
+    .step-balloon::before { /* 三角の部分 */
+      content: '';
+      position: absolute; /* 位置固定 */
+      bottom: -28px; /* 線幅の2倍 */
+      left: 50%;
+      margin-left: -14px; /* 線幅だけずらす */
+      border: 14px solid transparent; /* 線幅の設定 */
+      border-top-color: #EEEEEE; /* 吹き出しの地と同じ色 */
+  }
+
   .step-img{
     height:130px;
     text-align: center;
@@ -243,9 +261,6 @@
     line-height: 2rem;
   }
 
-  .step-container{
-    background-color: #EEEEEE;
-  }
 /* 吹き出しを付けるステップのクラス */
 .step-container .step-container:after {
   content: "▼";
