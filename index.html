@@ -592,32 +592,38 @@
 <div class="ycontainer">
     <div class="youtube-container">
         <div class="youtube-child">
-            <iframe class="youtube-iframe" src="https://www.youtube.com/embed/?list=UUQfpU3SXPks2dzJVW6fFsLw"></iframe>
+            <iframe src="https://www.youtube.com/embed/?list=UUQfpU3SXPks2dzJVW6fFsLw"></iframe>
         </div>
         <div class="youtube-child">
-            <iframe class="youtube-iframe" src="https://www.youtube.com/embed/qxYL6BCs62w"
+            <iframe src="https://www.youtube.com/embed/qxYL6BCs62w"
                     title="YouTube 動画プレイヤー" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
         </div>
         <div class="youtube-child">
-            <iframe class="youtube-iframe" src="https://www.youtube.com/embed/cltHTAvY3nQ"
+            <iframe src="https://www.youtube.com/embed/cltHTAvY3nQ"
                     title="YouTube 動画プレイヤー" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
         </div>
         <div class="youtube-child">
-            <iframe class="youtube-iframe" src="https://www.youtube.com/embed/so2Z8WMk8mo"
+            <iframe src="https://www.youtube.com/embed/so2Z8WMk8mo"
+                    title="YouTube 動画プレイヤー" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+        </div>
+        <div class="youtube-child">
+            <iframe src="https://www.youtube.com/embed/E5Gi7LatRj4?si=hYio5Q0nJT1u-JzP"
                     title="YouTube 動画プレイヤー" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
         </div>
     </div>
-
-    <!-- 前へと次へのボタン -->
+    <!-- ＜、＞ボタン -->
     <div class="slider-controls left" onclick="slide(-1)">＜</div>
     <div class="slider-controls right" onclick="slide(1)">＞</div>
 </div>
+
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
 <div class="gap-control-probram"></div>
@@ -659,27 +665,24 @@
 <script src="js\header.js"></script>
 <script src="js/upperclassman.js"></script>
 <script>
-    let currentPosition = 0;
-    const videoContainers = document.querySelectorAll(".youtube-child");
-    const totalVideos = videoContainers.length;
+    let currentIndex = 0;
+    const videos = document.querySelectorAll('.youtube-child');
+    const numVideos = videos.length;
 
     function slide(direction) {
-        currentPosition += direction;
-        if (currentPosition < 0) {
-            currentPosition = 0;
-        }
-        if (currentPosition >= totalVideos - 4) {
-            currentPosition = totalVideos - 4;
-        }
-        updateSliderPosition();
-    }
+        currentIndex += direction;
 
-    function updateSliderPosition() {
-        const marginLeft = -currentPosition * 370; /* 370は動画幅とマージンの合計 */
-        document.querySelector(".youtube-container").style.marginLeft = marginLeft + "px";
-    }
+        // インデックスが境界外の場合、ループする
+        if (currentIndex < 0) {
+            currentIndex = numVideos - 1;
+        } else if (currentIndex >= numVideos) {
+            currentIndex = 0;
+        }
 
-    // 最初は最初の4つの動画を表示
-    updateSliderPosition();
+        // スライダーを移動
+        const translateX = currentIndex * -(videos[0].offsetWidth + 20);
+        document.querySelector('.youtube-container').style.transform = `translateX(${translateX}px)`;
+    }
 </script>
 </body>
+</html>
