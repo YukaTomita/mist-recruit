@@ -41,10 +41,10 @@
 }
 .HRbox:nth-child(odd){
   display: flex;
-  flex-direction: row-reverse;
 }
 .HRbox:nth-child(even){
   display: flex;
+  flex-direction: row-reverse;
    }
   
 
@@ -271,20 +271,53 @@
   text-align: center;
 }
 
-  /*-- Step triangle --------------
-  .triangle {
-    margin-top: 100px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 26px solid #8B2022;
-    border-right: 0;
-  }
-  -------------------------------*/
+.training-container{
+  display: flex;
+}
+.training1{
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align-last: justify;
+}
+.training2{
+  width : 50px;
+}
+.training3{
+  width: 400px;
+  white-space: normal;
+  text-align: left;
+}
 
-  /* Comment wrap */
+
+.dli-arrow-down {
+  margin-left: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #8B2022;
+  line-height: 1;
+  position: relative;
+  height: 3em;
+  border: 0.1px dashed #8B2022; 
+}
+
+.dli-arrow-down::before {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  border: 2px solid #8B2022;
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg);
+  transform-origin: bottom left;
+  position: absolute;
+  left: 50%;
+  bottom: -0.3em;
+  box-sizing: border-box;
+}
+
+/* Comment wrap */
 
 .comment-wrap{
     width: 800px;
@@ -424,6 +457,15 @@
   max-width: 700px;
   margin: 0 auto;
 }
+.box2 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  color: #6091d3;/*文字色*/
+  background: #FFF;
+  border: solid 3px #6091d3;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
 
 .icon{
   margin: 20px; /* アイコン間の間隔を調整 */
@@ -442,6 +484,12 @@
   align-items: center;
 }
 
+.border-around {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: solid 3px #8B2022;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
 /* アイコンとテキストの間に余白を設定 */
 .icon-text-container img {
   width: 60px;
@@ -482,7 +530,11 @@
 
 
 /* CP-greeting */
+.flex-cp{
+  display: flex;
+}
 .greeting{
+  vertical-align: bottom;
   text-align: left;
   line-height: 2.5rem;
 }
