@@ -401,7 +401,9 @@
 .vs-txt{
   margin-left: 20px;
   margin-right: 20px;
-  width: 400px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 /*requirement*/
@@ -532,9 +534,10 @@
 /* CP-greeting */
 .flex-cp{
   display: flex;
+  height: 100%;
 }
 .greeting{
-  vertical-align: bottom;
+  margin-top: auto;
   text-align: left;
   line-height: 2.5rem;
 }

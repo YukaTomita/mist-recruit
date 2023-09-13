@@ -135,6 +135,23 @@ body{
   margin-right: auto;
   margin: 10px auto;
 }
+
+.txt-bottom{
+    font-weight: 500;
+    color: #000;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin-top: auto;
+    margin-left: auto;
+}
+.txt-bottom-l{
+    font-weight: 500;
+    color: #000;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin-top: auto;
+}
+
 /* TOP画像 */
 .top-img{
     width: 100%;
